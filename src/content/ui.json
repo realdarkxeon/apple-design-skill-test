@@ -6,9 +6,9 @@
       "kk": "MadsDev — ЖИ-агенттер және бизнесті автоматтандыру"
     },
     "description": {
-      "en": "Darkhan Tleuzhan builds AI agents, workflow automations and integrations that take repetitive work off small teams. Book a call.",
-      "ru": "Дархан создаёт ИИ-агентов, автоматизации и интеграции, которые снимают рутину с небольших команд. Запишитесь на звонок.",
-      "kk": "Дархан шағын командаларды күнделікті қайталанатын жұмыстан босататын ЖИ-агенттер, автоматтандыру мен интеграциялар жасайды. Қоңырауға жазылыңыз."
+      "en": "MadsDev builds AI agents, workflow automations and integrations that take repetitive work off small teams. Founded by Darkhan Tleuzhan. Book a call.",
+      "ru": "MadsDev создаёт ИИ-агентов, автоматизации и интеграции, которые снимают рутину с небольших команд. Основатель — Дархан. Запишитесь на звонок.",
+      "kk": "MadsDev шағын командаларды күнделікті қайталанатын жұмыстан босататын ЖИ-агенттер, автоматтандыру мен интеграциялар жасайды. Негізін қалаушы — Дархан. Қоңырауға жазылыңыз."
     },
     "ogImageAlt": {
       "en": "MadsDev — AI agents and automation",
@@ -198,15 +198,15 @@
     },
     "calLoading": {
       "en": "Loading the calendar…",
-      "ru": "Загружаю календарь…",
+      "ru": "Загрузка календаря…",
       "kk": "Күнтізбе жүктеліп жатыр…"
     }
   },
   "footer": {
     "brandFull": {
-      "en": "Modern AI Design and Systems Development",
-      "ru": "Современный ИИ-дизайн и разработка систем",
-      "kk": "Заманауи ЖИ-дизайн және жүйелер әзірлеу"
+      "en": "Modern Agent Design and Systems Development",
+      "ru": "Современное проектирование агентов и разработка систем",
+      "kk": "Заманауи агенттер дизайны және жүйелер әзірлеу"
     },
     "copyright": {
       "en": "© {year} MadsDev. Demo content.",
@@ -226,8 +226,8 @@
       "kk": "Мұндай бет жоқ"
     },
     "body": {
-      "en": "The link may be old, or there was a typo. Everything I have is on the main page.",
-      "ru": "Возможно, ссылка устарела или в адресе опечатка. Всё, что у меня есть, — на главной.",
+      "en": "The link may be old, or there was a typo. Everything we have is on the main page.",
+      "ru": "Возможно, ссылка устарела или в адресе опечатка. Всё, что у нас есть, — на главной.",
       "kk": "Сілтеме ескірген болуы мүмкін немесе мекенжайда қате бар. Барлық мәлімет басты бетте."
     },
     "home": {
@@ -244,7 +244,7 @@
   "redirect": {
     "message": {
       "en": "Opening the English version…",
-      "ru": "Открываю английскую версию…",
+      "ru": "Открываем английскую версию…",
       "kk": "Ағылшын нұсқасы ашылып жатыр…"
     },
     "link": {

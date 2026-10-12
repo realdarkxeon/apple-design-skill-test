@@ -15,7 +15,7 @@ const { people, ui } = content;
       <p class="eyebrow">{t(people.eyebrow, lang)}</p>
       <h2 id="people-title" class="t-title">{t(people.title, lang)}</h2>
     </div>
-    <ul class="grid" role="list">
+    <ul class="list" role="list">
       {
         people.items.map((person) => (
           <li class="person">
@@ -46,56 +46,81 @@ const { people, ui } = content;
     background: var(--bg-raised);
   }
 
-  .grid {
+  /* Hairline-separated rows: avatar, name + role, why they matter, link. */
+  .list {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    border-top: 1px solid var(--separator);
   }
 
   .person {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    background: var(--bg);
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    grid-template-areas:
+      'avatar name'
+      'avatar who'
+      '. meaning'
+      '. link';
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--separator);
   }
 
   .initials {
+    grid-area: avatar;
     display: grid;
     place-items: center;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 0.625rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: 50%;
     background: var(--fill-strong);
     color: var(--text-2);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: 0.02em;
   }
 
+  .person h3 {
+    grid-area: name;
+    align-self: end;
+  }
+
   .who {
+    grid-area: who;
     color: var(--text-3);
   }
 
   .meaning {
+    grid-area: meaning;
     margin-top: 0.5rem;
+    max-width: 38rem;
     color: var(--text-2);
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .link {
-    margin-top: auto;
-    padding-top: 0.75rem;
+    grid-area: link;
+    justify-self: start;
+    padding-top: 0.5rem;
     font-weight: 600;
-    align-self: flex-start;
   }
 
-  @media (prefers-contrast: more) {
+  @media (min-width: 56rem) {
     .person {
-      border: 1px solid var(--text);
+      grid-template-columns: 2.75rem minmax(12rem, 16rem) 1fr auto;
+      grid-template-areas:
+        'avatar name meaning link'
+        'avatar who meaning link';
+      column-gap: 1.5rem;
+    }
+
+    .meaning {
+      margin-top: 0;
+    }
+
+    .link {
+      padding-top: 0;
     }
   }
 </style>

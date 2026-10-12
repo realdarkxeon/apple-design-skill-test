@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/global.css';
 import { content } from '../lib/content';
 import { DEFAULT_LOCALE, LOCALES, ogLocale, t, type Locale } from '../lib/i18n';
@@ -19,6 +20,9 @@ const pageTitle = title ?? t(ui.meta.title, lang);
 const pageDescription = description ?? t(ui.meta.description, lang);
 const canonical = absoluteUrl(`${lang}/${path}`, Astro.site);
 const ogImage = absoluteUrl('images/og.png', Astro.site);
+// Plus Jakarta Sans has no basic Cyrillic, so RU/KK headings use Onest (see --font-heading in global.css).
+const headingFont = lang === 'en' ? '--font-jakarta' : '--font-onest';
+const headingSubset = lang === 'en' ? 'latin' : 'cyrillic';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -39,6 +43,7 @@ const jsonLd = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{pageTitle}</title>
+    <Font cssVariable={headingFont} preload={[{ subset: headingSubset }]} />
     <meta name="description" content={pageDescription} />
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && <link rel="canonical" href={canonical} />}

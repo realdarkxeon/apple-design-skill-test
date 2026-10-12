@@ -8,7 +8,9 @@ A static Astro site in English, Russian and Kazakh, deployed to GitHub Pages, wi
   `src/content/schemas.ts`. A broken file stops the build with the exact field path.
 - **Editor:** generated from the same schemas; validates before writing; hot-reloads the dev site.
 - **No** CMS, database, auth, serverless functions or third-party services besides the Cal.com embed.
-  No web fonts: the system font stack covers Kazakh Cyrillic on macOS, iOS, Windows and Android.
+  Body text uses the system font stack (covers Kazakh Cyrillic on macOS, iOS, Windows and Android).
+  Headings use Plus Jakarta Sans on EN and Onest on RU/KK (Jakarta has no basic Cyrillic); both are
+  downloaded at build time by Astro's Fonts API and self-hosted, so there are no runtime font requests.
 
 > All names, projects, testimonials and contact handles are **invented demo content**.
 > Replace them before publishing (see [Replace the demo content](#replace-the-demo-content)).

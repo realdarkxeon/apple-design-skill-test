@@ -1,0 +1,454 @@
+/* The client-journey demo. Global (prefixed) because the markup is rendered by a React island. */
+
+.pd {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ stage */
+
+.pd-stage {
+  position: relative;
+  aspect-ratio: 600 / 420;
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.pd-stage > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pd-node {
+  fill: var(--bg-raised);
+  stroke: var(--separator);
+  stroke-width: 2;
+}
+
+.pd-node-team {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.pd-sparkle {
+  fill: var(--on-accent);
+}
+
+.pd-icon {
+  fill: none;
+  stroke: var(--text-2);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pd-icon-on {
+  stroke: #fff;
+  stroke-width: 2.4;
+}
+
+.pd-icon-positive {
+  stroke: var(--positive);
+  stroke-width: 2.6;
+}
+
+.pd-label {
+  font: 600 19px var(--font);
+  letter-spacing: -0.01em;
+  fill: var(--text-2);
+}
+
+.pd-card {
+  fill: var(--bg-raised);
+  stroke: var(--separator);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
+}
+
+.pd-link,
+.pd-track {
+  stroke: var(--separator);
+  stroke-width: 2;
+  stroke-dasharray: 6 7;
+  stroke-linecap: round;
+}
+
+.pd-dot {
+  fill: var(--accent);
+}
+
+.pd-bubble {
+  fill: var(--fill-strong);
+}
+
+.pd-bubble-team {
+  fill: var(--accent);
+}
+
+.pd-typing {
+  fill: var(--text-3);
+}
+
+.pd-typing-team {
+  fill: var(--on-accent);
+}
+
+.pd-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-opacity: 0.45;
+  stroke-width: 2;
+  stroke-dasharray: 4 10;
+  stroke-linecap: round;
+}
+
+.pd-done {
+  fill: var(--positive);
+}
+
+.pd-tray {
+  fill: var(--fill);
+  stroke: var(--separator);
+  stroke-width: 1.5;
+}
+
+.pd-count {
+  font: 700 28px var(--font-heading);
+  fill: var(--positive);
+  font-variant-numeric: tabular-nums;
+}
+
+.pd-metric {
+  font: 600 20px var(--font);
+  fill: var(--text-2);
+}
+
+.pd-axis {
+  font: 600 19px var(--font);
+  fill: var(--text-3);
+}
+
+.pd-bar-before {
+  fill: var(--fill-strong);
+}
+
+.pd-bar-after {
+  fill: var(--accent);
+}
+
+.pd-value {
+  font: 700 24px var(--font-heading);
+  letter-spacing: -0.02em;
+  fill: var(--text);
+}
+
+.pd-value-after {
+  font-size: 34px;
+  fill: var(--link);
+}
+
+.pd-wire {
+  fill: none;
+  stroke: var(--separator);
+  stroke-width: 2;
+}
+
+.pd-system {
+  fill: var(--bg-raised);
+  stroke: var(--separator);
+  stroke-width: 1.5;
+}
+
+/* HTML chips over the stage, placed in the stage's 600×420 coordinate space by percentage. */
+.pd-chip,
+.pd-source {
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  white-space: nowrap;
+}
+
+.pd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: clamp(0.75rem, 0.65rem + 0.35vw, 0.875rem);
+  font-weight: 600;
+}
+
+.pd-chip-badge {
+  top: 30%;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--link);
+}
+
+.pd-chip-status {
+  top: 93%;
+  background: color-mix(in srgb, var(--positive) 12%, transparent);
+  color: var(--positive);
+}
+
+.pd-source {
+  top: 84%;
+  max-width: 90%;
+  white-space: normal;
+  text-align: center;
+  font-size: clamp(0.6875rem, 0.6rem + 0.3vw, 0.8125rem);
+  color: var(--text-3);
+}
+
+.pd-pulse {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pd-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pd-pulse 1.6s var(--ease-out) infinite;
+}
+
+@keyframes pd-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.pd-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+
+.pd-toggle:hover {
+  background: var(--fill-strong);
+}
+
+.pd-toggle:active {
+  transform: scale(0.92);
+  transition-duration: 80ms;
+}
+
+.pd-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+/* ------------------------------------------------------------------ step list */
+
+.pd-panel {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1.5rem;
+}
+
+.pd-steps {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.pd-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  align-items: start;
+  gap: 0.875rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    background-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+
+.pd-step:hover {
+  background: var(--fill);
+}
+
+.pd-step:active {
+  transform: scale(0.98);
+  transition-duration: 80ms;
+}
+
+.pd-step[aria-current] {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.pd-num {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--text-3);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 240ms var(--ease-out), color 240ms var(--ease-out);
+}
+
+.pd-step[aria-current] .pd-num {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.pd-text {
+  display: grid;
+  padding-top: 0.25rem;
+}
+
+.pd-title {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  font-weight: 600;
+  color: var(--text-3);
+  transition: color 240ms var(--ease-out);
+}
+
+.pd-step[aria-current] .pd-title {
+  color: var(--text);
+}
+
+/* The caption opens only for the active step. */
+.pd-caption {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 360ms var(--ease-out),
+    opacity 240ms var(--ease-out);
+}
+
+.pd-caption > span {
+  overflow: hidden;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.pd-step[aria-current] .pd-caption {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.pd-step[aria-current] .pd-caption > span {
+  padding-top: 0.25rem;
+}
+
+.pd-progress {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0;
+  height: 2px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.pd[data-autoplay] .pd-step[aria-current] .pd-progress {
+  opacity: 1;
+}
+
+.pd-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* On phones the stage renders at ~60% scale; keep its text legible. */
+@media (max-width: 40rem) {
+  .pd-label {
+    font-size: 27px;
+  }
+
+  .pd-metric {
+    font-size: 27px;
+  }
+
+  .pd-axis {
+    font-size: 25px;
+  }
+
+  .pd-value {
+    font-size: 30px;
+  }
+
+  .pd-value-after {
+    font-size: 42px;
+  }
+
+  .pd-count {
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 60rem) {
+  .pd {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-pulse::after {
+    animation: none;
+  }
+
+  .pd-caption {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .pd-stage {
+    box-shadow: none;
+    border: 1px solid var(--text);
+  }
+
+  .pd-step[aria-current] {
+    box-shadow: none;
+    outline: 1px solid var(--text);
+  }
+}

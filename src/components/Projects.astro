@@ -2,6 +2,9 @@
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
 import { url } from '../lib/url';
+import Spotlight from './reactbits/Spotlight';
+import FadeContent from './reactbits/FadeContent';
+import { badgeVariants } from './ui/badge';
 
 interface Props {
   lang: Locale;
@@ -20,7 +23,9 @@ const { projects, ui } = content;
       {
         projects.items.map((p, i) => (
           <li>
-            <article class="card" aria-labelledby={`project-${i}`}>
+            <FadeContent client:visible className="fade" duration={800} delay={i * 120} threshold={0.1}>
+            <Spotlight client:visible className="card">
+            <article class="article" aria-labelledby={`project-${i}`}>
               <img
                 class="media"
                 src={url(p.image)}
@@ -59,17 +64,19 @@ const { projects, ui } = content;
                   <span class="visually-hidden">{t(ui.projects.stack, lang)}</span>
                   <ul role="list">
                     {p.stack.map((s) => (
-                      <li>{s}</li>
+                      <li class={badgeVariants({ variant: 'outline' })}>{s}</li>
                     ))}
                   </ul>
                 </div>
                 <a class="link" href={p.link} target="_blank" rel="noopener">
                   {t(ui.projects.viewProject, lang)}
-                  <span aria-hidden="true">↗</span>
+                  <span class="arrow" aria-hidden="true">↗</span>
                   <span class="visually-hidden">{t(ui.a11y.opensInNewTab, lang)}</span>
                 </a>
               </div>
             </article>
+            </Spotlight>
+            </FadeContent>
           </li>
         ))
       }
@@ -84,14 +91,32 @@ const { projects, ui } = content;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
   }
 
-  .card {
+  /* The card and its fade wrapper are rendered by React islands, outside this component's style scope. */
+  .grid > li,
+  .grid :global(astro-island),
+  .grid :global(.fade) {
     display: flex;
     flex-direction: column;
-    height: 100%;
+  }
+
+  .grid :global(astro-island),
+  .grid :global(.fade),
+  .grid :global(.card),
+  .article {
+    flex: 1;
+  }
+
+  .grid :global(.card) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     overflow: hidden;
     border-radius: var(--radius-lg);
-    background: var(--bg-raised);
-    box-shadow: var(--shadow-sm);
+  }
+
+  .article {
+    display: flex;
+    flex-direction: column;
   }
 
   .media {
@@ -166,16 +191,6 @@ const { projects, ui } = content;
     gap: 0.375rem;
   }
 
-  .stack li {
-    padding: 0.1875rem 0.625rem;
-    border-radius: 999px;
-    border: 1px solid var(--separator);
-    font-size: 0.8125rem;
-    line-height: 1.4;
-    letter-spacing: 0.012em;
-    color: var(--text-2);
-  }
-
   .link {
     display: inline-flex;
     gap: 0.25rem;
@@ -185,8 +200,30 @@ const { projects, ui } = content;
     font-weight: 600;
   }
 
+  /* The arrow points where the link goes and leans that way on hover/press. */
+  .arrow {
+    display: inline-block;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .link:hover .arrow,
+  .link:active .arrow {
+    transform: translate(2px, -2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arrow {
+      transition: none;
+    }
+
+    .link:hover .arrow,
+    .link:active .arrow {
+      transform: none;
+    }
+  }
+
   @media (prefers-contrast: more) {
-    .card {
+    .grid :global(.card) {
       box-shadow: none;
       border: 1px solid var(--text);
     }

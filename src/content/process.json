@@ -1,0 +1,68 @@
+{
+  "eyebrow": { "en": "In 30 seconds", "ru": "За 30 секунд", "kk": "30 секундта" },
+  "title": {
+    "en": "What working with us looks like.",
+    "ru": "Как выглядит работа с нами.",
+    "kk": "Бізбен жұмыс қалай өтеді."
+  },
+  "steps": [
+    {
+      "key": "talk",
+      "title": { "en": "We listen", "ru": "Мы слушаем", "kk": "Тыңдаймыз" },
+      "caption": {
+        "en": "You show us the task that eats most of your time.",
+        "ru": "Вы показываете задачу, которая отнимает больше всего времени.",
+        "kk": "Сіз ең көп уақыт алатын тапсырманы көрсетесіз."
+      }
+    },
+    {
+      "key": "pilot",
+      "title": { "en": "We build a pilot", "ru": "Запускаем пилот", "kk": "Пилот іске қосамыз" },
+      "caption": {
+        "en": "In two weeks, that task starts running on its own.",
+        "ru": "За две недели эта задача начинает выполняться сама.",
+        "kk": "Екі аптада бұл тапсырма өздігінен орындала бастайды."
+      }
+    },
+    {
+      "key": "result",
+      "title": { "en": "You see the numbers", "ru": "Вы видите цифры", "kk": "Нәтижені көресіз" },
+      "caption": {
+        "en": "Real before-and-after results, before you decide on anything more.",
+        "ru": "Реальные цифры «до» и «после» — ещё до решения двигаться дальше.",
+        "kk": "Әрі қарай шешім қабылдамас бұрын нақты «дейін» және «кейін» нәтижелері."
+      }
+    },
+    {
+      "key": "care",
+      "title": { "en": "It grows, we watch over it", "ru": "Растём и следим", "kk": "Кеңейтеміз және бақылаймыз" },
+      "caption": {
+        "en": "We connect the rest of your tools and keep everything running.",
+        "ru": "Подключаем остальные системы и следим, чтобы всё работало.",
+        "kk": "Қалған жүйелерді қосып, бәрінің жұмыс істеуін қадағалаймыз."
+      }
+    }
+  ],
+  "you": { "en": "You", "ru": "Вы", "kk": "Сіз" },
+  "pilotBadge": { "en": "2 weeks", "ru": "2 недели", "kk": "2 апта" },
+  "result": {
+    "metric": {
+      "en": "Average first reply to a customer",
+      "ru": "Среднее время первого ответа клиенту",
+      "kk": "Клиентке алғашқы жауаптың орташа уақыты"
+    },
+    "beforeLabel": { "en": "Before", "ru": "До", "kk": "Дейін" },
+    "beforeValue": { "en": "4 h", "ru": "4 ч", "kk": "4 сағ" },
+    "afterLabel": { "en": "After", "ru": "После", "kk": "Кейін" },
+    "afterValue": { "en": "40 s", "ru": "40 с", "kk": "40 сек" },
+    "source": {
+      "en": "Real project: support agent for an online furniture store",
+      "ru": "Реальный проект: агент поддержки интернет-магазина мебели",
+      "kk": "Нақты жоба: онлайн жиһаз дүкенінің қолдау агенті"
+    }
+  },
+  "status": { "en": "All systems running", "ru": "Все системы работают", "kk": "Барлық жүйе жұмыс істеп тұр" },
+  "cta": { "en": "Start with a call", "ru": "Начать со звонка", "kk": "Қоңыраудан бастау" },
+  "play": { "en": "Play the demo", "ru": "Воспроизвести демо", "kk": "Демоны ойнату" },
+  "pause": { "en": "Pause the demo", "ru": "Остановить демо", "kk": "Демоны тоқтату" }
+}

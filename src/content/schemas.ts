@@ -144,6 +144,10 @@ export const heroSchema = z.object({
   primaryCta: i18n(),
   secondaryCta: i18n(),
   availability: i18n(),
+  brandExpansion: z
+    .array(z.object({ short: z.string(), full: text() }))
+    .min(1)
+    .meta({ description: 'What the brand name stands for; the "short" parts joined must spell the brand' }),
 });
 
 export const missionSchema = z.object({
@@ -166,6 +170,32 @@ export const servicesSchema = z.object({
   title: i18n(),
   intro: i18nLong(),
   items: z.array(serviceItem).length(3, { error: 'Exactly 3 services' }),
+});
+
+const processStep = z.object({
+  key: z.enum(['talk', 'pilot', 'result', 'care']).meta({ description: 'Which animated scene this step shows' }),
+  title: i18n('2–4 words'),
+  caption: i18nLong({ description: 'One short sentence' }),
+});
+
+export const processSchema = z.object({
+  eyebrow: i18n(),
+  title: i18n(),
+  steps: z.array(processStep).length(4, { error: 'Exactly 4 steps' }),
+  you: i18n('Label under the client in the demo'),
+  pilotBadge: i18n('Pilot length shown in the demo'),
+  result: z.object({
+    metric: i18n(),
+    beforeLabel: i18n(),
+    beforeValue: i18n(),
+    afterLabel: i18n(),
+    afterValue: i18n(),
+    source: i18n('Which real project the numbers come from'),
+  }),
+  status: i18n(),
+  cta: i18n(),
+  play: i18n(),
+  pause: i18n(),
 });
 
 const projectItem = z.object({
@@ -237,6 +267,7 @@ export const contentSchemas = {
   hero: heroSchema,
   mission: missionSchema,
   services: servicesSchema,
+  process: processSchema,
   projects: projectsSchema,
   experience: experienceSchema,
   recommendations: recommendationsSchema,

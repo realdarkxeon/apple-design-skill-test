@@ -2,6 +2,7 @@
 import { content } from '../lib/content';
 import { LOCALES, t, type Locale } from '../lib/i18n';
 import { localeHome } from '../lib/url';
+import { buttonVariants } from './ui/button';
 
 interface Props {
   lang: Locale;
@@ -14,7 +15,7 @@ const { ui } = content;
   <p class="code" aria-hidden="true">404</p>
   <h1 class="t-title">{t(ui.notFound.title, lang)}</h1>
   <p class="t-lead">{t(ui.notFound.body, lang)}</p>
-  <a class="button" href={localeHome(lang)}>{t(ui.notFound.home, lang)}</a>
+  <a class={buttonVariants()} href={localeHome(lang)}>{t(ui.notFound.home, lang)}</a>
   <nav aria-label={t(ui.notFound.otherLanguages, lang)}>
     <p class="t-footnote others">{t(ui.notFound.otherLanguages, lang)}</p>
     <ul role="list">

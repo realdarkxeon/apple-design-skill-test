@@ -1,5 +1,5 @@
 {
-  "eyebrow": { "en": "People I learn from", "ru": "У кого я учусь", "kk": "Кімнен үйренемін" },
+  "eyebrow": { "en": "From our founder: people I learn from", "ru": "От основателя: у кого я учусь", "kk": "Негізін қалаушыдан: кімнен үйренемін" },
   "title": {
     "en": "Teachers I’ve never met.",
     "ru": "Учителя, с которыми я не знаком.",
@@ -10,9 +10,9 @@
       "name": "Andrej Karpathy",
       "who": { "en": "AI researcher and educator", "ru": "Исследователь ИИ и преподаватель", "kk": "ЖИ зерттеушісі және ұстаз" },
       "meaning": {
-        "en": "He explains the hardest ideas from first principles and makes you feel you could build them too. I try to explain my systems to clients the same way.",
-        "ru": "Он объясняет самые сложные идеи с нуля так, что кажется, будто ты и сам можешь это построить. Я стараюсь так же объяснять клиентам свои системы.",
-        "kk": "Ол ең күрделі идеяларды негізінен бастап түсіндіреді, сонда сен де оны жасай алатындай сезінесің. Мен де клиенттерге жүйелерімді солай түсіндіруге тырысамын."
+        "en": "He explains the hardest ideas from first principles and makes you feel you could build them too. At MadsDev we try to explain our systems to clients the same way.",
+        "ru": "Он объясняет самые сложные идеи с нуля так, что кажется, будто ты и сам можешь это построить. В MadsDev мы стараемся так же объяснять клиентам наши системы.",
+        "kk": "Ол ең күрделі идеяларды негізінен бастап түсіндіреді, сонда сен де оны жасай алатындай сезінесің. MadsDev-те біз де клиенттерге жүйелерімізді солай түсіндіруге тырысамыз."
       },
       "link": "https://karpathy.ai/"
     },
@@ -50,9 +50,9 @@
       "name": "Bret Victor",
       "who": { "en": "Designer and researcher", "ru": "Дизайнер и исследователь", "kk": "Дизайнер және зерттеуші" },
       "meaning": {
-        "en": "A reminder that tools shape how we think. When I design an automation, I ask what it lets people see that they couldn’t before.",
-        "ru": "Напоминание о том, что инструменты формируют наше мышление. Проектируя автоматизацию, я спрашиваю: что она позволит людям увидеть, чего они раньше не видели?",
-        "kk": "Құралдар біздің ойлау тәсілімізді қалыптастыратынын еске салады. Автоматтандыруды жобалағанда, ол адамдарға бұрын көрмегенін көруге мүмкіндік бере ме деп сұраймын."
+        "en": "A reminder that tools shape how we think. When we design an automation, we ask what it lets people see that they couldn’t before.",
+        "ru": "Напоминание о том, что инструменты формируют наше мышление. Проектируя автоматизацию, мы спрашиваем: что она позволит людям увидеть, чего они раньше не видели?",
+        "kk": "Құралдар біздің ойлау тәсілімізді қалыптастыратынын еске салады. Автоматтандыруды жобалағанда, ол адамдарға бұрын көрмегенін көруге мүмкіндік бере ме деп сұраймыз."
       },
       "link": "https://worrydream.com/"
     }

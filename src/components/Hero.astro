@@ -1,23 +1,48 @@
 ---
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
+import HeroAurora from './reactbits/HeroAurora';
+import BlurText from './reactbits/BlurText';
+import StatusShine from './reactbits/StatusShine';
+import Magnet from './reactbits/Magnet';
+import { buttonVariants } from './ui/button';
+import AcronymMorph from './reactbits/AcronymMorph';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
-const { hero } = content;
+const { hero, ui } = content;
+const brandName = `${ui.header.brand} — ${hero.brandExpansion.map((s) => s.full).join(' ')}`;
 ---
 
 <section class="hero" id="top" aria-labelledby="hero-name">
+  <div class="backdrop" aria-hidden="true">
+    <HeroAurora client:idle />
+  </div>
   <div class="container hero-inner">
-    <p class="status t-footnote"><span class="dot" aria-hidden="true"></span>{t(hero.availability, lang)}</p>
-    <h1 id="hero-name" class="name">{t(hero.name, lang)}</h1>
-    <p class="t-display offer">{t(hero.offer, lang)}</p>
+    <p class="status t-footnote">
+      <span class="dot" aria-hidden="true"></span>
+      <StatusShine client:visible text={t(hero.availability, lang)} />
+    </p>
+    <h1 id="hero-name" class="brand">
+      <AcronymMorph client:visible segments={hero.brandExpansion} label={brandName} />
+    </h1>
+    <BlurText
+      client:load
+      text={t(hero.offer, lang)}
+      className="t-display offer"
+      animateBy="words"
+      direction="bottom"
+      delay={70}
+      stepDuration={0.3}
+    />
     <p class="t-lead subline">{t(hero.subline, lang)}</p>
     <div class="ctas">
-      <a class="button" href="#contact" data-hero-cta>{t(hero.primaryCta, lang)}</a>
-      <a class="button button--quiet" href="#projects">{t(hero.secondaryCta, lang)}</a>
+      <Magnet client:visible padding={60} magnetStrength={6}>
+        <a class={buttonVariants({ size: 'lg' })} href="#contact" data-hero-cta>{t(hero.primaryCta, lang)}</a>
+      </Magnet>
+      <a class={buttonVariants({ variant: 'secondary', size: 'lg' })} href="#projects">{t(hero.secondaryCta, lang)}</a>
     </div>
     <p class="role t-footnote">{t(hero.role, lang)}</p>
   </div>
@@ -25,7 +50,24 @@ const { hero } = content;
 
 <style>
   .hero {
+    position: relative;
+    isolation: isolate;
     padding-block: clamp(1rem, -0.5rem + 5vw, 6rem) clamp(3.5rem, 2rem + 6vw, 7rem);
+  }
+
+  /* Aurora sits under the transparent header too, so it starts above the hero's top edge. */
+  .backdrop {
+    position: absolute;
+    inset: calc(-1 * var(--header-h)) 0 0;
+    z-index: -1;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent);
+  }
+
+  .backdrop :global(.hero-aurora) {
+    position: absolute;
+    inset: 0;
   }
 
   .hero-inner {
@@ -51,16 +93,18 @@ const { hero } = content;
     background: var(--positive);
   }
 
-  .name {
+  /* Page heading: MadsDev unfolding into what it stands for. */
+  .brand {
     margin-top: clamp(1rem, 0.6rem + 1.5vw, 1.5rem);
-    font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem);
-    line-height: 1.3;
+    font-family: var(--font-heading);
+    font-size: clamp(0.8125rem, 0.6rem + 1vw, 1.3125rem);
+    font-weight: 700;
     letter-spacing: -0.005em;
-    font-weight: 600;
-    color: var(--text-2);
+    color: var(--link);
   }
 
-  .offer {
+  /* BlurText renders its own <p>, outside this component's style scope. */
+  .hero-inner :global(.offer) {
     margin-top: 0.5rem;
     max-width: 17em;
     text-wrap: balance;
@@ -73,6 +117,7 @@ const { hero } = content;
 
   .ctas {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
@@ -88,8 +133,12 @@ const { hero } = content;
       width: 100%;
     }
 
-    .ctas .button {
+    .ctas a,
+    .ctas > :global(astro-island),
+    .ctas :global(astro-island > div),
+    .ctas :global(astro-island > div > div) {
       flex: 1 1 100%;
+      width: 100%;
     }
   }
 </style>

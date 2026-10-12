@@ -1,0 +1,42 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+import { buttonVariants } from './ui/button';
+import ProcessDemo from './ProcessDemo';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { process, ui } = content;
+const r = process.result;
+---
+
+<section class="section" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(process.eyebrow, lang)}</p>
+      <h2 id="process-title" class="t-title">{t(process.title, lang)}</h2>
+    </div>
+    <ProcessDemo
+      client:visible
+      steps={process.steps.map((s) => ({ key: s.key, title: t(s.title, lang), caption: t(s.caption, lang) }))}
+      you={t(process.you, lang)}
+      brand={ui.header.brand}
+      pilotBadge={t(process.pilotBadge, lang)}
+      result={{
+        metric: t(r.metric, lang),
+        beforeLabel: t(r.beforeLabel, lang),
+        beforeValue: t(r.beforeValue, lang),
+        afterLabel: t(r.afterLabel, lang),
+        afterValue: t(r.afterValue, lang),
+        source: t(r.source, lang),
+      }}
+      status={t(process.status, lang)}
+      play={t(process.play, lang)}
+      pause={t(process.pause, lang)}
+    >
+      <a class={buttonVariants({ size: 'lg' })} href="#contact">{t(process.cta, lang)}</a>
+    </ProcessDemo>
+  </div>
+</section>

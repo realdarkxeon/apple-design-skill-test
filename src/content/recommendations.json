@@ -1,9 +1,9 @@
 {
   "eyebrow": { "en": "Library", "ru": "Полка", "kk": "Сөре" },
   "title": {
-    "en": "What shaped how I work.",
-    "ru": "Что повлияло на то, как я работаю.",
-    "kk": "Жұмыс тәсіліме не әсер етті."
+    "en": "What shaped how we work.",
+    "ru": "Что повлияло на то, как мы работаем.",
+    "kk": "Жұмыс тәсілімізге не әсер етті."
   },
   "intro": {
     "en": "Five things to read, watch and use. None of them are sponsored; all of them are worth an evening.",
@@ -36,9 +36,9 @@
       "creator": "Rob Fitzpatrick",
       "link": "https://www.momtestbook.com/",
       "why": {
-        "en": "How I run discovery calls: ask about what people did last week, not what they might want.",
-        "ru": "Так я провожу первые встречи: спрашиваю, что люди делали на прошлой неделе, а не чего бы им хотелось.",
-        "kk": "Алғашқы кездесулерді осылай өткіземін: адамдардан не қалайтынын емес, өткен аптада не істегенін сұраймын."
+        "en": "How we run discovery calls: ask about what people did last week, not what they might want.",
+        "ru": "Так мы проводим первые встречи: спрашиваем, что люди делали на прошлой неделе, а не чего бы им хотелось.",
+        "kk": "Алғашқы кездесулерді осылай өткіземіз: адамдардан не қалайтынын емес, өткен аптада не істегенін сұраймыз."
       }
     },
     {
@@ -46,9 +46,9 @@
       "creator": "Ryan Singer, Basecamp",
       "link": "https://basecamp.com/shapeup",
       "why": {
-        "en": "Fixed time, variable scope — the reason my pilots are two weeks long.",
-        "ru": "Фиксированное время, гибкий объём — поэтому мои пилоты длятся две недели.",
-        "kk": "Уақыт тұрақты, көлем икемді — сондықтан менің пилоттарым екі аптаға созылады."
+        "en": "Fixed time, variable scope — the reason our pilots are two weeks long.",
+        "ru": "Фиксированное время, гибкий объём — поэтому наши пилоты длятся две недели.",
+        "kk": "Уақыт тұрақты, көлем икемді — сондықтан біздің пилоттарымыз екі аптаға созылады."
       }
     },
     {
@@ -68,8 +68,8 @@
       "creator": "Andrej Karpathy",
       "link": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
       "why": {
-        "en": "One hour that I send to every client who asks “but how does it actually work?”",
-        "ru": "Час, который я отправляю каждому клиенту, спросившему «а как это вообще работает?»",
+        "en": "One hour that we send to every client who asks “but how does it actually work?”",
+        "ru": "Час, который мы отправляем каждому клиенту, спросившему «а как это вообще работает?»",
         "kk": "«Бұл шынымен қалай жұмыс істейді?» деп сұраған әр клиентке жіберетін бір сағаттық бейне."
       }
     },
@@ -78,9 +78,9 @@
       "creator": "Bret Victor",
       "link": "https://vimeo.com/36579366",
       "why": {
-        "en": "Made me believe that creators need an immediate connection to what they make.",
-        "ru": "Убедил меня, что у автора должна быть мгновенная связь с тем, что он создаёт.",
-        "kk": "Автор жасап жатқан дүниесімен тікелей әрі лезде байланыста болуы керек екеніне сендірді."
+        "en": "Convinced us that creators need an immediate connection to what they make.",
+        "ru": "Убедил нас, что у автора должна быть мгновенная связь с тем, что он создаёт.",
+        "kk": "Автор жасап жатқан дүниесімен тікелей әрі лезде байланыста болуы керек екеніне бізді сендірді."
       }
     },
     {
@@ -88,9 +88,9 @@
       "creator": "Rich Hickey",
       "link": "https://www.infoq.com/presentations/Simple-Made-Easy/",
       "why": {
-        "en": "The talk I rewatch whenever an automation starts growing tentacles.",
-        "ru": "Доклад, который я пересматриваю каждый раз, когда автоматизация начинает обрастать щупальцами.",
-        "kk": "Автоматтандыру шамадан тыс күрделене бастаған сайын қайта көретін баяндамам."
+        "en": "The talk we rewatch whenever an automation starts growing tentacles.",
+        "ru": "Доклад, который мы пересматриваем каждый раз, когда автоматизация начинает обрастать щупальцами.",
+        "kk": "Автоматтандыру шамадан тыс күрделене бастаған сайын қайта көретін баяндамамыз."
       }
     },
     {
@@ -120,9 +120,9 @@
       "creator": "n8n GmbH",
       "link": "https://n8n.io/",
       "why": {
-        "en": "Self-hostable workflows that a client’s team can read and change after I leave.",
-        "ru": "Сценарии, которые можно развернуть у себя и которые команда клиента сможет читать и менять после меня.",
-        "kk": "Өз серверіңізде орнатуға болатын, мен кеткеннен кейін клиент командасы оқып, өзгерте алатын сценарийлер."
+        "en": "Self-hostable workflows that a client’s team can read and change after we hand it over.",
+        "ru": "Сценарии, которые можно развернуть у себя и которые команда клиента сможет читать и менять после нас.",
+        "kk": "Өз серверіңізде орнатуға болатын, біз кеткеннен кейін клиент командасы оқып, өзгерте алатын сценарийлер."
       }
     },
     {
@@ -130,9 +130,9 @@
       "creator": "Anthropic",
       "link": "https://claude.com/product/claude-code",
       "why": {
-        "en": "My pair programmer for the glue code nobody wants to write by hand.",
-        "ru": "Мой напарник по коду для «клея», который никто не хочет писать руками.",
-        "kk": "Ешкім қолмен жазғысы келмейтін байланыстырушы кодқа арналған серіктесім."
+        "en": "Our pair programmer for the glue code nobody wants to write by hand.",
+        "ru": "Наш напарник по коду для «клея», который никто не хочет писать руками.",
+        "kk": "Ешкім қолмен жазғысы келмейтін байланыстырушы кодқа арналған серіктесіміз."
       }
     },
     {

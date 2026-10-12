@@ -5,14 +5,14 @@
     "kk": "Дархан"
   },
   "role": {
-    "en": "Founder of MadsDev · Moscow, working worldwide",
-    "ru": "Основатель MadsDev · Москва, работаю по всему миру",
-    "kk": "MadsDev негізін қалаушы · Мәскеу, әлемнің кез келген жерімен жұмыс істеймін"
+    "en": "Founded by Darkhan Tleuzhan · Moscow, working worldwide",
+    "ru": "Основатель — Дархан · Москва, работаем по всему миру",
+    "kk": "Негізін қалаушы — Дархан · Мәскеу, әлемнің кез келген жерімен жұмыс істейміз"
   },
   "offer": {
-    "en": "I build AI agents and automations that give your team its hours back.",
-    "ru": "Создаю ИИ-агентов и автоматизации, которые возвращают команде её время.",
-    "kk": "Командаңыздың уақытын қайтаратын ЖИ-агенттер мен автоматтандыру жасаймын."
+    "en": "We build AI agents and automations that give your team its hours back.",
+    "ru": "Создаём ИИ-агентов и автоматизации, которые возвращают команде её время.",
+    "kk": "Командаңыздың уақытын қайтаратын ЖИ-агенттер мен автоматтандыру жасаймыз."
   },
   "subline": {
     "en": "Support inboxes, sales follow-ups, invoices, reports — if a person copies it from one window into another every day, a well-built system can probably do it for them.",
@@ -25,13 +25,39 @@
     "kk": "30 минуттық қоңырауға жазылу"
   },
   "secondaryCta": {
-    "en": "See what I’ve built",
+    "en": "See what we’ve built",
     "ru": "Посмотреть проекты",
     "kk": "Жобаларды көру"
   },
   "availability": {
     "en": "Taking 2 new projects this quarter",
-    "ru": "В этом квартале беру 2 новых проекта",
-    "kk": "Осы тоқсанда 2 жаңа жоба аламын"
-  }
+    "ru": "В этом квартале берём 2 новых проекта",
+    "kk": "Осы тоқсанда 2 жаңа жоба аламыз"
+  },
+  "brandExpansion": [
+    {
+      "short": "M",
+      "full": "Modern"
+    },
+    {
+      "short": "a",
+      "full": "Agent"
+    },
+    {
+      "short": "d",
+      "full": "Design"
+    },
+    {
+      "short": "",
+      "full": "and"
+    },
+    {
+      "short": "s",
+      "full": "Systems"
+    },
+    {
+      "short": "Dev",
+      "full": "Development"
+    }
+  ]
 }

@@ -1,6 +1,8 @@
 ---
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
+import Spotlight from './reactbits/Spotlight';
+import FadeContent from './reactbits/FadeContent';
 
 interface Props {
   lang: Locale;
@@ -18,14 +20,18 @@ const { services } = content;
     </div>
     <ul class="grid" role="list">
       {
-        services.items.map((item) => (
-          <li class="card" data-service={item.key}>
-            <h3 class="t-headline">{t(item.title, lang)}</h3>
-            <p class="t-body desc">{t(item.description, lang)}</p>
-            <div class="outcome">
-              <p class="metric">{t(item.metric, lang)}</p>
-              <p class="t-footnote example">{t(item.example, lang)}</p>
-            </div>
+        services.items.map((item, i) => (
+          <li data-service={item.key}>
+            <FadeContent client:visible className="fade" duration={700} delay={i * 90} threshold={0.15}>
+              <Spotlight client:visible className="card">
+                <h3 class="t-headline">{t(item.title, lang)}</h3>
+                <p class="t-body desc">{t(item.description, lang)}</p>
+                <div class="outcome">
+                  <p class="metric">{t(item.metric, lang)}</p>
+                  <p class="t-footnote example">{t(item.example, lang)}</p>
+                </div>
+              </Spotlight>
+            </FadeContent>
           </li>
         ))
       }
@@ -40,7 +46,21 @@ const { services } = content;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
   }
 
-  .card {
+  /* The card and its fade wrapper are rendered by React islands, outside this component's style scope. */
+  .grid > li,
+  .grid :global(astro-island),
+  .grid :global(.fade) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid :global(astro-island),
+  .grid :global(.fade),
+  .grid :global(.card) {
+    flex: 1;
+  }
+
+  .grid :global(.card) {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -62,7 +82,8 @@ const { services } = content;
   }
 
   .metric {
-    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
     line-height: 1.12;
     letter-spacing: -0.018em;
     font-weight: 700;
@@ -75,7 +96,7 @@ const { services } = content;
   }
 
   @media (prefers-contrast: more) {
-    .card {
+    .grid :global(.card) {
       box-shadow: none;
       border: 1px solid var(--text);
     }

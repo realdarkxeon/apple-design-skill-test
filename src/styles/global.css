@@ -1,10 +1,49 @@
 /*
  * Global tokens and base styles.
- * Design decisions follow the apple-design skill: system font (optical sizing built in),
+ * Design decisions follow the apple-design skill: system font for body text (optical sizing built in),
+ * a self-hosted geometric face for headings,
  * size-specific tracking and leading, light/dark adaptive colour, translucent chrome,
  * press feedback on pointer-down, and reduced motion / transparency / contrast variants.
  */
 
+/* ------------------------------------------------------------------ Tailwind + shadcn/ui
+ * Tailwind's theme and utilities only — no preflight, so the hand-tuned base below stays as it was.
+ * Everything below sits in the `base` layer so shadcn/ui utility classes can override it,
+ * while Astro's scoped component styles (unlayered) still win over both. */
+
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tw-animate-css';
+
+/* shadcn/ui colour roles mapped onto the site's own tokens, so components follow light/dark
+   and the high-contrast overrides automatically. (`--accent` here is shadcn's hover fill, not the site blue.) */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--bg-raised);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--bg-raised);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--on-accent);
+  --color-primary-press: var(--accent-press);
+  --color-secondary: var(--fill);
+  --color-secondary-foreground: var(--text);
+  --color-secondary-hover: var(--fill-strong);
+  --color-muted: var(--fill);
+  --color-muted-foreground: var(--text-3);
+  --color-accent: var(--fill);
+  --color-accent-foreground: var(--text);
+  --color-border: var(--separator);
+  --color-input: var(--separator);
+  --color-ring: var(--accent);
+  --color-link: var(--link);
+  --color-positive: var(--positive);
+  --color-material: var(--material);
+}
+
+@layer base {
 :root {
   color-scheme: light dark;
 
@@ -12,6 +51,10 @@
      (Ә Ғ Қ Ң Ө Ұ Ү Һ І): SF Pro (macOS/iOS), Segoe UI (Windows), Roboto / Noto Sans (Android). */
   --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial,
     sans-serif;
+
+  /* Headings: Plus Jakarta Sans (Latin only) on EN, Onest (full Russian + Kazakh) on RU/KK.
+     Base.astro loads only the face the page's locale needs. */
+  --font-heading: var(--font-jakarta, system-ui), var(--font);
 
   --bg: #fbfbfd;
   --bg-raised: #ffffff;
@@ -99,7 +142,7 @@ html {
 
 body {
   margin: 0;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   letter-spacing: 0;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
@@ -151,34 +194,42 @@ ol[role='list'] {
   padding: 0;
 }
 
+:root:lang(ru),
+:root:lang(kk) {
+  --font-heading: var(--font-onest, system-ui), var(--font);
+}
+
 /* ------------------------------------------------------------------ type scale (§15)
  * Tracking tightens as size grows; leading tightens as size grows; body stays near 0. */
 
 .t-display {
-  font-size: clamp(2.125rem, 1.3rem + 4.3vw, 4.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   font-weight: 700;
   hyphens: manual;
 }
 
 .t-title {
-  font-size: clamp(1.875rem, 1.35rem + 2.6vw, 3.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.021em;
+  font-family: var(--font-heading);
+  font-size: clamp(1.625rem, 1.35rem + 1.2vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   font-weight: 700;
   text-wrap: balance;
 }
 
 .t-headline {
-  font-size: 1.3125rem;
-  line-height: 1.24;
+  font-family: var(--font-heading);
+  font-size: 1.1875rem;
+  line-height: 1.3;
   letter-spacing: -0.012em;
   font-weight: 600;
 }
 
 .t-lead {
-  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.4375rem);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
   line-height: 1.42;
   letter-spacing: -0.008em;
   color: var(--text-2);
@@ -186,8 +237,8 @@ ol[role='list'] {
 }
 
 .t-body {
-  font-size: 1.0625rem;
-  line-height: 1.53;
+  font-size: 1rem;
+  line-height: 1.6;
   letter-spacing: 0;
 }
 
@@ -221,14 +272,14 @@ ol[role='list'] {
 }
 
 .section {
-  padding-block: clamp(4.5rem, 3rem + 6vw, 8rem);
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);
 }
 
 .section-head {
   display: grid;
-  gap: 0.75rem;
-  max-width: 44rem;
-  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  gap: 0.625rem;
+  max-width: 40rem;
+  margin-bottom: clamp(1.75rem, 1.4rem + 1.4vw, 2.75rem);
 }
 
 .visually-hidden {
@@ -243,59 +294,8 @@ ol[role='list'] {
   border: 0;
 }
 
-/* ------------------------------------------------------------------ buttons
- * Feedback on press, instantly (§1). */
-
-.button {
-  --btn-bg: var(--accent);
-  --btn-fg: var(--on-accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.6875rem 1.375rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  font: inherit;
-  font-size: 1.0625rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.005em;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation; /* no double-tap delay on the input path */
-  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
-}
-
-.button:hover {
-  text-decoration: none;
-}
-
-.button:active {
-  transform: scale(0.97);
-  background: var(--accent-press);
-  transition-duration: 100ms;
-}
-
-.button--quiet {
-  --btn-bg: var(--fill);
-  --btn-fg: var(--text);
-}
-
-.button--quiet:active {
-  background: var(--fill-strong);
-}
-
-.button--small {
-  min-height: 2.25rem;
-  padding: 0.4375rem 0.9375rem;
-  font-size: 0.9375rem;
-}
+/* ------------------------------------------------------------------ press feedback
+ * Feedback on press, instantly (§1). Buttons are shadcn/ui (src/components/ui/button.tsx). */
 
 .pressable {
   -webkit-tap-highlight-color: transparent;
@@ -334,7 +334,6 @@ ol[role='list'] {
     animation-iteration-count: 1 !important;
   }
 
-  .button:active,
   .pressable:active {
     transform: none;
   }
@@ -345,5 +344,12 @@ ol[role='list'] {
     --text-2: var(--text);
     --text-3: var(--text);
     --separator: currentColor;
+  }
+}
+
+  /* The bits of Tailwind preflight shadcn/ui buttons rely on. */
+  button {
+    font: inherit;
+    border: 0;
   }
 }

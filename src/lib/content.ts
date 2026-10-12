@@ -9,6 +9,7 @@ import ui from '../content/ui.json';
 import hero from '../content/hero.json';
 import mission from '../content/mission.json';
 import services from '../content/services.json';
+import process from '../content/process.json';
 import projects from '../content/projects.json';
 import experience from '../content/experience.json';
 import recommendations from '../content/recommendations.json';
@@ -21,6 +22,7 @@ const raw: Record<ContentName, unknown> = {
   hero,
   mission,
   services,
+  process,
   projects,
   experience,
   recommendations,

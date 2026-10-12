@@ -3,6 +3,8 @@ import { content } from '../lib/content';
 import { LOCALES, t, type Locale } from '../lib/i18n';
 import { localeHome } from '../lib/url';
 import LanguageMenu from './LanguageMenu';
+import { buttonVariants } from './ui/button';
+import { cn } from '../lib/utils';
 
 interface Props {
   lang: Locale;
@@ -44,7 +46,7 @@ const languages = LOCALES.map((code) => ({
     }
     <div class="actions">
       <LanguageMenu client:idle current={lang} label={t(ui.header.languageLabel, lang)} languages={languages} />
-      <a class="button button--small header-cta" href={`${localeHome(lang)}#contact`} data-header-cta>
+      <a class={cn(buttonVariants({ size: 'sm' }), 'header-cta')} href={`${localeHome(lang)}#contact`} data-header-cta>
         {t(ui.header.bookCall, lang)}
       </a>
     </div>
