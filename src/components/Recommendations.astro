@@ -1,0 +1,32 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+import RecommendationTabs from './RecommendationTabs';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { recommendations: rec, ui } = content;
+const tabs = (['read', 'watch', 'use'] as const).map((key) => ({
+  key,
+  label: t(ui.recommendations[key], lang),
+  items: rec[key].map((item) => ({ ...item, why: t(item.why, lang) })),
+}));
+---
+
+<section class="section" id="recommendations" aria-labelledby="recommendations-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(rec.eyebrow, lang)}</p>
+      <h2 id="recommendations-title" class="t-title">{t(rec.title, lang)}</h2>
+      <p class="t-lead">{t(rec.intro, lang)}</p>
+    </div>
+    <RecommendationTabs
+      client:visible
+      tabs={tabs}
+      tablistLabel={t(ui.recommendations.tabsLabel, lang)}
+      opensInNewTab={t(ui.a11y.opensInNewTab, lang)}
+    />
+  </div>
+</section>

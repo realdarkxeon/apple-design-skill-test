@@ -1,0 +1,151 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+import CalEmbed from './CalEmbed';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { contact, settings, ui } = content;
+const handle = (href: string) => href.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const links = [
+  { label: t(ui.contact.email, lang), href: `mailto:${settings.email}`, value: settings.email, external: false },
+  { label: t(ui.contact.telegram, lang), href: settings.telegram, value: handle(settings.telegram), external: true },
+  { label: t(ui.contact.linkedin, lang), href: settings.linkedin, value: handle(settings.linkedin), external: true },
+  { label: t(ui.contact.github, lang), href: settings.github, value: handle(settings.github), external: true },
+];
+---
+
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container layout">
+    <div class="intro">
+      <div class="section-head">
+        <p class="eyebrow">{t(contact.eyebrow, lang)}</p>
+        <h2 id="contact-title" class="t-title">{t(contact.title, lang)}</h2>
+        <p class="t-lead">{t(contact.intro, lang)}</p>
+      </div>
+      <div class="fallback">
+        <h3 class="t-footnote fallback-title">{t(contact.fallbackTitle, lang)}</h3>
+        <ul role="list">
+          {
+            links.map((l) => (
+              <li>
+                <a class="pressable" href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener me' } : {})}>
+                  <span class="label">{l.label}</span>
+                  <span class="value">{l.value}</span>
+                  {l.external && <span class="visually-hidden">{t(ui.a11y.opensInNewTab, lang)}</span>}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="booking">
+      <CalEmbed
+        client:visible
+        calLink={settings.calUsername}
+        title={t(ui.contact.calTitle, lang)}
+        loadingText={t(ui.contact.calLoading, lang)}
+        failedText={t(contact.embedFailed, lang)}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--bg-raised);
+  }
+
+  .layout {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 64rem) {
+    .layout {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 4rem;
+    }
+  }
+
+  .fallback-title {
+    font-weight: 600;
+    color: var(--text-3);
+    margin-bottom: 0.75rem;
+  }
+
+  .fallback ul {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .fallback a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    background: var(--fill);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .fallback a:active {
+    background: var(--fill-strong);
+  }
+
+  .label {
+    font-weight: 600;
+  }
+
+  .value {
+    color: var(--link);
+    font-size: 0.9375rem;
+    word-break: break-all;
+  }
+
+  .booking :global(.cal) {
+    position: relative;
+    min-height: 34rem;
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .booking :global(.cal[data-status='failed']) {
+    min-height: 0;
+  }
+
+  .booking :global(.cal-frame) {
+    width: 100%;
+    min-height: 34rem;
+  }
+
+  .booking :global(.cal[data-status='failed'] .cal-frame) {
+    display: none;
+  }
+
+  .booking :global(.cal-note) {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-3);
+  }
+
+  .booking :global(.cal-failed) {
+    position: static;
+    color: var(--text);
+    background: var(--fill);
+    border-radius: var(--radius-lg);
+  }
+</style>

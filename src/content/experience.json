@@ -1,0 +1,54 @@
+{
+  "eyebrow": { "en": "Experience", "ru": "Опыт", "kk": "Тәжірибе" },
+  "title": {
+    "en": "Ten years of making software do the dull parts.",
+    "ru": "Десять лет учу программы делать скучную работу.",
+    "kk": "Он жыл бойы бағдарламаларды күйбең жұмысқа үйретіп келемін."
+  },
+  "items": [
+    {
+      "role": { "en": "Founder, AI systems engineer", "ru": "Основатель, инженер ИИ-систем", "kk": "Негізін қалаушы, ЖИ-жүйелер инженері" },
+      "organization": { "en": "MadsDev", "ru": "MadsDev", "kk": "MadsDev" },
+      "start": "2023-02",
+      "end": null,
+      "impact": {
+        "en": "Shipped 20+ agents and automations for clients in retail, logistics and healthcare.",
+        "ru": "Запустил более 20 агентов и автоматизаций для клиентов в ритейле, логистике и медицине.",
+        "kk": "Бөлшек сауда, логистика және медицина саласындағы клиенттерге 20-дан астам агент пен автоматтандыру іске қостым."
+      }
+    },
+    {
+      "role": { "en": "Lead automation engineer", "ru": "Ведущий инженер по автоматизации", "kk": "Автоматтандыру жөніндегі жетекші инженер" },
+      "organization": { "en": "Steppe Logistics (fintech & freight)", "ru": "Steppe Logistics (финтех и грузоперевозки)", "kk": "Steppe Logistics (финтех және жүк тасымалы)" },
+      "start": "2020-04",
+      "end": "2023-01",
+      "impact": {
+        "en": "Automated document flow for 3,000 shipments a month and cut month-end close from 9 days to 3.",
+        "ru": "Автоматизировал документооборот для 3 000 отправлений в месяц и сократил закрытие месяца с 9 до 3 дней.",
+        "kk": "Айына 3 000 жөнелтілімнің құжат айналымын автоматтандырып, айды жабуды 9 күннен 3 күнге қысқарттым."
+      }
+    },
+    {
+      "role": { "en": "Backend developer", "ru": "Backend-разработчик", "kk": "Backend әзірлеуші" },
+      "organization": { "en": "Qala Digital agency", "ru": "Агентство Qala Digital", "kk": "Qala Digital агенттігі" },
+      "start": "2017-09",
+      "end": "2020-03",
+      "impact": {
+        "en": "Built integrations between e-commerce stores and local payment and delivery providers for 40+ clients.",
+        "ru": "Делал интеграции интернет-магазинов с местными платёжными и курьерскими сервисами для 40+ клиентов.",
+        "kk": "40-тан астам клиент үшін интернет-дүкендерді жергілікті төлем және курьерлік қызметтермен байланыстырдым."
+      }
+    },
+    {
+      "role": { "en": "Junior developer", "ru": "Младший разработчик", "kk": "Кіші әзірлеуші" },
+      "organization": { "en": "University IT office, Almaty", "ru": "IT-отдел университета, Алматы", "kk": "Университеттің IT бөлімі, Алматы" },
+      "start": "2015-06",
+      "end": "2017-08",
+      "impact": {
+        "en": "Replaced paper enrollment forms with an online system used by 8,000 students.",
+        "ru": "Заменил бумажные заявления на онлайн-систему, которой пользовались 8 000 студентов.",
+        "kk": "Қағаз өтініштерді 8 000 студент қолданған онлайн жүйемен алмастырдым."
+      }
+    }
+  ]
+}

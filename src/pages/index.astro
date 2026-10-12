@@ -1,0 +1,29 @@
+---
+/** Root: send visitors to the default locale. Works without JS (meta refresh) and respects `base`. */
+import { content } from '../lib/content';
+import { DEFAULT_LOCALE, t } from '../lib/i18n';
+import { absoluteUrl, localeHome } from '../lib/url';
+
+const target = localeHome(DEFAULT_LOCALE);
+const { ui } = content;
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t(ui.meta.title, DEFAULT_LOCALE)}</title>
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={absoluteUrl(`${DEFAULT_LOCALE}/`, Astro.site)} />
+    <script is:inline define:vars={{ target }}>location.replace(target + location.hash);</script>
+    <style>
+      body { font: 1rem/1.5 system-ui, sans-serif; margin: 0; display: grid; place-items: center; min-height: 100vh; text-align: center; padding: 1rem; }
+      @media (prefers-color-scheme: dark) { body { background: #000; color: #f5f5f7; } a { color: #2997ff; } }
+    </style>
+  </head>
+  <body>
+    <p>{t(ui.redirect.message, DEFAULT_LOCALE)}<br /><a href={target}>{t(ui.redirect.link, DEFAULT_LOCALE)}</a></p>
+  </body>
+</html>

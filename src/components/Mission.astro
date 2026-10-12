@@ -1,0 +1,51 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { mission } = content;
+const paragraphs = t(mission.body, lang).split(/\n\s*\n/);
+---
+
+<section class="section mission" id="mission" aria-labelledby="mission-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(mission.eyebrow, lang)}</p>
+      <h2 id="mission-title" class="t-title">{t(mission.title, lang)}</h2>
+    </div>
+    <div class="prose">
+      {paragraphs.map((p) => <p>{p}</p>)}
+      <p class="signature">{t(mission.signature, lang)}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mission {
+    background: var(--bg-raised);
+  }
+
+  .prose {
+    display: grid;
+    gap: 1.15em;
+    max-width: 38rem;
+    font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+    line-height: 1.55;
+    letter-spacing: -0.003em;
+    color: var(--text-2);
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+
+  .prose p:first-child {
+    color: var(--text);
+  }
+
+  .signature {
+    font-weight: 600;
+    color: var(--text);
+  }
+</style>

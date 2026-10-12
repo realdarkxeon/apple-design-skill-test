@@ -1,0 +1,106 @@
+---
+import { content } from '../lib/content';
+import { formatMonth, t, type Locale } from '../lib/i18n';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { experience, ui } = content;
+---
+
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(experience.eyebrow, lang)}</p>
+      <h2 id="experience-title" class="t-title">{t(experience.title, lang)}</h2>
+    </div>
+    <ol class="timeline" role="list">
+      {
+        experience.items.map((item) => (
+          <li class="entry">
+            <p class="period t-footnote">
+              <time datetime={item.start}>{formatMonth(item.start, lang)}</time>
+              <span aria-hidden="true"> – </span>
+              {item.end ? <time datetime={item.end}>{formatMonth(item.end, lang)}</time> : t(ui.experience.present, lang)}
+            </p>
+            <div class="what">
+              <h3 class="t-headline">{t(item.role, lang)}</h3>
+              <p class="org">{t(item.organization, lang)}</p>
+              <p class="impact">{t(item.impact, lang)}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 2.25rem;
+    max-width: 52rem;
+    padding-left: 1.75rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.3125rem;
+    width: 2px;
+    border-radius: 1px;
+    background: var(--separator);
+  }
+
+  .entry {
+    position: relative;
+    display: grid;
+    gap: 0.375rem;
+  }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    left: -1.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--bg);
+    box-shadow: inset 0 0 0 2px var(--text-3);
+  }
+
+  .entry:first-child::before {
+    background: var(--accent);
+    box-shadow: none;
+  }
+
+  .period {
+    color: var(--text-3);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .org {
+    font-size: 1rem;
+    color: var(--text-2);
+    font-weight: 500;
+  }
+
+  .impact {
+    margin-top: 0.25rem;
+    color: var(--text-2);
+    max-width: 38rem;
+  }
+
+  @media (min-width: 48rem) {
+    .entry {
+      grid-template-columns: 11rem 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

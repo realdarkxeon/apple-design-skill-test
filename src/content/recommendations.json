@@ -1,0 +1,169 @@
+{
+  "eyebrow": { "en": "Library", "ru": "Полка", "kk": "Сөре" },
+  "title": {
+    "en": "What shaped how I work.",
+    "ru": "Что повлияло на то, как я работаю.",
+    "kk": "Жұмыс тәсіліме не әсер етті."
+  },
+  "intro": {
+    "en": "Five things to read, watch and use. None of them are sponsored; all of them are worth an evening.",
+    "ru": "По пять вещей, которые стоит прочитать, посмотреть и попробовать. Ничего не проплачено, и каждая стоит одного вечера.",
+    "kk": "Оқуға, көруге және қолдануға тұрарлық бес-бес дүние. Ешқайсысы жарнама емес, әрқайсысы бір кешке тұрарлық."
+  },
+  "read": [
+    {
+      "title": "Designing Data-Intensive Applications",
+      "creator": "Martin Kleppmann",
+      "link": "https://dataintensive.net/",
+      "why": {
+        "en": "Every automation is a data pipeline in disguise; this book explains what breaks and why.",
+        "ru": "Любая автоматизация — это замаскированный конвейер данных; книга объясняет, что в нём ломается и почему.",
+        "kk": "Кез келген автоматтандыру — жасырын деректер конвейері; кітап онда не бұзылатынын және неге екенін түсіндіреді."
+      }
+    },
+    {
+      "title": "Building Effective Agents",
+      "creator": "Anthropic",
+      "link": "https://www.anthropic.com/engineering/building-effective-agents",
+      "why": {
+        "en": "The clearest argument for starting simple and adding autonomy only where it pays off.",
+        "ru": "Самый ясный аргумент в пользу того, чтобы начинать с простого и добавлять автономию только там, где она окупается.",
+        "kk": "Қарапайымнан бастап, дербестікті тек өзін ақтайтын жерде қосу керегі туралы ең түсінікті дәлел."
+      }
+    },
+    {
+      "title": "The Mom Test",
+      "creator": "Rob Fitzpatrick",
+      "link": "https://www.momtestbook.com/",
+      "why": {
+        "en": "How I run discovery calls: ask about what people did last week, not what they might want.",
+        "ru": "Так я провожу первые встречи: спрашиваю, что люди делали на прошлой неделе, а не чего бы им хотелось.",
+        "kk": "Алғашқы кездесулерді осылай өткіземін: адамдардан не қалайтынын емес, өткен аптада не істегенін сұраймын."
+      }
+    },
+    {
+      "title": "Shape Up",
+      "creator": "Ryan Singer, Basecamp",
+      "link": "https://basecamp.com/shapeup",
+      "why": {
+        "en": "Fixed time, variable scope — the reason my pilots are two weeks long.",
+        "ru": "Фиксированное время, гибкий объём — поэтому мои пилоты длятся две недели.",
+        "kk": "Уақыт тұрақты, көлем икемді — сондықтан менің пилоттарым екі аптаға созылады."
+      }
+    },
+    {
+      "title": "The Pragmatic Programmer",
+      "creator": "David Thomas, Andrew Hunt",
+      "link": "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
+      "why": {
+        "en": "Still the best book on caring about your craft without being precious about it.",
+        "ru": "По-прежнему лучшая книга о том, как любить своё ремесло и не превращать его в культ.",
+        "kk": "Өз ісіңді жақсы көріп, оны табынуға айналдырмау туралы әлі күнге дейін ең үздік кітап."
+      }
+    }
+  ],
+  "watch": [
+    {
+      "title": "Intro to Large Language Models",
+      "creator": "Andrej Karpathy",
+      "link": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+      "why": {
+        "en": "One hour that I send to every client who asks “but how does it actually work?”",
+        "ru": "Час, который я отправляю каждому клиенту, спросившему «а как это вообще работает?»",
+        "kk": "«Бұл шынымен қалай жұмыс істейді?» деп сұраған әр клиентке жіберетін бір сағаттық бейне."
+      }
+    },
+    {
+      "title": "Inventing on Principle",
+      "creator": "Bret Victor",
+      "link": "https://vimeo.com/36579366",
+      "why": {
+        "en": "Made me believe that creators need an immediate connection to what they make.",
+        "ru": "Убедил меня, что у автора должна быть мгновенная связь с тем, что он создаёт.",
+        "kk": "Автор жасап жатқан дүниесімен тікелей әрі лезде байланыста болуы керек екеніне сендірді."
+      }
+    },
+    {
+      "title": "Simple Made Easy",
+      "creator": "Rich Hickey",
+      "link": "https://www.infoq.com/presentations/Simple-Made-Easy/",
+      "why": {
+        "en": "The talk I rewatch whenever an automation starts growing tentacles.",
+        "ru": "Доклад, который я пересматриваю каждый раз, когда автоматизация начинает обрастать щупальцами.",
+        "kk": "Автоматтандыру шамадан тыс күрделене бастаған сайын қайта көретін баяндамам."
+      }
+    },
+    {
+      "title": "Neural Networks",
+      "creator": "3Blue1Brown",
+      "link": "https://www.3blue1brown.com/topics/neural-networks",
+      "why": {
+        "en": "The visual intuition for what a model is doing, without drowning in notation.",
+        "ru": "Наглядное понимание того, что делает модель, без утопания в формулах.",
+        "kk": "Формулаларға батпай-ақ модельдің не істейтінін көзбен көріп түсінуге көмектеседі."
+      }
+    },
+    {
+      "title": "The Mother of All Demos",
+      "creator": "Douglas Engelbart",
+      "link": "https://www.youtube.com/watch?v=yJDv-zdhzMY",
+      "why": {
+        "en": "1968, and already the whole idea: computers should augment people, not replace them.",
+        "ru": "1968 год — и уже вся идея целиком: компьютеры должны усиливать людей, а не заменять их.",
+        "kk": "1968 жыл, ал бүкіл идея сонда-ақ айтылған: компьютер адамды алмастырмай, оны күшейтуі керек."
+      }
+    }
+  ],
+  "use": [
+    {
+      "title": "n8n",
+      "creator": "n8n GmbH",
+      "link": "https://n8n.io/",
+      "why": {
+        "en": "Self-hostable workflows that a client’s team can read and change after I leave.",
+        "ru": "Сценарии, которые можно развернуть у себя и которые команда клиента сможет читать и менять после меня.",
+        "kk": "Өз серверіңізде орнатуға болатын, мен кеткеннен кейін клиент командасы оқып, өзгерте алатын сценарийлер."
+      }
+    },
+    {
+      "title": "Claude Code",
+      "creator": "Anthropic",
+      "link": "https://claude.com/product/claude-code",
+      "why": {
+        "en": "My pair programmer for the glue code nobody wants to write by hand.",
+        "ru": "Мой напарник по коду для «клея», который никто не хочет писать руками.",
+        "kk": "Ешкім қолмен жазғысы келмейтін байланыстырушы кодқа арналған серіктесім."
+      }
+    },
+    {
+      "title": "PostgreSQL",
+      "creator": "PostgreSQL Global Development Group",
+      "link": "https://www.postgresql.org/",
+      "why": {
+        "en": "Boring in the best way. Queues, search, vectors and audit logs in one place.",
+        "ru": "Скучный в лучшем смысле. Очереди, поиск, векторы и журналы аудита в одном месте.",
+        "kk": "Ең жақсы мағынада қарапайым. Кезектер, іздеу, векторлар мен аудит журналдары бір жерде."
+      }
+    },
+    {
+      "title": "Langfuse",
+      "creator": "Langfuse",
+      "link": "https://langfuse.com/",
+      "why": {
+        "en": "You can’t improve an agent you can’t see; this shows every step it took.",
+        "ru": "Нельзя улучшить агента, которого не видишь; здесь видно каждый его шаг.",
+        "kk": "Көрмейтін агентті жақсарта алмайсыз; мұнда оның әр қадамы көрінеді."
+      }
+    },
+    {
+      "title": "Excalidraw",
+      "creator": "Excalidraw",
+      "link": "https://excalidraw.com/",
+      "why": {
+        "en": "Every project starts as a messy diagram we draw together on the first call.",
+        "ru": "Каждый проект начинается с неряшливой схемы, которую мы рисуем вместе на первом звонке.",
+        "kk": "Әр жоба алғашқы қоңырауда бірге сызатын ретсіз сызбадан басталады."
+      }
+    }
+  ]
+}

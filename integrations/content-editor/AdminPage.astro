@@ -1,0 +1,18 @@
+---
+// Dev-only page injected by the content-editor integration. Never part of the production build.
+import Editor from './editor/Editor';
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Content editor · MadsDev (dev)</title>
+  </head>
+  <body>
+    <Editor client:only="react" base={base} />
+  </body>
+</html>

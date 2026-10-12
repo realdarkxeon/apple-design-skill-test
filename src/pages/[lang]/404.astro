@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import NotFound from '../../components/NotFound.astro';
+import Footer from '../../components/Footer.astro';
+import { content } from '../../lib/content';
+import { LOCALES, t, type Locale } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+---
+
+<Base lang={lang} title={t(content.ui.notFound.title, lang)} noindex>
+  <Header lang={lang} sections={false} />
+  <main id="main"><NotFound lang={lang} /></main>
+  <Footer lang={lang} />
+</Base>

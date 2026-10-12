@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": {
+      "en": "MadsDev — AI agents and business automation",
+      "ru": "MadsDev — ИИ-агенты и автоматизация бизнеса",
+      "kk": "MadsDev — ЖИ-агенттер және бизнесті автоматтандыру"
+    },
+    "description": {
+      "en": "Madiyar Serikbayev builds AI agents, workflow automations and integrations that take repetitive work off small teams. Book a call.",
+      "ru": "Мадияр Серикбаев создаёт ИИ-агентов, автоматизации и интеграции, которые снимают рутину с небольших команд. Запишитесь на звонок.",
+      "kk": "Мадияр Серікбаев шағын командаларды күнделікті қайталанатын жұмыстан босататын ЖИ-агенттер, автоматтандыру мен интеграциялар жасайды. Қоңырауға жазылыңыз."
+    },
+    "ogImageAlt": {
+      "en": "MadsDev — AI agents and automation",
+      "ru": "MadsDev — ИИ-агенты и автоматизация",
+      "kk": "MadsDev — ЖИ-агенттер және автоматтандыру"
+    }
+  },
+  "languages": {
+    "en": { "name": "English", "short": "EN" },
+    "ru": { "name": "Русский", "short": "RU" },
+    "kk": { "name": "Қазақша", "short": "ҚАЗ" }
+  },
+  "header": {
+    "brand": "MadsDev",
+    "homeLabel": { "en": "MadsDev, back to top", "ru": "MadsDev, наверх", "kk": "MadsDev, басына оралу" },
+    "navLabel": { "en": "Sections", "ru": "Разделы", "kk": "Бөлімдер" },
+    "languageLabel": { "en": "Language", "ru": "Язык", "kk": "Тіл" },
+    "bookCall": { "en": "Book a call", "ru": "Созвониться", "kk": "Қоңырау белгілеу" }
+  },
+  "nav": {
+    "mission": { "en": "Why", "ru": "Зачем", "kk": "Неге" },
+    "services": { "en": "Services", "ru": "Услуги", "kk": "Қызметтер" },
+    "projects": { "en": "Projects", "ru": "Проекты", "kk": "Жобалар" },
+    "experience": { "en": "Experience", "ru": "Опыт", "kk": "Тәжірибе" },
+    "recommendations": { "en": "Library", "ru": "Полка", "kk": "Сөре" },
+    "people": { "en": "People", "ru": "Люди", "kk": "Адамдар" },
+    "contact": { "en": "Contact", "ru": "Контакты", "kk": "Байланыс" }
+  },
+  "a11y": {
+    "skipLink": { "en": "Skip to content", "ru": "К содержимому", "kk": "Мазмұнға өту" },
+    "opensInNewTab": { "en": "(opens in a new tab)", "ru": "(откроется в новой вкладке)", "kk": "(жаңа бетте ашылады)" }
+  },
+  "projects": {
+    "problem": { "en": "Problem", "ru": "Задача", "kk": "Мәселе" },
+    "solution": { "en": "Solution", "ru": "Решение", "kk": "Шешім" },
+    "result": { "en": "Result", "ru": "Результат", "kk": "Нәтиже" },
+    "stack": { "en": "Stack", "ru": "Стек", "kk": "Технологиялар" },
+    "viewProject": { "en": "View project", "ru": "Смотреть проект", "kk": "Жобаны көру" }
+  },
+  "experience": {
+    "present": { "en": "Present", "ru": "Сейчас", "kk": "Қазір" }
+  },
+  "recommendations": {
+    "read": { "en": "Read", "ru": "Читать", "kk": "Оқу" },
+    "watch": { "en": "Watch", "ru": "Смотреть", "kk": "Көру" },
+    "use": { "en": "Use", "ru": "Пользоваться", "kk": "Қолдану" },
+    "tabsLabel": { "en": "Recommendation type", "ru": "Тип рекомендаций", "kk": "Ұсыныс түрі" },
+    "open": { "en": "Open", "ru": "Открыть", "kk": "Ашу" }
+  },
+  "people": {
+    "visit": { "en": "Learn more", "ru": "Подробнее", "kk": "Толығырақ" }
+  },
+  "contact": {
+    "email": { "en": "Email", "ru": "Почта", "kk": "Пошта" },
+    "telegram": { "en": "Telegram", "ru": "Telegram", "kk": "Telegram" },
+    "linkedin": { "en": "LinkedIn", "ru": "LinkedIn", "kk": "LinkedIn" },
+    "github": { "en": "GitHub", "ru": "GitHub", "kk": "GitHub" },
+    "calTitle": { "en": "Booking calendar", "ru": "Календарь записи", "kk": "Жазылу күнтізбесі" },
+    "calLoading": { "en": "Loading the calendar…", "ru": "Загружаю календарь…", "kk": "Күнтізбе жүктеліп жатыр…" }
+  },
+  "footer": {
+    "brandFull": {
+      "en": "Modern AI Design and Systems Development",
+      "ru": "Современный ИИ-дизайн и разработка систем",
+      "kk": "Заманауи ЖИ-дизайн және жүйелер әзірлеу"
+    },
+    "copyright": { "en": "© {year} MadsDev. Demo content.", "ru": "© {year} MadsDev. Демо-контент.", "kk": "© {year} MadsDev. Демо-мазмұн." },
+    "backToTop": { "en": "Back to top", "ru": "Наверх", "kk": "Жоғары" }
+  },
+  "notFound": {
+    "title": { "en": "This page doesn’t exist", "ru": "Такой страницы нет", "kk": "Мұндай бет жоқ" },
+    "body": {
+      "en": "The link may be old, or there was a typo. Everything I have is on the main page.",
+      "ru": "Возможно, ссылка устарела или в адресе опечатка. Всё, что у меня есть, — на главной.",
+      "kk": "Сілтеме ескірген болуы мүмкін немесе мекенжайда қате бар. Барлық мәлімет басты бетте."
+    },
+    "home": { "en": "Go to the main page", "ru": "На главную", "kk": "Басты бетке өту" },
+    "otherLanguages": { "en": "Other languages", "ru": "Другие языки", "kk": "Басқа тілдер" }
+  },
+  "redirect": {
+    "message": { "en": "Opening the English version…", "ru": "Открываю английскую версию…", "kk": "Ағылшын нұсқасы ашылып жатыр…" },
+    "link": { "en": "Continue to the site", "ru": "Перейти на сайт", "kk": "Сайтқа өту" }
+  }
+}

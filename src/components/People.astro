@@ -1,0 +1,101 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { people, ui } = content;
+---
+
+<section class="section people" id="people" aria-labelledby="people-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(people.eyebrow, lang)}</p>
+      <h2 id="people-title" class="t-title">{t(people.title, lang)}</h2>
+    </div>
+    <ul class="grid" role="list">
+      {
+        people.items.map((person) => (
+          <li class="person">
+            <span class="initials" aria-hidden="true">
+              {person.name
+                .split(/\s+/)
+                .map((w) => w[0])
+                .slice(0, 2)
+                .join('')}
+            </span>
+            <h3 class="t-headline">{person.name}</h3>
+            <p class="t-footnote who">{t(person.who, lang)}</p>
+            <p class="meaning">{t(person.meaning, lang)}</p>
+            <a class="link" href={person.link} target="_blank" rel="noopener">
+              {t(ui.people.visit, lang)}
+              <span class="visually-hidden">: {person.name} {t(ui.a11y.opensInNewTab, lang)}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .people {
+    background: var(--bg-raised);
+  }
+
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+
+  .person {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+  }
+
+  .initials {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.625rem;
+    border-radius: 50%;
+    background: var(--fill-strong);
+    color: var(--text-2);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .who {
+    color: var(--text-3);
+  }
+
+  .meaning {
+    margin-top: 0.5rem;
+    color: var(--text-2);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .link {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    font-weight: 600;
+    align-self: flex-start;
+  }
+
+  @media (prefers-contrast: more) {
+    .person {
+      border: 1px solid var(--text);
+    }
+  }
+</style>

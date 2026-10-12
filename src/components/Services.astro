@@ -1,0 +1,83 @@
+---
+import { content } from '../lib/content';
+import { t, type Locale } from '../lib/i18n';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { services } = content;
+---
+
+<section class="section" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t(services.eyebrow, lang)}</p>
+      <h2 id="services-title" class="t-title">{t(services.title, lang)}</h2>
+      <p class="t-lead">{t(services.intro, lang)}</p>
+    </div>
+    <ul class="grid" role="list">
+      {
+        services.items.map((item) => (
+          <li class="card" data-service={item.key}>
+            <h3 class="t-headline">{t(item.title, lang)}</h3>
+            <p class="t-body desc">{t(item.description, lang)}</p>
+            <div class="outcome">
+              <p class="metric">{t(item.metric, lang)}</p>
+              <p class="t-footnote example">{t(item.example, lang)}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    border-radius: var(--radius-lg);
+    background: var(--bg-raised);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .desc {
+    color: var(--text-2);
+  }
+
+  .outcome {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+  }
+
+  .metric {
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
+    line-height: 1.12;
+    letter-spacing: -0.018em;
+    font-weight: 700;
+    color: var(--link);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .example {
+    color: var(--text-3);
+  }
+
+  @media (prefers-contrast: more) {
+    .card {
+      box-shadow: none;
+      border: 1px solid var(--text);
+    }
+  }
+</style>

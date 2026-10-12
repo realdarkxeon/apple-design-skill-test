@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import { content } from '../lib/content';
+import { DEFAULT_LOCALE, LOCALES, ogLocale, t, type Locale } from '../lib/i18n';
+import { absoluteUrl, url } from '../lib/url';
+
+interface Props {
+  lang: Locale;
+  /** Path after the locale, e.g. '' for the home page. */
+  path?: string;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { lang, path = '', title, description, noindex = false } = Astro.props;
+const { ui, settings, hero } = content;
+const pageTitle = title ?? t(ui.meta.title, lang);
+const pageDescription = description ?? t(ui.meta.description, lang);
+const canonical = absoluteUrl(`${lang}/${path}`, Astro.site);
+const ogImage = absoluteUrl('images/og.png', Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: ui.header.brand,
+  description: pageDescription,
+  url: canonical,
+  image: ogImage,
+  email: settings.email,
+  founder: { '@type': 'Person', name: t(hero.name, lang), jobTitle: t(hero.role, lang) },
+  sameAs: [settings.linkedin, settings.github, settings.telegram],
+};
+---
+
+<!doctype html>
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {
+      !noindex &&
+        LOCALES.map((locale) => (
+          <link rel="alternate" hreflang={locale} href={absoluteUrl(`${locale}/${path}`, Astro.site)} />
+        ))
+    }
+    {!noindex && <link rel="alternate" hreflang="x-default" href={absoluteUrl(`${DEFAULT_LOCALE}/${path}`, Astro.site)} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={ui.header.brand} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t(ui.meta.ogImageAlt, lang)} />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    {LOCALES.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
+    <link rel="sitemap" href={url('sitemap-index.xml')} />
+    {!noindex && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

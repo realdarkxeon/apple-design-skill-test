@@ -1,0 +1,62 @@
+---
+import { content } from '../lib/content';
+import { LOCALES, t, type Locale } from '../lib/i18n';
+import { localeHome } from '../lib/url';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { ui } = content;
+---
+
+<div class="nf container" data-locale-block={lang} lang={lang}>
+  <p class="code" aria-hidden="true">404</p>
+  <h1 class="t-title">{t(ui.notFound.title, lang)}</h1>
+  <p class="t-lead">{t(ui.notFound.body, lang)}</p>
+  <a class="button" href={localeHome(lang)}>{t(ui.notFound.home, lang)}</a>
+  <nav aria-label={t(ui.notFound.otherLanguages, lang)}>
+    <p class="t-footnote others">{t(ui.notFound.otherLanguages, lang)}</p>
+    <ul role="list">
+      {
+        LOCALES.filter((l) => l !== lang).map((l) => (
+          <li>
+            <a href={localeHome(l)} hreflang={l} lang={l}>
+              {ui.languages[l].name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .nf {
+    display: grid;
+    justify-items: start;
+    gap: 1.25rem;
+    padding-block: clamp(4rem, 3rem + 8vw, 10rem);
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+
+  .code {
+    font-size: clamp(4rem, 3rem + 6vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    color: var(--text-3);
+  }
+
+  .others {
+    color: var(--text-3);
+    margin-top: 1rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.25rem;
+  }
+</style>

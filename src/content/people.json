@@ -1,0 +1,60 @@
+{
+  "eyebrow": { "en": "People I learn from", "ru": "У кого я учусь", "kk": "Кімнен үйренемін" },
+  "title": {
+    "en": "Teachers I’ve never met.",
+    "ru": "Учителя, с которыми я не знаком.",
+    "kk": "Ешқашан кездеспеген ұстаздарым."
+  },
+  "items": [
+    {
+      "name": "Andrej Karpathy",
+      "who": { "en": "AI researcher and educator", "ru": "Исследователь ИИ и преподаватель", "kk": "ЖИ зерттеушісі және ұстаз" },
+      "meaning": {
+        "en": "He explains the hardest ideas from first principles and makes you feel you could build them too. I try to explain my systems to clients the same way.",
+        "ru": "Он объясняет самые сложные идеи с нуля так, что кажется, будто ты и сам можешь это построить. Я стараюсь так же объяснять клиентам свои системы.",
+        "kk": "Ол ең күрделі идеяларды негізінен бастап түсіндіреді, сонда сен де оны жасай алатындай сезінесің. Мен де клиенттерге жүйелерімді солай түсіндіруге тырысамын."
+      },
+      "link": "https://karpathy.ai/"
+    },
+    {
+      "name": "Simon Willison",
+      "who": { "en": "Developer and writer on LLM tools", "ru": "Разработчик, пишет об инструментах на LLM", "kk": "Әзірлеуші, LLM құралдары туралы жазады" },
+      "meaning": {
+        "en": "His blog is a public lab notebook. He taught me to publish small findings and to take prompt injection seriously.",
+        "ru": "Его блог — открытый лабораторный журнал. Он научил меня публиковать небольшие находки и всерьёз относиться к prompt injection.",
+        "kk": "Оның блогы — ашық зертханалық күнделік. Ол маған шағын жаңалықтарды жариялауды және prompt injection қаупіне байыппен қарауды үйретті."
+      },
+      "link": "https://simonwillison.net/"
+    },
+    {
+      "name": "Patrick McKenzie",
+      "who": { "en": "Writer on software and the business of finance", "ru": "Пишет о софте и финансовой «кухне» бизнеса", "kk": "Бағдарламалар мен қаржы бизнесі туралы жазушы" },
+      "meaning": {
+        "en": "He showed me that the most valuable software is often a spreadsheet someone finally stopped maintaining by hand.",
+        "ru": "Он показал мне, что самый ценный софт — это часто таблица, которую кто-то наконец перестал вести вручную.",
+        "kk": "Ең құнды бағдарлама көбіне біреу ақыры қолмен жүргізуді тоқтатқан кесте екенін ол көрсетті."
+      },
+      "link": "https://www.kalzumeus.com/"
+    },
+    {
+      "name": "Julia Evans",
+      "who": { "en": "Programmer and zine author", "ru": "Программист, автор зинов", "kk": "Бағдарламашы, зиндер авторы" },
+      "meaning": {
+        "en": "She makes asking “wait, how does this work?” feel like a strength. Her zines are on my desk.",
+        "ru": "С ней вопрос «подождите, а как это работает?» кажется силой, а не слабостью. Её зины лежат у меня на столе.",
+        "kk": "Оның арқасында «тоқтаңыз, бұл қалай жұмыс істейді?» деп сұрау әлсіздік емес, күш сияқты көрінеді. Оның зиндері үстелімде жатыр."
+      },
+      "link": "https://jvns.ca/"
+    },
+    {
+      "name": "Bret Victor",
+      "who": { "en": "Designer and researcher", "ru": "Дизайнер и исследователь", "kk": "Дизайнер және зерттеуші" },
+      "meaning": {
+        "en": "A reminder that tools shape how we think. When I design an automation, I ask what it lets people see that they couldn’t before.",
+        "ru": "Напоминание о том, что инструменты формируют наше мышление. Проектируя автоматизацию, я спрашиваю: что она позволит людям увидеть, чего они раньше не видели?",
+        "kk": "Құралдар біздің ойлау тәсілімізді қалыптастыратынын еске салады. Автоматтандыруды жобалағанда, ол адамдарға бұрын көрмегенін көруге мүмкіндік бере ме деп сұраймын."
+      },
+      "link": "https://worrydream.com/"
+    }
+  ]
+}

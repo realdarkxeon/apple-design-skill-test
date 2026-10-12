@@ -1,0 +1,60 @@
+{
+  "eyebrow": { "en": "Services", "ru": "Услуги", "kk": "Қызметтер" },
+  "title": {
+    "en": "Three ways I can help.",
+    "ru": "Чем я могу помочь.",
+    "kk": "Қалай көмектесе аламын."
+  },
+  "intro": {
+    "en": "Every engagement starts with a two-week pilot on one real process, so you see numbers before you commit to more.",
+    "ru": "Любая работа начинается с двухнедельного пилота на одном реальном процессе — вы видите цифры до того, как решите двигаться дальше.",
+    "kk": "Әр жұмыс бір нақты процестегі екі апталық пилоттан басталады — әрі қарай жалғастыру туралы шешім қабылдамас бұрын нәтижені көресіз."
+  },
+  "items": [
+    {
+      "key": "agents",
+      "title": { "en": "AI agents", "ru": "ИИ-агенты", "kk": "ЖИ-агенттер" },
+      "description": {
+        "en": "Assistants that read your documents, use your tools and hand off to a human when they are unsure — not chatbots that guess.",
+        "ru": "Ассистенты, которые читают ваши документы, работают в ваших системах и передают вопрос человеку, если не уверены. Не чат-боты, которые угадывают.",
+        "kk": "Құжаттарыңызды оқып, жүйелеріңізде жұмыс істейтін, сенімсіз болғанда сұрақты адамға беретін көмекшілер. Болжап жауап беретін чат-боттар емес."
+      },
+      "metric": { "en": "68% of tickets resolved", "ru": "68% обращений закрыто", "kk": "Өтініштердің 68%-ы шешілді" },
+      "example": {
+        "en": "A support agent for an online furniture store now closes 68% of delivery questions on its own; the average first reply dropped from 4 hours to 40 seconds.",
+        "ru": "Агент поддержки интернет-магазина мебели сам закрывает 68% вопросов о доставке, а среднее время первого ответа сократилось с 4 часов до 40 секунд.",
+        "kk": "Онлайн жиһаз дүкенінің қолдау агенті жеткізу туралы сұрақтардың 68%-ын өзі жабады, ал алғашқы жауаптың орташа уақыты 4 сағаттан 40 секундқа дейін қысқарды."
+      }
+    },
+    {
+      "key": "automation",
+      "title": { "en": "Workflow automation", "ru": "Автоматизация процессов", "kk": "Процестерді автоматтандыру" },
+      "description": {
+        "en": "The boring chain of steps between “email arrives” and “done” — mapped, automated and monitored, with alerts when something breaks.",
+        "ru": "Скучная цепочка шагов между «пришло письмо» и «готово» — описанная, автоматизированная и под наблюдением, с оповещением, если что-то сломалось.",
+        "kk": "«Хат келді» мен «дайын» арасындағы іш пыстыратын қадамдар тізбегі — сипатталған, автоматтандырылған, бақылауда, бірдеңе бұзылса хабарлама келеді."
+      },
+      "metric": { "en": "−31 hours a week", "ru": "−31 час в неделю", "kk": "Аптасына −31 сағат" },
+      "example": {
+        "en": "For a logistics company, invoice intake went from manual entry by two people to an automated flow: 31 hours a week saved, error rate down from 6% to under 1%.",
+        "ru": "В логистической компании приём счетов, который вручную вели два сотрудника, стал автоматическим: экономия 31 час в неделю, доля ошибок снизилась с 6% до менее чем 1%.",
+        "kk": "Логистикалық компанияда екі қызметкер қолмен енгізетін шоттарды қабылдау автоматты ағынға айналды: аптасына 31 сағат үнемделді, қателер үлесі 6%-дан 1%-ға дейін төмендеді."
+      }
+    },
+    {
+      "key": "integrations",
+      "title": { "en": "Integrations", "ru": "Интеграции", "kk": "Интеграциялар" },
+      "description": {
+        "en": "Your CRM, accounting, messengers and spreadsheets talking to each other, so one update lands everywhere it should.",
+        "ru": "CRM, бухгалтерия, мессенджеры и таблицы начинают общаться между собой: одно изменение попадает туда, куда нужно.",
+        "kk": "CRM, бухгалтерия, мессенджерлер мен кестелер бір-бірімен байланысады: бір өзгеріс қажетті жердің бәріне жетеді."
+      },
+      "metric": { "en": "5 systems, 1 source of truth", "ru": "5 систем, 1 источник правды", "kk": "5 жүйе, 1 дерек көзі" },
+      "example": {
+        "en": "A clinic chain connected bookings, CRM, payments, WhatsApp and reporting; no-shows fell by 22% thanks to reminders sent at the right moment.",
+        "ru": "Сеть клиник связала запись, CRM, оплату, WhatsApp и отчётность; неявки сократились на 22% благодаря напоминаниям, отправленным в нужный момент.",
+        "kk": "Клиникалар желісі жазылуды, CRM-ді, төлемді, WhatsApp пен есептілікті байланыстырды; дер кезінде жіберілген еске салғыштардың арқасында келмей қалу 22%-ға азайды."
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+---
+import { content } from '../lib/content';
+import { LOCALES, t, type Locale } from '../lib/i18n';
+import { localeHome } from '../lib/url';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const { ui } = content;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container inner">
+    <div>
+      <p class="brand">{ui.header.brand}</p>
+      <p class="t-footnote muted">{t(ui.footer.brandFull, lang)}</p>
+    </div>
+    <nav aria-label={t(ui.header.languageLabel, lang)}>
+      <ul role="list" class="langs">
+        {
+          LOCALES.map((code) => (
+            <li>
+              <a href={localeHome(code)} hreflang={code} lang={code} aria-current={code === lang ? 'page' : undefined}>
+                {ui.languages[code].name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <p class="t-footnote muted">{t(ui.footer.copyright, lang).replace('{year}', String(year))}</p>
+    <a class="t-footnote" href="#top">{t(ui.footer.backToTop, lang)}</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: 3rem calc(3rem + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--separator);
+  }
+
+  .inner {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .inner {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+
+  .brand {
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+
+  .muted {
+    color: var(--text-3);
+  }
+
+  .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+
+  .langs a {
+    display: inline-block;
+    padding-block: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .langs a[aria-current] {
+    color: var(--text);
+    font-weight: 600;
+  }
+</style>

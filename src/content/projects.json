@@ -1,0 +1,222 @@
+{
+  "eyebrow": {
+    "en": "Selected work",
+    "ru": "Избранные проекты",
+    "kk": "Таңдаулы жобалар"
+  },
+  "title": {
+    "en": "Systems that run on Monday mornings.",
+    "ru": "Системы, которые работают и в понедельник утром.",
+    "kk": "Дүйсенбі таңында да жұмыс істейтін жүйелер."
+  },
+  "items": [
+    {
+      "title": {
+        "en": "Delivery desk agent",
+        "ru": "Агент службы доставки",
+        "kk": "Жеткізу қызметінің агенті"
+      },
+      "client": {
+        "en": "Online furniture retailer",
+        "ru": "Интернет-магазин мебели",
+        "kk": "Онлайн жиһаз дүкені"
+      },
+      "problem": {
+        "en": "Three support staff spent most of the day answering “where is my sofa?” across email, chat and Instagram.",
+        "ru": "Трое сотрудников поддержки весь день отвечали на «где мой диван?» в почте, чате и Instagram.",
+        "kk": "Қолдау қызметінің үш қызметкері күні бойы поштада, чатта және Instagram-да «диваным қайда?» деген сұраққа жауап беретін."
+      },
+      "solution": {
+        "en": "An agent that reads the order system and carrier tracking, answers in the customer’s language and escalates damaged-item cases with photos attached.",
+        "ru": "Агент, который смотрит в систему заказов и трекинг перевозчика, отвечает на языке клиента и передаёт людям случаи с повреждениями — сразу с фотографиями.",
+        "kk": "Тапсырыс жүйесі мен тасымалдаушының трекингін оқитын, клиенттің тілінде жауап беретін және зақымдалған тауар жағдайларын фотосуреттерімен бірге адамға жіберетін агент."
+      },
+      "result": {
+        "en": "68% of tickets closed without a human; team moved to returns and B2B orders.",
+        "ru": "68% обращений закрываются без человека; команда переключилась на возвраты и B2B-заказы.",
+        "kk": "Өтініштердің 68%-ы адамсыз жабылады; команда қайтарымдар мен B2B тапсырыстарына ауысты."
+      },
+      "stack": [
+        "Claude API",
+        "TypeScript",
+        "PostgreSQL",
+        "Intercom"
+      ],
+      "testimonial": {
+        "quote": {
+          "en": "Our team finally answers the questions that need a person. The rest just happens.",
+          "ru": "Команда наконец отвечает на вопросы, где нужен человек. Остальное происходит само.",
+          "kk": "Команда ақыры адам қажет сұрақтарға ғана жауап береді. Қалғаны өзінен-өзі орындалады."
+        },
+        "author": {
+          "en": "Head of customer care",
+          "ru": "Руководитель службы заботы о клиентах",
+          "kk": "Клиенттерге қызмет көрсету бөлімінің басшысы"
+        }
+      },
+      "link": "https://madsdev.example/work/delivery-agent",
+      "image": "/images/projects/delivery-agent.svg",
+      "imageAlt": {
+        "en": "Abstract illustration of chat bubbles flowing into a delivery route",
+        "ru": "Абстрактная иллюстрация: сообщения чата превращаются в маршрут доставки",
+        "kk": "Абстрактілі сурет: чат хабарламалары жеткізу бағытына айналады"
+      }
+    },
+    {
+      "title": {
+        "en": "Invoice intake pipeline",
+        "ru": "Конвейер приёма счетов",
+        "kk": "Шоттарды қабылдау конвейері"
+      },
+      "client": {
+        "en": "Regional logistics company",
+        "ru": "Региональная логистическая компания",
+        "kk": "Өңірлік логистикалық компания"
+      },
+      "problem": {
+        "en": "Around 1,400 supplier invoices a month arrived as PDFs and photos and were typed into the accounting system by hand.",
+        "ru": "Около 1 400 счетов в месяц приходили в виде PDF и фотографий, и их вручную вбивали в учётную систему.",
+        "kk": "Айына 1 400-ге жуық шот PDF және фото түрінде келіп, есеп жүйесіне қолмен енгізілетін."
+      },
+      "solution": {
+        "en": "Document extraction with confidence scores, automatic matching to purchase orders, and a review queue for anything uncertain.",
+        "ru": "Извлечение данных из документов с оценкой уверенности, автоматическая сверка с заказами и очередь на проверку для всего спорного.",
+        "kk": "Сенімділік бағасы бар құжаттардан дерек алу, сатып алу тапсырыстарымен автоматты салыстыру және күмәнді жағдайларға арналған тексеру кезегі."
+      },
+      "result": {
+        "en": "31 hours a week saved; data-entry errors dropped from 6% to 0.8%.",
+        "ru": "Экономия 31 часа в неделю; ошибки ввода снизились с 6% до 0,8%.",
+        "kk": "Аптасына 31 сағат үнемделді; енгізу қателері 6%-дан 0,8%-ға дейін азайды."
+      },
+      "stack": [
+        "n8n",
+        "Python",
+        "OCR",
+        "1C API"
+      ],
+      "testimonial": {
+        "quote": {
+          "en": "Month-end used to mean overtime. Now it means checking a short review queue.",
+          "ru": "Раньше конец месяца означал переработки. Теперь — короткую очередь на проверку.",
+          "kk": "Бұрын ай соңы үстеме жұмысты білдіретін. Енді — тексеруге арналған қысқа кезек қана."
+        },
+        "author": {
+          "en": "Finance director",
+          "ru": "Финансовый директор",
+          "kk": "Қаржы директоры"
+        }
+      },
+      "link": "https://madsdev.example/work/invoice-pipeline",
+      "image": "/images/projects/invoice-pipeline.svg",
+      "imageAlt": {
+        "en": "Abstract illustration of documents passing through a sorting pipeline",
+        "ru": "Абстрактная иллюстрация: документы проходят через сортировочный конвейер",
+        "kk": "Абстрактілі сурет: құжаттар сұрыптау конвейерінен өтеді"
+      }
+    },
+    {
+      "title": {
+        "en": "Clinic booking hub",
+        "ru": "Хаб записи для клиник",
+        "kk": "Клиникаларға арналған жазылу хабы"
+      },
+      "client": {
+        "en": "Network of 6 dental clinics",
+        "ru": "Сеть из 6 стоматологий",
+        "kk": "6 стоматологиядан тұратын желі"
+      },
+      "problem": {
+        "en": "Bookings, payments and patient messages lived in five systems; front desks double-booked and reminders went out late.",
+        "ru": "Записи, оплаты и сообщения пациентов жили в пяти разных системах; администраторы путались в записях, а напоминания приходили с опозданием.",
+        "kk": "Жазылу, төлем және пациенттердің хабарламалары бес түрлі жүйеде болды; тіркеушілер жазылуларды шатастырып, еске салғыштар кеш жіберілетін."
+      },
+      "solution": {
+        "en": "A small integration layer that syncs all five systems every minute and sends WhatsApp reminders based on each patient’s history.",
+        "ru": "Небольшой интеграционный слой, который каждую минуту синхронизирует все пять систем и отправляет напоминания в WhatsApp с учётом истории пациента.",
+        "kk": "Бес жүйені минут сайын синхрондайтын және әр пациенттің тарихына қарай WhatsApp арқылы еске салғыш жіберетін шағын интеграциялық қабат."
+      },
+      "result": {
+        "en": "No-shows down 22%; zero double bookings in the first 3 months.",
+        "ru": "Неявок на 22% меньше; ни одной двойной записи за первые 3 месяца.",
+        "kk": "Келмей қалу 22%-ға азайды; алғашқы 3 айда бірде-бір қайталанған жазылу болған жоқ."
+      },
+      "stack": [
+        "Node.js",
+        "WhatsApp Business API",
+        "Redis",
+        "Metabase"
+      ],
+      "testimonial": {
+        "quote": {
+          "en": "Madiyar spent a day at our front desk before writing a single line of code. It shows.",
+          "ru": "Мадияр целый день просидел у нас на ресепшене, прежде чем написать хоть строчку кода. И это видно.",
+          "kk": "Мадияр бір жол код жазбас бұрын тіркеу орнымызда бір күн отырды. Бұл нәтижеден көрінеді."
+        },
+        "author": {
+          "en": "Operations manager",
+          "ru": "Операционный менеджер",
+          "kk": "Операциялық менеджер"
+        }
+      },
+      "link": "https://madsdev.example/work/clinic-hub",
+      "image": "/images/projects/clinic-hub.svg",
+      "imageAlt": {
+        "en": "Abstract illustration of five nodes connected to one center",
+        "ru": "Абстрактная иллюстрация: пять узлов, соединённых с одним центром",
+        "kk": "Абстрактілі сурет: бір орталыққа қосылған бес түйін"
+      }
+    },
+    {
+      "title": {
+        "en": "Sales follow-up copilot",
+        "ru": "Помощник по follow-up продажам",
+        "kk": "Сатудан кейінгі байланыс көмекшісі"
+      },
+      "client": {
+        "en": "B2B software startup",
+        "ru": "B2B-стартап",
+        "kk": "B2B стартап"
+      },
+      "problem": {
+        "en": "After demos, follow-up emails took a day to write and half of the leads never heard back at all.",
+        "ru": "После демо на письмо с follow-up уходил день, а половина лидов так и не получала ответа.",
+        "kk": "Демодан кейін хат жазуға бір күн кететін, ал лидтердің жартысы мүлде жауап алмайтын."
+      },
+      "solution": {
+        "en": "A copilot that drafts the follow-up from the call transcript and CRM notes, so the rep only edits and sends.",
+        "ru": "Помощник, который готовит черновик письма по расшифровке звонка и заметкам в CRM, а менеджеру остаётся поправить и отправить.",
+        "kk": "Қоңырау транскрипті мен CRM жазбалары негізінде хат жобасын дайындайтын көмекші; менеджер тек түзетіп, жібереді."
+      },
+      "result": {
+        "en": "Follow-ups sent within 2 hours instead of 26; demo-to-trial conversion up from 18% to 27%.",
+        "ru": "Письма уходят за 2 часа вместо 26; конверсия из демо в пробный период выросла с 18% до 27%.",
+        "kk": "Хаттар 26 сағаттың орнына 2 сағатта жіберіледі; демодан сынақ кезеңіне өту 18%-дан 27%-ға өсті."
+      },
+      "stack": [
+        "Claude API",
+        "HubSpot",
+        "Whisper",
+        "Supabase"
+      ],
+      "testimonial": {
+        "quote": {
+          "en": "Our reps stopped dreading the inbox after demos.",
+          "ru": "Менеджеры перестали бояться почты после демо.",
+          "kk": "Менеджерлер демодан кейінгі поштадан қорықпайтын болды."
+        },
+        "author": {
+          "en": "Head of sales",
+          "ru": "Руководитель отдела продаж",
+          "kk": "Сату бөлімінің басшысы"
+        }
+      },
+      "link": "https://madsdev.example/work/sales-copilot",
+      "image": "/images/projects/sales-copilot.svg",
+      "imageAlt": {
+        "en": "Abstract illustration of a waveform turning into lines of text",
+        "ru": "Абстрактная иллюстрация: звуковая волна превращается в строки текста",
+        "kk": "Абстрактілі сурет: дыбыс толқыны мәтін жолдарына айналады"
+      }
+    }
+  ]
+}
