@@ -69,8 +69,6 @@ export const image = () =>
   );
 
 const text = () => z.string().trim().min(1, { error: 'Required' });
-const month = () =>
-  withUi(z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, { error: 'Use YYYY-MM' }), 'month');
 
 /* ------------------------------------------------------------------ settings.json */
 
@@ -104,19 +102,19 @@ export const uiSchema = z.object({
     bookCall: i18n(),
   }),
   nav: z.object({
-    mission: i18n(),
     services: i18n(),
-    projects: i18n(),
     experience: i18n(),
-    recommendations: i18n(),
-    people: i18n(),
+    projects: i18n(),
+    mission: i18n(),
+    library: i18n(),
     contact: i18n(),
   }),
   a11y: z.object({ skipLink: i18n(), opensInNewTab: i18n() }),
   projects: z.object({ problem: i18n(), solution: i18n(), result: i18n(), stack: i18n(), viewProject: i18n() }),
-  experience: z.object({ present: i18n() }),
+  experience: z.object({ result: i18n(), forYou: i18n() }),
   recommendations: z.object({ read: i18n(), watch: i18n(), use: i18n(), tabsLabel: i18n(), open: i18n() }),
   people: z.object({ visit: i18n() }),
+  library: z.object({ title: i18n(), metaTitle: i18n(), intro: i18nLong(), description: i18nLong() }),
   contact: z.object({
     email: i18n(),
     telegram: i18n(),
@@ -217,18 +215,32 @@ export const projectsSchema = z.object({
   items: z.array(projectItem).length(4, { error: 'Exactly 4 projects' }),
 });
 
-const experienceItem = z.object({
-  role: i18n(),
-  organization: i18n(),
-  start: month(),
-  end: month().nullable().meta({ description: 'Leave empty for “present”' }),
-  impact: i18nLong(),
+const proofItem = z.object({
+  title: i18n(),
+  period: i18n('e.g. “2017–2022”'),
+  story: i18nLong({ description: 'Situation and what you did, 1–2 sentences' }),
+  result: i18nLong(),
+  forYou: i18nLong({ description: 'What this means for a client, one sentence' }),
+  image: image(),
+  imageAlt: i18n(),
 });
 
 export const experienceSchema = z.object({
   eyebrow: i18n(),
   title: i18n(),
-  items: z.array(experienceItem).min(3, { error: '3–4 entries' }).max(4, { error: '3–4 entries' }),
+  portrait: image(),
+  portraitAlt: i18n(),
+  name: i18n(),
+  role: i18n(),
+  about: i18nLong({ maxWords: 260, description: 'Paragraphs separated by a blank line' }),
+  proofTitle: i18n(),
+  proofs: z.array(proofItem).min(3, { error: '3–5 proofs' }).max(5, { error: '3–5 proofs' }),
+  whyTitle: i18n(),
+  why: z
+    .array(z.object({ title: i18n(), body: i18nLong() }))
+    .length(3, { error: 'Exactly 3 differentiators' }),
+  timelineTitle: i18n(),
+  timeline: z.array(z.object({ period: i18n(), what: i18n() })).min(3, { error: 'At least 3 rows' }),
 });
 
 const recommendation = z.object({ title: text(), creator: text(), link: url(), why: i18n() });

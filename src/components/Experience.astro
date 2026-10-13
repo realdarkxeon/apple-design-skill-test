@@ -1,12 +1,15 @@
 ---
 import { content } from '../lib/content';
-import { formatMonth, t, type Locale } from '../lib/i18n';
+import { t, type Locale } from '../lib/i18n';
+import { url } from '../lib/url';
+import FadeContent from './reactbits/FadeContent';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 const { experience, ui } = content;
+const paragraphs = t(experience.about, lang).split(/\n\s*\n/);
 ---
 
 <section class="section" id="experience" aria-labelledby="experience-title">
@@ -15,40 +18,203 @@ const { experience, ui } = content;
       <p class="eyebrow">{t(experience.eyebrow, lang)}</p>
       <h2 id="experience-title" class="t-title">{t(experience.title, lang)}</h2>
     </div>
-    <ol class="timeline" role="list">
+
+    <div class="intro">
+      <figure class="portrait">
+        <img
+          src={url(experience.portrait)}
+          alt={t(experience.portraitAlt, lang)}
+          width="720"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="t-headline">{t(experience.name, lang)}</span>
+          <span class="t-footnote role">{t(experience.role, lang)}</span>
+        </figcaption>
+      </figure>
+      <div class="about">
+        {paragraphs.map((p, i) => <p class={i === 0 ? 't-lead' : undefined}>{p}</p>)}
+      </div>
+    </div>
+
+    <h3 class="sub-title t-headline">{t(experience.proofTitle, lang)}</h3>
+    <ul class="proofs" role="list">
       {
-        experience.items.map((item) => (
-          <li class="entry">
-            <p class="period t-footnote">
-              <time datetime={item.start}>{formatMonth(item.start, lang)}</time>
-              <span aria-hidden="true"> – </span>
-              {item.end ? <time datetime={item.end}>{formatMonth(item.end, lang)}</time> : t(ui.experience.present, lang)}
-            </p>
-            <div class="what">
-              <h3 class="t-headline">{t(item.role, lang)}</h3>
-              <p class="org">{t(item.organization, lang)}</p>
-              <p class="impact">{t(item.impact, lang)}</p>
-            </div>
+        experience.proofs.map((item, i) => (
+          <li>
+            <FadeContent client:visible className="fade" duration={800} delay={(i % 3) * 120} threshold={0.1}>
+              <article class="proof" aria-labelledby={`proof-${i}`}>
+                <img
+                  class="media"
+                  src={url(item.image)}
+                  alt={t(item.imageAlt, lang)}
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="body">
+                  <p class="t-footnote period">{t(item.period, lang)}</p>
+                  <h4 id={`proof-${i}`} class="t-headline">
+                    {t(item.title, lang)}
+                  </h4>
+                  <p class="story">{t(item.story, lang)}</p>
+                  <dl class="facts">
+                    <div>
+                      <dt>{t(ui.experience.result, lang)}</dt>
+                      <dd class="result">{t(item.result, lang)}</dd>
+                    </div>
+                    <div class="for-you">
+                      <dt>{t(ui.experience.forYou, lang)}</dt>
+                      <dd>{t(item.forYou, lang)}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </article>
+            </FadeContent>
           </li>
         ))
       }
-    </ol>
+    </ul>
+
+    <div class="lower">
+      <div>
+        <h3 class="sub-title t-headline">{t(experience.whyTitle, lang)}</h3>
+        <ul class="why" role="list">
+          {
+            experience.why.map((w) => (
+              <li>
+                <h4 class="why-title">{t(w.title, lang)}</h4>
+                <p>{t(w.body, lang)}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub-title t-headline">{t(experience.timelineTitle, lang)}</h3>
+        <ol class="timeline" role="list">
+          {
+            experience.timeline.map((row) => (
+              <li>
+                <span class="when t-footnote">{t(row.period, lang)}</span>
+                <span class="what">{t(row.what, lang)}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  /* Rows separated by hairlines instead of a dotted timeline. */
-  .timeline {
+  /* Portrait beside the story; stacks on narrow screens. */
+  .intro {
     display: grid;
-    max-width: 52rem;
-    border-top: 1px solid var(--separator);
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    margin-bottom: clamp(3rem, 2.25rem + 3vw, 4.5rem);
   }
 
-  .entry {
+  .portrait {
+    max-width: 20rem;
+  }
+
+  .portrait img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    background: var(--fill);
+  }
+
+  .portrait figcaption {
     display: grid;
-    gap: 0.375rem;
-    padding-block: 1.5rem;
-    border-bottom: 1px solid var(--separator);
+    gap: 0.125rem;
+    margin-top: 0.875rem;
+  }
+
+  .role {
+    color: var(--text-3);
+  }
+
+  .about {
+    display: grid;
+    gap: 1.125rem;
+    max-width: 40rem;
+    color: var(--text-2);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .about .t-lead {
+    color: var(--text);
+  }
+
+  @media (min-width: 52rem) {
+    .intro {
+      grid-template-columns: minmax(14rem, 18rem) 1fr;
+      align-items: start;
+    }
+
+    /* The portrait stays in view while the story scrolls past it. */
+    .portrait {
+      position: sticky;
+      top: calc(var(--header-h) + 1.5rem);
+    }
+  }
+
+  .sub-title {
+    margin-bottom: 1.25rem;
+  }
+
+  /* ---------------------------------------------------------------- proof cards */
+
+  .proofs {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    margin-bottom: clamp(3rem, 2.25rem + 3vw, 4.5rem);
+  }
+
+  /* The fade wrapper is a React island, outside this component's style scope. */
+  .proofs > li,
+  .proofs :global(astro-island),
+  .proofs :global(.fade) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proofs :global(astro-island),
+  .proofs :global(.fade),
+  .proof {
+    flex: 1;
+  }
+
+  .proof {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--bg-raised);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--fill);
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
   }
 
   .period {
@@ -57,26 +223,118 @@ const { experience, ui } = content;
     font-variant-numeric: tabular-nums;
   }
 
-  .org {
-    font-size: 0.9375rem;
+  .story {
     color: var(--text-2);
-    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
-  .impact {
+  /* Fills the card so “what it means for you” sits on the bottom edge of every card in a row. */
+  .facts {
+    display: grid;
+    flex: 1;
+    grid-template-rows: auto 1fr;
+    gap: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  dt {
+    font-size: 0.8125rem;
+    line-height: 1.38;
+    letter-spacing: 0.012em;
+    font-weight: 600;
+    color: var(--text-3);
+  }
+
+  dd {
+    margin-top: 0.125rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .result {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .for-you {
+    align-self: end;
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius);
+    background: var(--fill);
+  }
+
+  .for-you dd {
+    color: var(--text);
+  }
+
+  /* ---------------------------------------------------------------- why + timeline */
+
+  .lower {
+    display: grid;
+    gap: clamp(2.5rem, 2rem + 2vw, 4rem);
+  }
+
+  @media (min-width: 60rem) {
+    .lower {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .why {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .why-title {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .why p {
     margin-top: 0.25rem;
     color: var(--text-2);
-    max-width: 38rem;
+    line-height: 1.55;
   }
 
-  @media (min-width: 48rem) {
-    .entry {
-      grid-template-columns: 13rem 1fr;
-      gap: 1.5rem;
-    }
+  /* Rows separated by hairlines instead of a dotted timeline. */
+  .timeline {
+    border-top: 1px solid var(--separator);
+  }
 
-    .period {
-      padding-top: 0.125rem;
+  .timeline li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--separator);
+  }
+
+  .when {
+    padding-top: 0.0625rem;
+    color: var(--text-3);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .what {
+    color: var(--text-2);
+    line-height: 1.45;
+  }
+
+  .timeline li:last-child .when,
+  .timeline li:last-child .what {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  @media (prefers-contrast: more) {
+    .proof {
+      box-shadow: none;
+      border: 1px solid var(--text);
     }
   }
 </style>

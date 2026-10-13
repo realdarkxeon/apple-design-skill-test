@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import People from '../../components/People.astro';
+import Recommendations from '../../components/Recommendations.astro';
+import Footer from '../../components/Footer.astro';
+import { content } from '../../lib/content';
+import { LOCALES, t, type Locale } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const path = 'library/';
+const { library } = content.ui;
+---
+
+<Base lang={lang} path={path} title={t(library.metaTitle, lang)} description={t(library.description, lang)}>
+  <Header lang={lang} path={path} />
+  <main id="main">
+    <div class="container intro">
+      <h1 class="t-title">{t(library.title, lang)}</h1>
+      <p class="t-lead">{t(library.intro, lang)}</p>
+    </div>
+    <People lang={lang} />
+    <Recommendations lang={lang} />
+  </main>
+  <Footer lang={lang} path={path} />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: 0.75rem;
+    padding-block: clamp(3rem, 8vw, 5rem) clamp(1rem, 3vw, 2rem);
+  }
+
+  .intro .t-lead {
+    max-width: 38rem;
+  }
+</style>

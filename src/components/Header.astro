@@ -1,52 +1,62 @@
 ---
 import { content } from '../lib/content';
 import { LOCALES, t, type Locale } from '../lib/i18n';
-import { localeHome } from '../lib/url';
+import { localeHome, url } from '../lib/url';
 import LanguageMenu from './LanguageMenu';
 import { buttonVariants } from './ui/button';
 import { cn } from '../lib/utils';
 
 interface Props {
   lang: Locale;
-  /** Show section navigation (home page only). */
+  /** Show the site navigation (off on the 404 page). */
   sections?: boolean;
+  /** Path after the locale, e.g. 'library/'; '' is the home page. */
+  path?: string;
 }
 
-const { lang, sections = true } = Astro.props;
+const { lang, sections = true, path = '' } = Astro.props;
 const { ui } = content;
-const navKeys = ['mission', 'services', 'projects', 'experience', 'recommendations', 'people'] as const;
+const home = localeHome(lang);
+const sectionKeys = ['services', 'experience', 'projects', 'mission'] as const;
+const sectionHref = (key: string) => (path === '' ? `#${key}` : `${home}#${key}`);
+const libraryPath = 'library/';
 const languages = LOCALES.map((code) => ({
   code,
   name: ui.languages[code].name,
   short: ui.languages[code].short,
-  href: localeHome(code),
+  href: url(`${code}/${path}`),
 }));
 ---
 
 <a class="skip-link" href="#main">{t(ui.a11y.skipLink, lang)}</a>
 <header class="site-header" data-header data-sections={sections ? '' : undefined}>
   <div class="container bar">
-    <a class="brand pressable" href={`${localeHome(lang)}#top`} aria-label={t(ui.header.homeLabel, lang)}>
+    <a class="brand pressable" href={`${home}#top`} aria-label={t(ui.header.homeLabel, lang)}>
       {ui.header.brand}
     </a>
     {
       sections && (
         <nav class="nav" aria-label={t(ui.header.navLabel, lang)}>
           <ul role="list">
-            {navKeys.map((key) => (
+            {sectionKeys.map((key) => (
               <li>
-                <a href={`#${key}`} data-nav={key}>
+                <a href={sectionHref(key)} data-nav={key}>
                   {t(ui.nav[key], lang)}
                 </a>
               </li>
             ))}
+            <li>
+              <a href={`${home}${libraryPath}`} aria-current={path === libraryPath ? 'page' : undefined}>
+                {t(ui.nav.library, lang)}
+              </a>
+            </li>
           </ul>
         </nav>
       )
     }
     <div class="actions">
       <LanguageMenu client:idle current={lang} label={t(ui.header.languageLabel, lang)} languages={languages} />
-      <a class={cn(buttonVariants({ size: 'sm' }), 'header-cta')} href={`${localeHome(lang)}#contact`} data-header-cta>
+      <a class={cn(buttonVariants({ size: 'sm' }), 'header-cta')} href={`${home}#contact`} data-header-cta>
         {t(ui.header.bookCall, lang)}
       </a>
     </div>

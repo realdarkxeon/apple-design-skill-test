@@ -1,8 +1,8 @@
 {
-  "eyebrow": { "en": "From our founder: people I learn from", "ru": "От основателя: у кого я учусь", "kk": "Негізін қалаушыдан: кімнен үйренемін" },
+  "eyebrow": { "en": "People I learn from", "ru": "У кого я учусь", "kk": "Кімнен үйренемін" },
   "title": {
     "en": "Teachers I’ve never met.",
-    "ru": "Учителя, с которыми я не знаком.",
+    "ru": "Учителя, которых я никогда не встречал.",
     "kk": "Ешқашан кездеспеген ұстаздарым."
   },
   "items": [
@@ -10,9 +10,9 @@
       "name": "Andrej Karpathy",
       "who": { "en": "AI researcher and educator", "ru": "Исследователь ИИ и преподаватель", "kk": "ЖИ зерттеушісі және ұстаз" },
       "meaning": {
-        "en": "He explains the hardest ideas from first principles and makes you feel you could build them too. At MadsDev we try to explain our systems to clients the same way.",
-        "ru": "Он объясняет самые сложные идеи с нуля так, что кажется, будто ты и сам можешь это построить. В MadsDev мы стараемся так же объяснять клиентам наши системы.",
-        "kk": "Ол ең күрделі идеяларды негізінен бастап түсіндіреді, сонда сен де оны жасай алатындай сезінесің. MadsDev-те біз де клиенттерге жүйелерімізді солай түсіндіруге тырысамыз."
+        "en": "He explains hard ideas from the ground up, without hiding behind jargon. When I walk a client through what I’ve built, that’s the bar I try to reach.",
+        "ru": "Он объясняет сложные идеи с самого начала и не прячется за терминами. Когда я показываю клиенту, что построил, я стараюсь дотянуть до этой планки.",
+        "kk": "Ол күрделі идеяларды түп-тамырынан бастап, терминдердің артына тығылмай түсіндіреді. Клиентке не жасағанымды көрсеткенде, мен сол деңгейге жетуге тырысамын."
       },
       "link": "https://karpathy.ai/"
     },
@@ -20,9 +20,9 @@
       "name": "Simon Willison",
       "who": { "en": "Developer and writer on LLM tools", "ru": "Разработчик, пишет об инструментах на LLM", "kk": "Әзірлеуші, LLM құралдары туралы жазады" },
       "meaning": {
-        "en": "His blog is a public lab notebook. He taught me to publish small findings and to take prompt injection seriously.",
-        "ru": "Его блог — открытый лабораторный журнал. Он научил меня публиковать небольшие находки и всерьёз относиться к prompt injection.",
-        "kk": "Оның блогы — ашық зертханалық күнделік. Ол маған шағын жаңалықтарды жариялауды және prompt injection қаупіне байыппен қарауды үйретті."
+        "en": "He writes down what he tries, even the small stuff, and he takes the security of AI tools seriously. Both habits found their way into how I work.",
+        "ru": "Он записывает всё, что пробует, даже мелочи, и всерьёз относится к безопасности ИИ-инструментов. Обе привычки стали частью того, как работаю я.",
+        "kk": "Ол байқап көрген нәрсенің бәрін, тіпті ұсақ-түйегіне дейін жазып отырады және ЖИ құралдарының қауіпсіздігіне байыппен қарайды. Екі әдет те менің жұмысыма сіңді."
       },
       "link": "https://simonwillison.net/"
     },
@@ -30,9 +30,9 @@
       "name": "Patrick McKenzie",
       "who": { "en": "Writer on software and the business of finance", "ru": "Пишет о софте и финансовой «кухне» бизнеса", "kk": "Бағдарламалар мен қаржы бизнесі туралы жазушы" },
       "meaning": {
-        "en": "He showed me that the most valuable software is often a spreadsheet someone finally stopped maintaining by hand.",
-        "ru": "Он показал мне, что самый ценный софт — это часто таблица, которую кто-то наконец перестал вести вручную.",
-        "kk": "Ең құнды бағдарлама көбіне біреу ақыры қолмен жүргізуді тоқтатқан кесте екенін ол көрсетті."
+        "en": "He writes about the unglamorous parts of business, where money and paperwork actually move. Most of the problems worth automating live right there.",
+        "ru": "Он пишет о неприметной стороне бизнеса, где на самом деле движутся деньги и документы. Большинство задач, которые стоит автоматизировать, живут именно там.",
+        "kk": "Ол бизнестің көзге түсе бермейтін, ақша мен құжаттар шын мәнінде қозғалатын жағы туралы жазады. Автоматтандыруға тұрарлық мәселелердің көбі дәл сонда жатыр."
       },
       "link": "https://www.kalzumeus.com/"
     },
@@ -40,9 +40,9 @@
       "name": "Julia Evans",
       "who": { "en": "Programmer and zine author", "ru": "Программист, автор зинов", "kk": "Бағдарламашы, зиндер авторы" },
       "meaning": {
-        "en": "She makes asking “wait, how does this work?” feel like a strength. Her zines are on my desk.",
-        "ru": "С ней вопрос «подождите, а как это работает?» кажется силой, а не слабостью. Её зины лежат у меня на столе.",
-        "kk": "Оның арқасында «тоқтаңыз, бұл қалай жұмыс істейді?» деп сұрау әлсіздік емес, күш сияқты көрінеді. Оның зиндері үстелімде жатыр."
+        "en": "She asks “wait, how does this actually work?” out loud, then turns the answer into something anyone can read. I want to be that unafraid of simple questions.",
+        "ru": "Она вслух спрашивает «подождите, а как это на самом деле работает?» и превращает ответ в то, что поймёт любой. Я хочу так же не бояться простых вопросов.",
+        "kk": "Ол «тоқтаңыз, бұл шын мәнінде қалай жұмыс істейді?» деп ашық сұрайды да, жауабын кез келген адам түсінетіндей етіп жазады. Мен де қарапайым сұрақтардан осылай қорықпағым келеді."
       },
       "link": "https://jvns.ca/"
     },
@@ -50,9 +50,9 @@
       "name": "Bret Victor",
       "who": { "en": "Designer and researcher", "ru": "Дизайнер и исследователь", "kk": "Дизайнер және зерттеуші" },
       "meaning": {
-        "en": "A reminder that tools shape how we think. When we design an automation, we ask what it lets people see that they couldn’t before.",
-        "ru": "Напоминание о том, что инструменты формируют наше мышление. Проектируя автоматизацию, мы спрашиваем: что она позволит людям увидеть, чего они раньше не видели?",
-        "kk": "Құралдар біздің ойлау тәсілімізді қалыптастыратынын еске салады. Автоматтандыруды жобалағанда, ол адамдарға бұрын көрмегенін көруге мүмкіндік бере ме деп сұраймыз."
+        "en": "He reminds me that tools change how people think. A good automation should help a team see its work more clearly, not just get it done faster.",
+        "ru": "Он напоминает мне, что инструменты меняют то, как люди думают. Хорошая автоматизация должна помогать команде яснее видеть свою работу, а не просто делать её быстрее.",
+        "kk": "Ол құралдардың адамдардың ойлау тәсілін өзгертетінін еске салады. Жақсы автоматтандыру жұмысты тек тездетпей, командаға оны анығырақ көруге көмектесуі керек."
       },
       "link": "https://worrydream.com/"
     }

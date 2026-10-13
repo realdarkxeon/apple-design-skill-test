@@ -54,35 +54,30 @@
     }
   },
   "nav": {
-    "mission": {
-      "en": "Why",
-      "ru": "Зачем",
-      "kk": "Неге"
-    },
     "services": {
       "en": "Services",
       "ru": "Услуги",
       "kk": "Қызметтер"
+    },
+    "experience": {
+      "en": "Founder",
+      "ru": "Основатель",
+      "kk": "Негізін қалаушы"
     },
     "projects": {
       "en": "Projects",
       "ru": "Проекты",
       "kk": "Жобалар"
     },
-    "experience": {
-      "en": "Experience",
-      "ru": "Опыт",
-      "kk": "Тәжірибе"
+    "mission": {
+      "en": "Letter",
+      "ru": "Письмо",
+      "kk": "Хат"
     },
-    "recommendations": {
+    "library": {
       "en": "Library",
       "ru": "Полка",
       "kk": "Сөре"
-    },
-    "people": {
-      "en": "People",
-      "ru": "Люди",
-      "kk": "Адамдар"
     },
     "contact": {
       "en": "Contact",
@@ -130,10 +125,15 @@
     }
   },
   "experience": {
-    "present": {
-      "en": "Present",
-      "ru": "Сейчас",
-      "kk": "Қазір"
+    "result": {
+      "en": "Result",
+      "ru": "Результат",
+      "kk": "Нәтиже"
+    },
+    "forYou": {
+      "en": "What it means for you",
+      "ru": "Что это значит для вас",
+      "kk": "Сіз үшін не береді"
     }
   },
   "recommendations": {
@@ -168,6 +168,28 @@
       "en": "Learn more",
       "ru": "Подробнее",
       "kk": "Толығырақ"
+    }
+  },
+  "library": {
+    "title": {
+      "en": "Library",
+      "ru": "Полка",
+      "kk": "Сөре"
+    },
+    "metaTitle": {
+      "en": "Library — MadsDev",
+      "ru": "Полка — MadsDev",
+      "kk": "Сөре — MadsDev"
+    },
+    "intro": {
+      "en": "Away from client work: the people I learn from, and the books, talks and tools I keep recommending.",
+      "ru": "Вне клиентской работы: люди, у которых я учусь, и книги, выступления и инструменты, которые я постоянно советую.",
+      "kk": "Клиент жұмысынан тыс: мен үйренетін адамдар және үнемі ұсынатын кітаптар, баяндамалар мен құралдар."
+    },
+    "description": {
+      "en": "People Darkhan Tleuzhan learns from, plus books, talks and tools that shaped how MadsDev builds AI agents and automations.",
+      "ru": "Люди, у которых учится Дархан Тлеужан, а также книги, выступления и инструменты, повлиявшие на то, как MadsDev строит ИИ-агентов и автоматизации.",
+      "kk": "Дархан Тлеужан үйренетін адамдар, сондай-ақ MadsDev-тің ЖИ-агенттер мен автоматтандыруды жасау тәсіліне әсер еткен кітаптар, баяндамалар мен құралдар."
     }
   },
   "contact": {

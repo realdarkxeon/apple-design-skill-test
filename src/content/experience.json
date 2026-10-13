@@ -1,53 +1,258 @@
 {
-  "eyebrow": { "en": "Founder’s experience", "ru": "Опыт основателя", "kk": "Негізін қалаушының тәжірибесі" },
+  "eyebrow": { "en": "Who’s behind this", "ru": "Кто за этим стоит", "kk": "Мұның артында кім тұр" },
   "title": {
-    "en": "Ten years of making software do the dull parts.",
-    "ru": "Десять лет учу программы делать скучную работу.",
-    "kk": "Он жыл бойы бағдарламаларды күйбең жұмысқа үйретіп келемін."
+    "en": "Engineer who turns repetitive work into AI workflows that run themselves.",
+    "ru": "Инженер, который превращает рутину в ИИ-процессы, работающие сами.",
+    "kk": "Қайталанатын жұмысты өздігінен жүретін ЖИ-процестерге айналдыратын инженер."
   },
-  "items": [
+  "portrait": "/images/founder/portrait.webp",
+  "portraitAlt": {
+    "en": "Darkhan Tleuzhan smiling, in a dark jacket over a white T-shirt",
+    "ru": "Дархан Тлеужан улыбается, на нём тёмная куртка и белая футболка",
+    "kk": "Дархан Тлеужан күліп тұр, үстінде қара күрте мен ақ футболка"
+  },
+  "name": { "en": "Darkhan Tleuzhan", "ru": "Дархан Тлеужан", "kk": "Дархан Тлеужан" },
+  "role": { "en": "Founder and engineer", "ru": "Основатель и инженер", "kk": "Негізін қалаушы және инженер" },
+  "about": {
+    "en": "I learned to code at 14, training for informatics olympiads. Years of contests taught me one habit that matters more than any framework: break a messy problem into small parts, solve each one correctly, and test it before you trust it. That habit earned medals at the Republic and Eurasian Olympiads and a diploma at the ICPC Northern Eurasia Finals.\n\nCode alone doesn’t help a business, so I learned the other half. At SimpleGov 2023, a design sprint run by UsabilityLab and Kazakhstan’s Ministry of Digital Development, my team interviewed real users of eGov.kz, mapped their pain points, tested prototypes and won. We presented to the Minister. I later completed a product management program and built a Chrome extension at nFactorial Incubator, one of 180 people selected from 4,000+ applicants.\n\nFor two years I mentored at Miras Campus, a student residence of 150 to 200 students. I started with a group of 10 first-year students and ended up leading a team of mentors. We ran weekly events, skill workshops and guest lectures, and helped students drop bad habits and build routines that held.\n\nThat’s how I approach automation. First I learn how your team works. Then I find the hours that leak into repetitive tasks and build AI workflows that are reliable enough to forget about. When I hand them over, I explain them so your people trust them and keep using them.",
+    "ru": "Я начал программировать в 14 лет, готовясь к олимпиадам по информатике. Годы соревнований научили меня привычке, которая важнее любого фреймворка: разбить запутанную задачу на маленькие части, правильно решить каждую и проверить решение, прежде чем ему доверять. Эта привычка принесла мне медали Республиканской и Евразийской олимпиад и диплом финала ICPC Northern Eurasia.\n\nОдин код бизнесу не помогает, поэтому я освоил вторую половину. На SimpleGov 2023, дизайн-спринте UsabilityLab и Министерства цифрового развития Казахстана, наша команда опрашивала реальных пользователей eGov.kz, собирала их боли, тестировала прототипы и победила. Мы представили решение министру. Позже я прошёл программу по продакт-менеджменту и сделал Chrome-расширение в nFactorial Incubator, куда отобрали 180 человек из 4 000+ заявок.\n\nДва года я был ментором в Miras Campus, студенческой резиденции на 150–200 человек. Начал с группы из 10 первокурсников, а закончил руководителем команды менторов. Мы проводили еженедельные мероприятия, мастер-классы и гостевые лекции и помогали студентам бросать вредные привычки и выстраивать режим, который держится.\n\nТак же я подхожу к автоматизации. Сначала разбираюсь, как работает ваша команда. Потом нахожу часы, которые утекают в рутину, и строю ИИ-процессы, настолько надёжные, что о них можно забыть. А при передаче объясняю, как они устроены, чтобы ваши люди им доверяли и продолжали ими пользоваться.",
+    "kk": "Мен 14 жасымда информатика олимпиадаларына дайындалып, бағдарламалауды үйрендім. Жылдар бойғы жарыстар мені кез келген фреймворктен маңыздырақ бір әдетке үйретті: шатасқан есепті кішкене бөліктерге бөлу, әрқайсысын дұрыс шешу және оған сенбес бұрын тексеру. Осы әдет Республикалық және Еуразиялық олимпиадалардың медальдарын және ICPC Northern Eurasia финалының дипломын әкелді.\n\nТек код бизнеске көмектеспейді, сондықтан екінші жартысын да меңгердім. UsabilityLab пен Қазақстанның Цифрлық даму министрлігі өткізген SimpleGov 2023 дизайн-спринтінде біздің команда eGov.kz-тің нақты пайдаланушыларымен сұхбаттасып, олардың қиындықтарын жинап, прототиптерді сынап, жеңіске жетті. Шешімді министрге таныстырдық. Кейін продукт-менеджмент бағдарламасын бітіріп, nFactorial Incubator-да Chrome кеңейтуін жасадым: оған 4 000-нан астам өтінімнің ішінен 180 адам іріктелді.\n\nЕкі жыл бойы 150–200 студент тұратын Miras Campus резиденциясында тәлімгер болдым. 10 бірінші курс студентінен тұратын топтан бастап, тәлімгерлер командасының жетекшісі болдым. Апта сайынғы іс-шаралар, шеберлік сабақтары мен қонақ дәрістерін өткізіп, студенттерге зиянды әдеттерден арылып, тұрақты күн тәртібін құруға көмектестік.\n\nАвтоматтандыруға да солай келемін. Алдымен командаңыздың қалай жұмыс істейтінін түсінемін. Содан кейін күйбең жұмысқа кетіп жатқан сағаттарды тауып, ұмытып кетуге болатындай сенімді ЖИ-процестер құрамын. Тапсырған кезде олардың қалай жұмыс істейтінін түсіндіремін, сонда адамдарыңыз оларға сеніп, қолдана береді."
+  },
+  "proofTitle": { "en": "Proof, not promises", "ru": "Факты, а не обещания", "kk": "Уәде емес, дәлел" },
+  "proofs": [
     {
-      "role": { "en": "Founder, AI systems engineer", "ru": "Основатель, инженер ИИ-систем", "kk": "Негізін қалаушы, ЖИ-жүйелер инженері" },
-      "organization": { "en": "MadsDev", "ru": "MadsDev", "kk": "MadsDev" },
-      "start": "2023-02",
-      "end": null,
-      "impact": {
-        "en": "Shipped 20+ agents and automations for clients in retail, logistics and healthcare.",
-        "ru": "Запустил более 20 агентов и автоматизаций для клиентов в ритейле, логистике и медицине.",
-        "kk": "Бөлшек сауда, логистика және медицина саласындағы клиенттерге 20-дан астам агент пен автоматтандыру іске қостым."
+      "title": { "en": "Olympiads and ICPC", "ru": "Олимпиады и ICPC", "kk": "Олимпиадалар және ICPC" },
+      "period": { "en": "2017–2022", "ru": "2017–2022", "kk": "2017–2022" },
+      "story": {
+        "en": "Five years of timed contests judged by automated tests: daily training, a 40-day national team camp and a two-week ICPC camp.",
+        "ru": "Пять лет соревнований на время с автоматической проверкой: ежедневные тренировки, 40-дневные сборы национальной команды и двухнедельный лагерь ICPC.",
+        "kk": "Автоматты тесттермен тексерілетін бес жылдық уақытқа шектелген жарыстар: күнделікті жаттығу, ұлттық құраманың 40 күндік жиыны және екі апталық ICPC лагері."
+      },
+      "result": {
+        "en": "Silver at the Bilim Olympiad, 2 bronzes at the Republic Olympiad, bronze at the Eurasian Olympiad, 3rd-degree diploma at the ICPC Northern Eurasia Finals 2022. Codeforces Specialist.",
+        "ru": "Серебро олимпиады «Білім», 2 бронзы Республиканской олимпиады, бронза Евразийской олимпиады, диплом III степени финала ICPC Northern Eurasia 2022. Specialist на Codeforces.",
+        "kk": "«Білім» олимпиадасының күмісі, Республикалық олимпиаданың 2 қола медалі, Еуразиялық олимпиаданың қоласы, ICPC Northern Eurasia 2022 финалының III дәрежелі дипломы. Codeforces-та Specialist."
+      },
+      "forYou": {
+        "en": "Your edge cases get handled before they break in production.",
+        "ru": "Пограничные случаи обрабатываются до того, как сломают работу.",
+        "kk": "Шекаралық жағдайлар жұмысты бұзбай тұрып ескеріледі."
+      },
+      "image": "/images/founder/icpc.webp",
+      "imageAlt": {
+        "en": "Team photo in front of the ICPC 2022–23 Northern Eurasia Finals banner in Almaty",
+        "ru": "Командное фото у баннера финала ICPC 2022–23 Northern Eurasia в Алматы",
+        "kk": "Алматыдағы ICPC 2022–23 Northern Eurasia финалы баннерінің алдындағы командалық сурет"
       }
     },
     {
-      "role": { "en": "Lead automation engineer", "ru": "Ведущий инженер по автоматизации", "kk": "Автоматтандыру жөніндегі жетекші инженер" },
-      "organization": { "en": "Steppe Logistics (fintech & freight)", "ru": "Steppe Logistics (финтех и грузоперевозки)", "kk": "Steppe Logistics (финтех және жүк тасымалы)" },
-      "start": "2020-04",
-      "end": "2023-01",
-      "impact": {
-        "en": "Automated document flow for 3,000 shipments a month and cut month-end close from 9 days to 3.",
-        "ru": "Автоматизировал документооборот для 3 000 отправлений в месяц и сократил закрытие месяца с 9 до 3 дней.",
-        "kk": "Айына 3 000 жөнелтілімнің құжат айналымын автоматтандырып, айды жабуды 9 күннен 3 күнге қысқарттым."
+      "title": { "en": "Winner, SimpleGov 2023", "ru": "Победа на SimpleGov 2023", "kk": "SimpleGov 2023 жеңімпазы" },
+      "period": { "en": "2023", "ru": "2023", "kk": "2023" },
+      "story": {
+        "en": "A 5-day sprint to redesign the eGov.kz portal, run with the Ministry of Digital Development. We interviewed users, mapped pain points, prototyped and ran usability tests.",
+        "ru": "5-дневный спринт по редизайну портала eGov.kz вместе с Министерством цифрового развития. Мы опрашивали пользователей, собирали боли, делали прототипы и проводили юзабилити-тесты.",
+        "kk": "Цифрлық даму министрлігімен бірге eGov.kz порталын қайта жобалау бойынша 5 күндік спринт. Пайдаланушылармен сұхбаттасып, қиындықтарын жинап, прототип жасап, юзабилити-тест өткіздік."
+      },
+      "result": {
+        "en": "First place out of 5 teams. Presented to the Minister of Digital Development.",
+        "ru": "Первое место среди 5 команд. Презентация министру цифрового развития.",
+        "kk": "5 команданың ішінде бірінші орын. Цифрлық даму министріне таныстырылым."
+      },
+      "forYou": {
+        "en": "I automate the process your team actually runs, not the one on paper.",
+        "ru": "Я автоматизирую процесс, по которому команда работает на деле, а не тот, что на бумаге.",
+        "kk": "Мен қағаздағы емес, командаңыз шын мәнінде жұмыс істейтін процесті автоматтандырамын."
+      },
+      "image": "/images/founder/simplegov.webp",
+      "imageAlt": {
+        "en": "The winning team holding certificates under a screen reading “SimpleGov 2023 winner”",
+        "ru": "Команда-победитель с сертификатами под экраном с надписью «Победитель SimpleGov 2023»",
+        "kk": "«SimpleGov 2023 жеңімпазы» жазуы бар экран астында сертификат ұстаған жеңімпаз команда"
       }
     },
     {
-      "role": { "en": "Backend developer", "ru": "Backend-разработчик", "kk": "Backend әзірлеуші" },
-      "organization": { "en": "Qala Digital agency", "ru": "Агентство Qala Digital", "kk": "Qala Digital агенттігі" },
-      "start": "2017-09",
-      "end": "2020-03",
-      "impact": {
-        "en": "Built integrations between e-commerce stores and local payment and delivery providers for 40+ clients.",
-        "ru": "Делал интеграции интернет-магазинов с местными платёжными и курьерскими сервисами для 40+ клиентов.",
-        "kk": "40-тан астам клиент үшін интернет-дүкендерді жергілікті төлем және курьерлік қызметтермен байланыстырдым."
+      "title": { "en": "Olympiad coach", "ru": "Тренер олимпиадников", "kk": "Олимпиада жаттықтырушысы" },
+      "period": { "en": "2021, 2024", "ru": "2021, 2024", "kk": "2021, 2024" },
+      "story": {
+        "en": "At olympiad training camps in Astana I wrote lesson plans, picked contest problems, lectured on algorithms and data structures, and used feedback to improve the next camp.",
+        "ru": "На олимпиадных сборах в Астане я составлял планы занятий, подбирал задачи для контестов, читал лекции по алгоритмам и структурам данных и улучшал следующие сборы по обратной связи.",
+        "kk": "Астанадағы олимпиада жиындарында сабақ жоспарларын құрып, контест есептерін іріктеп, алгоритмдер мен деректер құрылымы бойынша дәріс оқыдым, келесі жиынды кері байланыс арқылы жақсарттым."
+      },
+      "result": {
+        "en": "About 15 students trained. 8 of them later won medals at the Republic Olympiad.",
+        "ru": "Около 15 учеников. 8 из них потом взяли медали Республиканской олимпиады.",
+        "kk": "Шамамен 15 оқушы. Олардың 8-і кейін Республикалық олимпиадада медаль алды."
+      },
+      "forYou": {
+        "en": "I document and explain what I build, so your team isn’t dependent on me.",
+        "ru": "Я документирую и объясняю то, что строю, чтобы команда не зависела от меня.",
+        "kk": "Командаңыз маған тәуелді болмауы үшін жасағанымды құжаттап, түсіндіремін."
+      },
+      "image": "/images/founder/coach.webp",
+      "imageAlt": {
+        "en": "EdLight Academy letter of appreciation to Tleuzhan Darkhan for the autumn olympiad camp, November 2021",
+        "ru": "Благодарственное письмо EdLight Academy Тлеужану Дархану за осенние олимпиадные сборы, ноябрь 2021",
+        "kk": "EdLight Academy-дің күзгі олимпиада жиыны үшін Тлеужан Дарханға алғыс хаты, 2021 жылғы қараша"
       }
     },
     {
-      "role": { "en": "Junior developer", "ru": "Младший разработчик", "kk": "Кіші әзірлеуші" },
-      "organization": { "en": "University IT office, Almaty", "ru": "IT-отдел университета, Алматы", "kk": "Университеттің IT бөлімі, Алматы" },
-      "start": "2015-06",
-      "end": "2017-08",
-      "impact": {
-        "en": "Replaced paper enrollment forms with an online system used by 8,000 students.",
-        "ru": "Заменил бумажные заявления на онлайн-систему, которой пользовались 8 000 студентов.",
-        "kk": "Қағаз өтініштерді 8 000 студент қолданған онлайн жүйемен алмастырдым."
+      "title": { "en": "nFactorial Incubator", "ru": "nFactorial Incubator", "kk": "nFactorial Incubator" },
+      "period": { "en": "2022", "ru": "2022", "kk": "2022" },
+      "story": {
+        "en": "Selected as one of 180 from 4,000+ applicants. After a full-stack bootcamp I built Webtime Trackshare, a Chrome extension that tracks time on chosen sites and shares it with a mentor.",
+        "ru": "Один из 180 отобранных из 4 000+ заявок. После full-stack буткемпа сделал Webtime Trackshare: Chrome-расширение, которое считает время на выбранных сайтах и делится им с ментором.",
+        "kk": "4 000-нан астам өтінімнің ішінен іріктелген 180 адамның бірі. Full-stack буткемптен кейін Webtime Trackshare жасадым: таңдалған сайттардағы уақытты санап, оны тәлімгермен бөлісетін Chrome кеңейтуі."
+      },
+      "result": {
+        "en": "Shipped and presented at demo day.",
+        "ru": "Запущено и показано на демо-дне.",
+        "kk": "Іске қосылып, демо-күнде көрсетілді."
+      },
+      "forYou": {
+        "en": "Idea to working product, on a deadline.",
+        "ru": "От идеи до работающего продукта в срок.",
+        "kk": "Идеядан жұмыс істейтін өнімге дейін, уақытында."
+      },
+      "image": "/images/founder/nfactorial.webp",
+      "imageAlt": {
+        "en": "Darkhan pointing at the Webtime Trackshare banner at nFactorial Incubator 2022",
+        "ru": "Дархан указывает на баннер Webtime Trackshare на nFactorial Incubator 2022",
+        "kk": "Дархан nFactorial Incubator 2022-дегі Webtime Trackshare баннерін көрсетіп тұр"
+      }
+    },
+    {
+      "title": { "en": "Miras Campus", "ru": "Miras Campus", "kk": "Miras Campus" },
+      "period": { "en": "2024–2026", "ru": "2024–2026", "kk": "2024–2026" },
+      "story": {
+        "en": "A student residence of 150 to 200 people. Year one: mentor to 10 first-years. Year two: lead of the mentor team running sports, book challenges, Sunday workshops and guest lectures.",
+        "ru": "Студенческая резиденция на 150–200 человек. Первый год: ментор 10 первокурсников. Второй: руководитель команды менторов, которая вела спорт, книжные челленджи, воскресные мастер-классы и гостевые лекции.",
+        "kk": "150–200 студент тұратын резиденция. Бірінші жыл: 10 бірінші курс студентінің тәлімгері. Екінші жыл: спорт, кітап челлендждері, жексенбілік шеберлік сабақтары мен қонақ дәрістерін өткізген тәлімгерлер командасының жетекшісі."
+      },
+      "result": {
+        "en": "Students dropped bad habits, newcomers to a big city found a community, and alumni still meet after graduation.",
+        "ru": "Студенты бросали вредные привычки, новички в большом городе нашли сообщество, а выпускники до сих пор встречаются.",
+        "kk": "Студенттер зиянды әдеттерін тастады, үлкен қалаға келген жастар қауымдастық тапты, түлектер әлі де бас қосады."
+      },
+      "forYou": {
+        "en": "I stay accountable over years, and I can run things that involve people.",
+        "ru": "Я отвечаю за результат годами и умею вести процессы, где задействованы люди.",
+        "kk": "Нәтижеге жылдар бойы жауап беремін және адамдар қатысатын процестерді жүргізе аламын."
+      },
+      "image": "/images/founder/miras.webp",
+      "imageAlt": {
+        "en": "Large group photo of Miras Campus students and guests at a 2025 evening event",
+        "ru": "Большое групповое фото студентов Miras Campus и гостей на вечернем мероприятии 2025 года",
+        "kk": "2025 жылғы кешкі іс-шарадағы Miras Campus студенттері мен қонақтарының үлкен топтық суреті"
+      }
+    }
+  ],
+  "whyTitle": { "en": "Why work with me", "ru": "Почему со мной", "kk": "Неге менімен" },
+  "why": [
+    {
+      "title": { "en": "Engineering rigor", "ru": "Инженерная строгость", "kk": "Инженерлік қатаңдық" },
+      "body": {
+        "en": "Olympiad training means I test the edge cases before your customers find them. An automation that fails silently costs more than no automation.",
+        "ru": "Олимпиадная школа приучила проверять пограничные случаи раньше, чем на них наткнутся ваши клиенты. Автоматизация, которая молча ломается, обходится дороже, чем её отсутствие.",
+        "kk": "Олимпиада мектебі шекаралық жағдайларды клиенттеріңіз байқамай тұрып тексеруге үйретті. Үнсіз бұзылатын автоматтандыру оның болмауынан да қымбатқа түседі."
+      }
+    },
+    {
+      "title": { "en": "User research first", "ru": "Сначала исследование", "kk": "Алдымен зерттеу" },
+      "body": {
+        "en": "I won a government UX sprint by interviewing users before building anything. I do the same with your team before I write a single workflow.",
+        "ru": "Я выиграл государственный UX-спринт, потому что сначала поговорил с пользователями. С вашей командой делаю так же, прежде чем написать первый процесс.",
+        "kk": "Мемлекеттік UX-спринтте алдымен пайдаланушылармен сөйлескенім үшін жеңдім. Алғашқы процесті жазбас бұрын командаңызбен де солай істеймін."
+      }
+    },
+    {
+      "title": { "en": "Hand over, no lock-in", "ru": "Передаю, а не привязываю", "kk": "Тапсырамын, байламаймын" },
+      "body": {
+        "en": "Coaching taught me to explain until it clicks. You get documentation and a team that understands what runs in the background.",
+        "ru": "Тренерская работа научила объяснять, пока не станет понятно. Вы получаете документацию и команду, которая понимает, что работает в фоне.",
+        "kk": "Жаттықтырушылық түсінікті болғанша түсіндіруге үйретті. Сіз құжаттама мен фонда не жұмыс істеп тұрғанын түсінетін команда аласыз."
+      }
+    }
+  ],
+  "timelineTitle": { "en": "Timeline", "ru": "Хронология", "kk": "Хронология" },
+  "timeline": [
+    {
+      "period": { "en": "2017–2022", "ru": "2017–2022", "kk": "2017–2022" },
+      "what": {
+        "en": "Informatics olympiads: Republic, Eurasian and Bilim medals",
+        "ru": "Олимпиады по информатике: медали Республиканской, Евразийской и «Білім»",
+        "kk": "Информатика олимпиадалары: Республикалық, Еуразиялық және «Білім» медальдары"
+      }
+    },
+    {
+      "period": { "en": "2021, 2024", "ru": "2021, 2024", "kk": "2021, 2024" },
+      "what": {
+        "en": "Competitive programming coach at olympiad camps",
+        "ru": "Тренер по спортивному программированию на олимпиадных сборах",
+        "kk": "Олимпиада жиындарында спорттық бағдарламалау жаттықтырушысы"
+      }
+    },
+    {
+      "period": { "en": "2022", "ru": "2022", "kk": "2022" },
+      "what": {
+        "en": "nFactorial Incubator, 180 of 4,000+",
+        "ru": "nFactorial Incubator, 180 из 4 000+",
+        "kk": "nFactorial Incubator, 4 000+ ішінен 180"
+      }
+    },
+    {
+      "period": { "en": "2022", "ru": "2022", "kk": "2022" },
+      "what": {
+        "en": "ICPC Northern Eurasia Finals, 3rd-degree diploma",
+        "ru": "Финал ICPC Northern Eurasia, диплом III степени",
+        "kk": "ICPC Northern Eurasia финалы, III дәрежелі диплом"
+      }
+    },
+    {
+      "period": { "en": "2022–2025", "ru": "2022–2025", "kk": "2022–2025" },
+      "what": {
+        "en": "B.Sc., Astana IT University",
+        "ru": "Бакалавриат, Astana IT University",
+        "kk": "Бакалавриат, Astana IT University"
+      }
+    },
+    {
+      "period": { "en": "2023", "ru": "2023", "kk": "2023" },
+      "what": {
+        "en": "Winner, SimpleGov 2023 (eGov.kz redesign)",
+        "ru": "Победитель SimpleGov 2023 (редизайн eGov.kz)",
+        "kk": "SimpleGov 2023 жеңімпазы (eGov.kz қайта жобалау)"
+      }
+    },
+    {
+      "period": { "en": "2024", "ru": "2024", "kk": "2024" },
+      "what": {
+        "en": "Frontend developer, early-stage startup",
+        "ru": "Frontend-разработчик в стартапе на ранней стадии",
+        "kk": "Ерте сатыдағы стартапта frontend әзірлеуші"
+      }
+    },
+    {
+      "period": { "en": "2024–2026", "ru": "2024–2026", "kk": "2024–2026" },
+      "what": {
+        "en": "Mentor and mentor team lead, Miras Campus",
+        "ru": "Ментор и руководитель команды менторов, Miras Campus",
+        "kk": "Miras Campus тәлімгері және тәлімгерлер командасының жетекшісі"
+      }
+    },
+    {
+      "period": { "en": "2025", "ru": "2025", "kk": "2025" },
+      "what": {
+        "en": "Junior+ Product Manager program, Product Masters",
+        "ru": "Программа Junior+ Product Manager, Product Masters",
+        "kk": "Junior+ Product Manager бағдарламасы, Product Masters"
+      }
+    },
+    {
+      "period": { "en": "Now", "ru": "Сейчас", "kk": "Қазір" },
+      "what": {
+        "en": "Founder: AI agents, workflows and automations",
+        "ru": "Основатель: ИИ-агенты, процессы и автоматизации",
+        "kk": "Негізін қалаушы: ЖИ-агенттер, процестер және автоматтандыру"
       }
     }
   ]

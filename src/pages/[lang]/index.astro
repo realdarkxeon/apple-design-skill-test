@@ -7,8 +7,6 @@ import Services from '../../components/Services.astro';
 import Process from '../../components/Process.astro';
 import Projects from '../../components/Projects.astro';
 import Experience from '../../components/Experience.astro';
-import Recommendations from '../../components/Recommendations.astro';
-import People from '../../components/People.astro';
 import Contact from '../../components/Contact.astro';
 import Footer from '../../components/Footer.astro';
 import { LOCALES, type Locale } from '../../lib/i18n';
@@ -24,13 +22,11 @@ const lang = Astro.params.lang as Locale;
   <Header lang={lang} />
   <main id="main">
     <Hero lang={lang} />
-    <Mission lang={lang} />
     <Services lang={lang} />
     <Process lang={lang} />
-    <Projects lang={lang} />
     <Experience lang={lang} />
-    <Recommendations lang={lang} />
-    <People lang={lang} />
+    <Projects lang={lang} />
+    <Mission lang={lang} />
     <Contact lang={lang} />
   </main>
   <Footer lang={lang} />
