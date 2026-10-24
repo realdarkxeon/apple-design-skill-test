@@ -2,230 +2,228 @@
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
 import { url } from '../lib/url';
-import Spotlight from './reactbits/Spotlight';
-import FadeContent from './reactbits/FadeContent';
-import { badgeVariants } from './ui/badge';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 const { projects, ui } = content;
+const lower = (s: string) => s.toLocaleLowerCase(lang);
 ---
 
-<section class="section" id="projects" aria-labelledby="projects-title">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t(projects.eyebrow, lang)}</p>
-      <h2 id="projects-title" class="t-title">{t(projects.title, lang)}</h2>
-    </div>
-    <ul class="grid" role="list">
-      {
-        projects.items.map((p, i) => (
-          <li>
-            <FadeContent client:visible className="fade" duration={800} delay={i * 120} threshold={0.1}>
-            <Spotlight client:visible className="card">
-            <article class="article" aria-labelledby={`project-${i}`}>
-              <img
-                class="media"
-                src={url(p.image)}
-                alt={t(p.imageAlt, lang)}
-                width="1600"
-                height="1000"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="body">
-                <p class="t-footnote client">{t(p.client, lang)}</p>
-                <h3 id={`project-${i}`} class="t-headline">
+<section class="column section-anchor" id="projects" aria-labelledby="projects-title">
+  <div class="card" data-reveal>
+    <p class="t-label">{t(projects.eyebrow, lang)}</p>
+    <h2 id="projects-title" class="t-title">{t(projects.title, lang)}</h2>
+    <table class="board">
+      <caption class="visually-hidden">{t(ui.projects.summary, lang)}</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="rank">#</th>
+          <th scope="col">{lower(t(ui.projects.project, lang))}</th>
+          <th scope="col" class="col-client">{lower(t(ui.projects.client, lang))}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          projects.items.map((p, i) => (
+            <tr>
+              <td class="rank">{i + 1}</td>
+              <td>
+                <a class="row-link" href={`#project-${i}`}>
                   {t(p.title, lang)}
-                </h3>
-                <dl class="facts">
-                  <div>
-                    <dt>{t(ui.projects.problem, lang)}</dt>
-                    <dd>{t(p.problem, lang)}</dd>
-                  </div>
-                  <div>
-                    <dt>{t(ui.projects.solution, lang)}</dt>
-                    <dd>{t(p.solution, lang)}</dd>
-                  </div>
-                  <div class="result">
-                    <dt>{t(ui.projects.result, lang)}</dt>
-                    <dd>{t(p.result, lang)}</dd>
-                  </div>
-                </dl>
-                <figure class="quote">
-                  <blockquote>
-                    <p>{t(p.testimonial.quote, lang)}</p>
-                  </blockquote>
-                  <figcaption>— {t(p.testimonial.author, lang)}</figcaption>
-                </figure>
-                <div class="stack">
-                  <span class="visually-hidden">{t(ui.projects.stack, lang)}</span>
-                  <ul role="list">
-                    {p.stack.map((s) => (
-                      <li class={badgeVariants({ variant: 'outline' })}>{s}</li>
-                    ))}
-                  </ul>
-                </div>
-                <a class="link" href={p.link} target="_blank" rel="noopener">
-                  {t(ui.projects.viewProject, lang)}
-                  <span class="arrow" aria-hidden="true">↗</span>
-                  <span class="visually-hidden">{t(ui.a11y.opensInNewTab, lang)}</span>
                 </a>
-              </div>
-            </article>
-            </Spotlight>
-            </FadeContent>
-          </li>
-        ))
-      }
-    </ul>
+              </td>
+              <td class="col-client t-muted">{t(p.client, lang)}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </div>
+
+  {
+    projects.items.map((p, i) => (
+      <article class="card section-anchor" id={`project-${i}`} aria-labelledby={`project-${i}-title`} data-reveal>
+        <img
+          class="media"
+          src={url(p.image)}
+          alt={t(p.imageAlt, lang)}
+          width="1600"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="head">
+          <p class="meta">
+            <span class="stat-rank">{String(i + 1).padStart(2, '0')}</span>
+            <span class="t-muted">{t(p.client, lang)}</span>
+          </p>
+          <h3 id={`project-${i}-title`} class="t-title">
+            {t(p.title, lang)}
+          </h3>
+        </div>
+        <dl class="facts">
+          <div>
+            <dt class="t-small-label">{t(ui.projects.problem, lang)}</dt>
+            <dd>{t(p.problem, lang)}</dd>
+          </div>
+          <div>
+            <dt class="t-small-label">{t(ui.projects.solution, lang)}</dt>
+            <dd>{t(p.solution, lang)}</dd>
+          </div>
+          <div>
+            <dt class="t-small-label">{t(ui.projects.result, lang)}</dt>
+            <dd class="stat-row result">
+              <span class="stat-value">{t(p.result, lang)}</span>
+            </dd>
+          </div>
+        </dl>
+        <figure class="signoff">
+          <blockquote>
+            <p>“{t(p.testimonial.quote, lang)}”</p>
+          </blockquote>
+          <figcaption>— {t(p.testimonial.author, lang)}</figcaption>
+        </figure>
+        <div class="foot">
+          <span class="visually-hidden">{t(ui.projects.stack, lang)}</span>
+          <ul class="stack" role="list">
+            {p.stack.map((s) => (
+              <li class="tag">{s}</li>
+            ))}
+          </ul>
+          <a class="link" href={p.link} target="_blank" rel="noopener">
+            {lower(t(ui.projects.viewProject, lang))} <span aria-hidden="true">↗</span>
+            <span class="visually-hidden">{t(ui.a11y.opensInNewTab, lang)}</span>
+          </a>
+        </div>
+      </article>
+    ))
+  }
 </section>
 
 <style>
-  .grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  .board {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
   }
 
-  /* The card and its fade wrapper are rendered by React islands, outside this component's style scope. */
-  .grid > li,
-  .grid :global(astro-island),
-  .grid :global(.fade) {
-    display: flex;
-    flex-direction: column;
+  th {
+    height: 2.25rem;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    font-weight: 400;
+    text-align: left;
+    color: var(--text-muted);
   }
 
-  .grid :global(astro-island),
-  .grid :global(.fade),
-  .grid :global(.card),
-  .article {
-    flex: 1;
+  td {
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    font-family: var(--font-mono);
+    vertical-align: middle;
   }
 
-  .grid :global(.card) {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    overflow: hidden;
-    border-radius: var(--radius-lg);
+  tbody tr {
+    transition: background-color 150ms ease;
   }
 
-  .article {
-    display: flex;
-    flex-direction: column;
+  tbody tr:hover {
+    background: rgba(255, 249, 217, 0.05);
+  }
+
+  .rank {
+    width: 2.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .row-link {
+    text-decoration: none;
+  }
+
+  .row-link:hover {
+    text-decoration: underline;
+  }
+
+  .col-client {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 47.99rem) {
+    .col-client {
+      display: none;
+    }
   }
 
   .media {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
-    background: var(--fill);
+    border-radius: 10px;
+    /* The illustrations are bright blue; pull them into the warm, dim palette of the stage. */
+    filter: grayscale(1) sepia(0.35) brightness(0.62) contrast(1.1);
   }
 
-  .body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+  .head {
+    display: grid;
     gap: 0.75rem;
-    padding: clamp(1.25rem, 1rem + 1vw, 2rem);
   }
 
-  .client {
-    color: var(--text-3);
-    font-weight: 500;
+  .meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
   }
 
   .facts {
     display: grid;
-    gap: 0.875rem;
-    margin-top: 0.25rem;
-  }
-
-  dt {
-    font-size: 0.8125rem;
-    line-height: 1.38;
-    letter-spacing: 0.012em;
-    font-weight: 600;
-    color: var(--text-3);
+    gap: 1rem;
   }
 
   dd {
-    margin-top: 0.125rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--text-2);
+    margin-top: 0.25rem;
   }
 
-  .result dd {
-    color: var(--text);
-    font-weight: 600;
+  .result {
+    grid-template-columns: 1fr;
   }
 
-  .quote {
-    margin-top: 0.5rem;
-    padding: 1rem 1.125rem;
-    border-radius: var(--radius);
-    background: var(--fill);
+  .result .stat-value {
+    text-align: left;
   }
 
-  .quote p {
-    font-size: 1rem;
-    line-height: 1.47;
-    color: var(--text);
+  .signoff p {
+    max-width: 32rem;
   }
 
-  .quote figcaption {
-    margin-top: 0.5rem;
-    font-size: 0.8125rem;
-    letter-spacing: 0.012em;
-    color: var(--text-3);
+  .signoff figcaption {
+    color: var(--text-muted);
+    font-size: 0.875rem;
   }
 
-  .stack ul {
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .stack {
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem;
   }
 
   .link {
-    display: inline-flex;
-    gap: 0.25rem;
-    align-self: flex-start;
-    margin-top: auto;
-    padding-block: 0.5rem;
-    font-weight: 600;
-  }
-
-  /* The arrow points where the link goes and leans that way on hover/press. */
-  .arrow {
-    display: inline-block;
-    transition: transform 200ms var(--ease-out);
-  }
-
-  .link:hover .arrow,
-  .link:active .arrow {
-    transform: translate(2px, -2px);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .arrow {
-      transition: none;
-    }
-
-    .link:hover .arrow,
-    .link:active .arrow {
-      transform: none;
-    }
-  }
-
-  @media (prefers-contrast: more) {
-    .grid :global(.card) {
-      box-shadow: none;
-      border: 1px solid var(--text);
-    }
+    font-family: var(--font-mono);
+    font-size: 1rem;
   }
 </style>

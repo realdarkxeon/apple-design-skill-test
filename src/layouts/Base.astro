@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets';
+import Stage from '../components/stage/Stage';
 import '../styles/global.css';
 import { content } from '../lib/content';
 import { DEFAULT_LOCALE, LOCALES, ogLocale, t, type Locale } from '../lib/i18n';
@@ -20,9 +21,10 @@ const pageTitle = title ?? t(ui.meta.title, lang);
 const pageDescription = description ?? t(ui.meta.description, lang);
 const canonical = absoluteUrl(`${lang}/${path}`, Astro.site);
 const ogImage = absoluteUrl('images/og.png', Astro.site);
-// Plus Jakarta Sans has no basic Cyrillic, so RU/KK headings use Onest (see --font-heading in global.css).
-const headingFont = lang === 'en' ? '--font-jakarta' : '--font-onest';
-const headingSubset = lang === 'en' ? 'latin' : 'cyrillic';
+// Pixelify Sans has no Kazakh letters, so KK headings use Tiny5 (see --font-display in global.css).
+const displayFont = lang === 'kk' ? '--font-tiny5' : '--font-pixelify';
+const subset = lang === 'en' ? 'latin' : 'cyrillic';
+const videoSrc = settings.backgroundVideo ? url(settings.backgroundVideo.replace(/^\//, '')) : undefined;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -43,7 +45,11 @@ const jsonLd = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{pageTitle}</title>
-    <Font cssVariable={headingFont} preload={[{ subset: headingSubset }]} />
+    <script is:inline>document.documentElement.setAttribute('data-js', '');</script>
+    <Font cssVariable={displayFont} preload={[{ subset }]} />
+    <Font cssVariable="--font-inter" preload={[{ subset, style: 'normal' }]} />
+    <Font cssVariable="--font-jetbrains" preload={[{ subset }]} />
+    <Font cssVariable="--font-instrument" />
     <meta name="description" content={pageDescription} />
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && <link rel="canonical" href={canonical} />}
@@ -68,8 +74,7 @@ const jsonLd = {
     {LOCALES.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
     <meta name="twitter:card" content="summary_large_image" />
 
-    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFF9D9" />
     <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
     <link rel="icon" href={url('favicon-32.png')} sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
@@ -77,6 +82,30 @@ const jsonLd = {
     {!noindex && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
-    <slot />
+    <div class="stage" aria-hidden="true">
+      <Stage client:idle videoSrc={videoSrc} />
+    </div>
+    <div class="page">
+      <slot />
+    </div>
+    <div class="frame" aria-hidden="true"></div>
+    <script>
+      // Reveal-on-enter for [data-reveal] elements (runs once each).
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            e.target.setAttribute('data-revealed', '');
+            io.unobserve(e.target);
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+      );
+      document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
+        const d = el.dataset.revealDelay;
+        if (d) el.style.setProperty('--reveal-delay', `${d}ms`);
+        io.observe(el);
+      });
+    </script>
   </body>
 </html>

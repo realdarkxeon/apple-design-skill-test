@@ -13,11 +13,11 @@ const { ui } = content;
 const year = new Date().getFullYear();
 ---
 
-<footer class="footer">
-  <div class="container inner">
+<footer class="column footer">
+  <div class="chip inner">
     <div>
-      <p class="brand">{ui.header.brand}</p>
-      <p class="t-footnote muted">{t(ui.footer.brandFull, lang)}</p>
+      <p class="brand">{ui.header.brand.toLowerCase()}</p>
+      <p class="t-muted small">{t(ui.footer.brandFull, lang)}</p>
     </div>
     <nav aria-label={t(ui.header.languageLabel, lang)}>
       <ul role="list" class="langs">
@@ -32,23 +32,24 @@ const year = new Date().getFullYear();
         }
       </ul>
     </nav>
-    <p class="t-footnote muted">{t(ui.footer.copyright, lang).replace('{year}', String(year))}</p>
-    <a class="t-footnote" href="#top">{t(ui.footer.backToTop, lang)}</a>
+    <p class="t-muted small">{t(ui.footer.copyright, lang).replace('{year}', String(year))}</p>
+    <a class="small top" href="#top">{t(ui.footer.backToTop, lang)} <span aria-hidden="true">↑</span></a>
   </div>
 </footer>
 
 <style>
+  /* Leaves room for the sticky CTA under the last card. */
   .footer {
-    padding-block: 3rem calc(3rem + env(safe-area-inset-bottom));
-    border-top: 1px solid var(--separator);
+    padding-bottom: calc(var(--cta-h) + 3rem + env(safe-area-inset-bottom));
   }
 
   .inner {
     display: grid;
-    gap: 1.25rem;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 40rem) {
     .inner {
       grid-template-columns: 1fr auto;
       align-items: center;
@@ -56,13 +57,14 @@ const year = new Date().getFullYear();
   }
 
   .brand {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    letter-spacing: -0.012em;
+    font-family: var(--font-logo);
+    font-size: 1.375rem;
+    line-height: 1.1;
   }
 
-  .muted {
-    color: var(--text-3);
+  .small {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
   }
 
   .langs {
@@ -73,12 +75,16 @@ const year = new Date().getFullYear();
 
   .langs a {
     display: inline-block;
-    padding-block: 0.5rem;
-    font-size: 0.9375rem;
+    padding-block: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
   }
 
+  .langs a:hover,
   .langs a[aria-current] {
     color: var(--text);
-    font-weight: 600;
+    text-decoration: underline;
   }
 </style>

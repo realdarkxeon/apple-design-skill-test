@@ -9,118 +9,68 @@ const { lang } = Astro.props;
 const { people, ui } = content;
 ---
 
-<section class="section people" id="people" aria-labelledby="people-title">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t(people.eyebrow, lang)}</p>
-      <h2 id="people-title" class="t-title">{t(people.title, lang)}</h2>
-    </div>
-    <ul class="list" role="list">
+<section class="column section-anchor" id="people" aria-labelledby="people-title">
+  <div class="card" data-reveal>
+    <p class="t-label">{t(people.eyebrow, lang)}</p>
+    <h2 id="people-title" class="t-title">{t(people.title, lang)}</h2>
+    <ol class="list" role="list">
       {
-        people.items.map((person) => (
+        people.items.map((person, i) => (
           <li class="person">
-            <span class="initials" aria-hidden="true">
-              {person.name
-                .split(/\s+/)
-                .map((w) => w[0])
-                .slice(0, 2)
-                .join('')}
-            </span>
-            <h3 class="t-headline">{person.name}</h3>
-            <p class="t-footnote who">{t(person.who, lang)}</p>
-            <p class="meaning">{t(person.meaning, lang)}</p>
-            <a class="link" href={person.link} target="_blank" rel="noopener">
-              {t(ui.people.visit, lang)}
-              <span class="visually-hidden">: {person.name} {t(ui.a11y.opensInNewTab, lang)}</span>
-              <span aria-hidden="true">↗</span>
-            </a>
+            <span class="stat-rank" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="body">
+              <h3 class="name">{person.name}</h3>
+              <p class="t-muted who">{t(person.who, lang)}</p>
+              <p>{t(person.meaning, lang)}</p>
+              <a class="link" href={person.link} target="_blank" rel="noopener">
+                {t(ui.people.visit, lang).toLocaleLowerCase(lang)}
+                <span class="visually-hidden">: {person.name} {t(ui.a11y.opensInNewTab, lang)}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </li>
         ))
       }
-    </ul>
+    </ol>
   </div>
 </section>
 
 <style>
-  .people {
-    background: var(--bg-raised);
-  }
-
-  /* Hairline-separated rows: avatar, name + role, why they matter, link. */
   .list {
     display: grid;
-    border-top: 1px solid var(--separator);
   }
 
   .person {
     display: grid;
-    grid-template-columns: 2.75rem 1fr;
-    grid-template-areas:
-      'avatar name'
-      'avatar who'
-      '. meaning'
-      '. link';
-    column-gap: 1rem;
-    row-gap: 0.25rem;
-    padding-block: 1.5rem;
-    border-bottom: 1px solid var(--separator);
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.75rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--divider);
   }
 
-  .initials {
-    grid-area: avatar;
+  .person .stat-rank {
+    padding-top: 0.125rem;
+  }
+
+  .body {
     display: grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    background: var(--fill-strong);
-    color: var(--text-2);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    gap: 0.375rem;
   }
 
-  .person h3 {
-    grid-area: name;
-    align-self: end;
+  .name {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 700;
   }
 
   .who {
-    grid-area: who;
-    color: var(--text-3);
-  }
-
-  .meaning {
-    grid-area: meaning;
-    margin-top: 0.5rem;
-    max-width: 38rem;
-    color: var(--text-2);
-    font-size: 1rem;
-    line-height: 1.55;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
   }
 
   .link {
-    grid-area: link;
     justify-self: start;
-    padding-top: 0.5rem;
-    font-weight: 600;
-  }
-
-  @media (min-width: 56rem) {
-    .person {
-      grid-template-columns: 2.75rem minmax(12rem, 16rem) 1fr auto;
-      grid-template-areas:
-        'avatar name meaning link'
-        'avatar who meaning link';
-      column-gap: 1.5rem;
-    }
-
-    .meaning {
-      margin-top: 0;
-    }
-
-    .link {
-      padding-top: 0;
-    }
+    margin-top: 0.25rem;
+    font-family: var(--font-mono);
   }
 </style>

@@ -1,0 +1,243 @@
+---
+/**
+ * Career timeline as a dashboard bar: ~90 thin ticks from the first milestone to the end of next year.
+ * Ticks before today are "elapsed", later ones "remaining"; milestone starts, today and the end get
+ * their own marker colours. Elapsed state is recomputed in the browser, so it never goes stale.
+ * The bar is decorative (hover shows a tick's date); the list below carries the same facts.
+ */
+import { intlLocale, t, type Locale } from '../lib/i18n';
+import type { I18nText } from '../content/schemas';
+
+interface Props {
+  lang: Locale;
+  rows: { period: I18nText; what: I18nText }[];
+  nowLabel: string;
+}
+
+const { lang, rows, nowLabel } = Astro.props;
+const TICKS = 90;
+const today = new Date();
+const startYear = (period: string) => Number(period.match(/\d{4}/)?.[0] ?? today.getFullYear());
+const items = rows.map((r) => ({ period: t(r.period, lang), what: t(r.what, lang) }));
+const first = Math.min(...items.map((r) => startYear(r.period)));
+const from = Date.UTC(first, 0, 1);
+const to = Date.UTC(today.getFullYear() + 1, 11, 31);
+const span = to - from;
+const tickAt = (ms: number) => Math.min(TICKS - 1, Math.max(0, Math.floor(((ms - from) / span) * TICKS)));
+const milestones = new Map<number, string>();
+for (const r of items) {
+  const i = tickAt(Date.UTC(startYear(r.period), 0, 1));
+  milestones.set(i, milestones.has(i) ? `${milestones.get(i)} · ${r.what}` : r.what);
+}
+const ticks = Array.from({ length: TICKS }, (_, i) => ({
+  ms: Math.round(from + ((i + 0.5) / TICKS) * span),
+  milestone: milestones.get(i),
+}));
+const todayPct = ((today.getTime() - from) / span) * 100;
+const fmt = new Intl.DateTimeFormat(intlLocale[lang], { month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+
+<div class="tl" data-timeline data-lang={intlLocale[lang]}>
+  <div class="tl-head" aria-hidden="true">
+    <div class="tl-mark tl-mark-start">
+      <span class="t-small-label">{first}</span>
+      <span class="tl-date">{fmt.format(from)}</span>
+    </div>
+    <div class="tl-mark tl-mark-now" style={`--x: ${todayPct}%`} data-now-mark>
+      <span class="t-small-label">{nowLabel}</span>
+      <span class="tl-date" data-now-date>{fmt.format(today)}</span>
+    </div>
+    <div class="tl-mark tl-mark-end">
+      <span class="t-small-label">{today.getFullYear() + 1}</span>
+      <span class="tl-date">{fmt.format(to)}</span>
+    </div>
+  </div>
+
+  <div class="tl-bar" aria-hidden="true" data-bar>
+    {
+      ticks.map((tick, i) => (
+        <span
+          class:list={['tl-tick', { 'is-start': i === 0, 'is-end': i === TICKS - 1, 'is-milestone': tick.milestone && i !== 0 }]}
+          data-ms={tick.ms}
+          data-label={tick.milestone}
+          data-elapsed={tick.ms <= today.getTime() ? '' : undefined}
+        />
+      ))
+    }
+    <span class="tl-tip" data-tip hidden></span>
+  </div>
+
+  <ul class="dash-list tl-list" role="list">
+    {
+      items.map((r) => (
+        <li>
+          <span>
+            <span class="tl-period">{r.period}</span> {r.what}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-timeline]').forEach((root) => {
+    const bar = root.querySelector<HTMLElement>('[data-bar]')!;
+    const tip = root.querySelector<HTMLElement>('[data-tip]')!;
+    const ticks = [...bar.querySelectorAll<HTMLElement>('.tl-tick')];
+    const fmt = new Intl.DateTimeFormat(root.dataset.lang, { month: 'short', year: 'numeric', timeZone: 'UTC' });
+    const now = Date.now();
+
+    // Recompute elapsed / today from the visitor's clock.
+    let todayIndex = -1;
+    ticks.forEach((tick, i) => {
+      const elapsed = Number(tick.dataset.ms) <= now;
+      tick.toggleAttribute('data-elapsed', elapsed);
+      if (elapsed) todayIndex = i;
+    });
+    ticks.forEach((tick, i) => tick.classList.toggle('is-today', i === todayIndex));
+    const first = Number(ticks[0].dataset.ms);
+    const last = Number(ticks[ticks.length - 1].dataset.ms);
+    const pct = Math.min(100, Math.max(0, ((now - first) / (last - first)) * 100));
+    root.querySelector<HTMLElement>('[data-now-mark]')?.style.setProperty('--x', `${pct}%`);
+    const nowDate = root.querySelector('[data-now-date]');
+    if (nowDate) nowDate.textContent = fmt.format(now);
+
+    const show = (e: PointerEvent) => {
+      const rect = bar.getBoundingClientRect();
+      const i = Math.min(ticks.length - 1, Math.max(0, Math.floor(((e.clientX - rect.left) / rect.width) * ticks.length)));
+      const tick = ticks[i];
+      const label = tick.dataset.label;
+      tip.textContent = fmt.format(Number(tick.dataset.ms)) + (label ? ` — ${label}` : '');
+      tip.hidden = false;
+      const x = tick.offsetLeft + tick.offsetWidth / 2;
+      tip.style.setProperty('--x', `${x}px`);
+      tip.toggleAttribute('data-flip', x > rect.width / 2);
+    };
+    bar.addEventListener('pointermove', show);
+    bar.addEventListener('pointerleave', () => (tip.hidden = true));
+  });
+</script>
+
+<style>
+  .tl {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .tl-head {
+    position: relative;
+    height: 2.25rem;
+  }
+
+  .tl-mark {
+    position: absolute;
+    top: 0;
+    display: grid;
+    gap: 0.125rem;
+    white-space: nowrap;
+  }
+
+  .tl-mark-start {
+    left: 0;
+  }
+
+  .tl-mark-end {
+    right: 0;
+    text-align: right;
+  }
+
+  /* Right-aligned above its tick. */
+  .tl-mark-now {
+    right: calc(100% - var(--x));
+    text-align: right;
+  }
+
+  .tl-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .tl-bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    height: 2.25rem;
+  }
+
+  .tl-tick {
+    flex: 1;
+    min-width: 1px;
+    max-width: 3px;
+    border-radius: 1px;
+    background: var(--tl-remaining);
+  }
+
+  .tl-tick[data-elapsed] {
+    background: var(--tl-elapsed);
+  }
+
+  .tl-tick.is-milestone {
+    background: var(--tl-merge);
+  }
+
+  .tl-tick.is-start {
+    background: var(--tl-start);
+  }
+
+  .tl-tick.is-today {
+    background: var(--tl-finish);
+    box-shadow: 0 0 6px var(--tl-finish);
+  }
+
+  .tl-tick.is-end {
+    background: var(--tl-end);
+  }
+
+  .tl-tip {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: var(--x);
+    translate: -0.75rem 0;
+    z-index: 2;
+    max-width: min(22rem, 80vw);
+    padding: 0.375rem 0.625rem;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--divider);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.35;
+    white-space: normal;
+    width: max-content;
+    pointer-events: none;
+  }
+
+  .tl-tip[data-flip] {
+    translate: calc(-100% + 0.75rem) 0;
+  }
+
+  .tl-tip[hidden] {
+    display: none;
+  }
+
+  .tl-list {
+    margin-top: 0.75rem;
+  }
+
+  .tl-period {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-right: 0.375rem;
+  }
+
+  /* The "now" marker would collide with the year labels near the edges on phones. */
+  @media (max-width: 30rem) {
+    .tl-mark-end {
+      display: none;
+    }
+  }
+</style>

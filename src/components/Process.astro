@@ -1,7 +1,6 @@
 ---
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
-import { buttonVariants } from './ui/button';
 import ProcessDemo from './ProcessDemo';
 
 interface Props {
@@ -12,12 +11,10 @@ const { process, ui } = content;
 const r = process.result;
 ---
 
-<section class="section" id="process" aria-labelledby="process-title">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t(process.eyebrow, lang)}</p>
-      <h2 id="process-title" class="t-title">{t(process.title, lang)}</h2>
-    </div>
+<section class="column section-anchor" id="process" aria-labelledby="process-title">
+  <div class="card" data-reveal>
+    <p class="t-label">{t(process.eyebrow, lang)}</p>
+    <h2 id="process-title" class="t-title">{t(process.title, lang)}</h2>
     <ProcessDemo
       client:visible
       steps={process.steps.map((s) => ({ key: s.key, title: t(s.title, lang), caption: t(s.caption, lang) }))}
@@ -36,7 +33,15 @@ const r = process.result;
       play={t(process.play, lang)}
       pause={t(process.pause, lang)}
     >
-      <a class={buttonVariants({ size: 'lg' })} href="#contact">{t(process.cta, lang)}</a>
+      <a class="more" href="#contact">{t(process.cta, lang)} <span aria-hidden="true">→</span></a>
     </ProcessDemo>
   </div>
 </section>
+
+<style>
+  .more {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: var(--text);
+  }
+</style>

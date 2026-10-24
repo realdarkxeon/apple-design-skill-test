@@ -15,13 +15,11 @@ const tabs = (['read', 'watch', 'use'] as const).map((key) => ({
 }));
 ---
 
-<section class="section" id="recommendations" aria-labelledby="recommendations-title">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t(rec.eyebrow, lang)}</p>
-      <h2 id="recommendations-title" class="t-title">{t(rec.title, lang)}</h2>
-      <p class="t-lead">{t(rec.intro, lang)}</p>
-    </div>
+<section class="column section-anchor" id="recommendations" aria-labelledby="recommendations-title">
+  <div class="card" data-reveal>
+    <p class="t-label">{t(rec.eyebrow, lang)}</p>
+    <h2 id="recommendations-title" class="t-title">{t(rec.title, lang)}</h2>
+    <p>{t(rec.intro, lang)}</p>
     <RecommendationTabs
       client:visible
       tabs={tabs}

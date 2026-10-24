@@ -2,7 +2,6 @@
 import { content } from '../lib/content';
 import { LOCALES, t, type Locale } from '../lib/i18n';
 import { localeHome } from '../lib/url';
-import { buttonVariants } from './ui/button';
 
 interface Props {
   lang: Locale;
@@ -11,53 +10,55 @@ const { lang } = Astro.props;
 const { ui } = content;
 ---
 
-<div class="nf container" data-locale-block={lang} lang={lang}>
-  <p class="code" aria-hidden="true">404</p>
-  <h1 class="t-title">{t(ui.notFound.title, lang)}</h1>
-  <p class="t-lead">{t(ui.notFound.body, lang)}</p>
-  <a class={buttonVariants()} href={localeHome(lang)}>{t(ui.notFound.home, lang)}</a>
-  <nav aria-label={t(ui.notFound.otherLanguages, lang)}>
-    <p class="t-footnote others">{t(ui.notFound.otherLanguages, lang)}</p>
-    <ul role="list">
-      {
-        LOCALES.filter((l) => l !== lang).map((l) => (
-          <li>
-            <a href={localeHome(l)} hreflang={l} lang={l}>
-              {ui.languages[l].name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+<div class="nf column" data-locale-block={lang} lang={lang}>
+  <p class="code t-hero" aria-hidden="true">404</p>
+  <div class="card">
+    <h1 class="t-title">{t(ui.notFound.title, lang)}</h1>
+    <p>{t(ui.notFound.body, lang)}</p>
+    <a class="home" href={localeHome(lang)}>{t(ui.notFound.home, lang).toLocaleLowerCase(lang)} <span aria-hidden="true">→</span></a>
+    <nav aria-label={t(ui.notFound.otherLanguages, lang)}>
+      <p class="t-small-label">{t(ui.notFound.otherLanguages, lang)}</p>
+      <ul role="list">
+        {
+          LOCALES.filter((l) => l !== lang).map((l) => (
+            <li>
+              <a href={localeHome(l)} hreflang={l} lang={l}>
+                {ui.languages[l].name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </div>
 
 <style>
   .nf {
     display: grid;
-    justify-items: start;
-    gap: 1.25rem;
-    padding-block: clamp(4rem, 3rem + 8vw, 10rem);
-    max-width: 44rem;
-    margin-inline: auto;
+    gap: 2rem;
+    padding-block: clamp(7rem, 20vh, 12rem) 4rem;
   }
 
   .code {
-    font-size: clamp(4rem, 3rem + 6vw, 7rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    font-weight: 800;
-    color: var(--text-3);
+    font-size: clamp(5rem, 3rem + 10vw, 9rem);
   }
 
-  .others {
-    color: var(--text-3);
-    margin-top: 1rem;
+  .home {
+    justify-self: start;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background: var(--frame);
+    color: #0d0d0b;
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    text-decoration: none;
   }
 
   ul {
     display: flex;
     gap: 1rem;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
   }
 </style>

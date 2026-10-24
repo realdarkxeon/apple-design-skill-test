@@ -1,144 +1,119 @@
 ---
 import { content } from '../lib/content';
 import { t, type Locale } from '../lib/i18n';
-import HeroAurora from './reactbits/HeroAurora';
-import BlurText from './reactbits/BlurText';
-import StatusShine from './reactbits/StatusShine';
-import Magnet from './reactbits/Magnet';
-import { buttonVariants } from './ui/button';
-import AcronymMorph from './reactbits/AcronymMorph';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 const { hero, ui } = content;
-const brandName = `${ui.header.brand} — ${hero.brandExpansion.map((s) => s.full).join(' ')}`;
 ---
 
-<section class="hero" id="top" aria-labelledby="hero-name">
-  <div class="backdrop" aria-hidden="true">
-    <HeroAurora client:idle />
-  </div>
-  <div class="container hero-inner">
-    <p class="status t-footnote">
-      <span class="dot" aria-hidden="true"></span>
-      <StatusShine client:visible text={t(hero.availability, lang)} />
-    </p>
-    <h1 id="hero-name" class="brand">
-      <AcronymMorph client:visible segments={hero.brandExpansion} label={brandName} />
-    </h1>
-    <BlurText
-      client:load
-      text={t(hero.offer, lang)}
-      className="t-display offer"
-      animateBy="words"
-      direction="bottom"
-      delay={70}
-      stepDuration={0.3}
-    />
-    <p class="t-lead subline">{t(hero.subline, lang)}</p>
-    <div class="ctas">
-      <Magnet client:visible padding={60} magnetStrength={6}>
-        <a class={buttonVariants({ size: 'lg' })} href="#contact" data-hero-cta>{t(hero.primaryCta, lang)}</a>
-      </Magnet>
-      <a class={buttonVariants({ variant: 'secondary', size: 'lg' })} href="#projects">{t(hero.secondaryCta, lang)}</a>
-    </div>
-    <p class="role t-footnote">{t(hero.role, lang)}</p>
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="column inner">
+    <p class="brand" data-reveal>{t(ui.footer.brandFull, lang)}</p>
+    <h1 id="hero-title" class="t-hero" data-reveal>{t(hero.offer, lang)}</h1>
+    <p class="chip subline" data-reveal data-reveal-delay="150">{t(hero.subline, lang)}</p>
+    <ul class="facts" role="list" data-reveal data-reveal-delay="300">
+      <li class="chip fact"><span class="dot" aria-hidden="true"></span>{t(hero.availability, lang)}</li>
+      <li class="chip fact">{t(hero.role, lang)}</li>
+    </ul>
   </div>
 </section>
 
 <style>
   .hero {
-    position: relative;
-    isolation: isolate;
-    padding-block: clamp(1rem, -0.5rem + 5vw, 6rem) clamp(3.5rem, 2rem + 6vw, 7rem);
-  }
-
-  /* Aurora sits under the transparent header too, so it starts above the hero's top edge. */
-  .backdrop {
-    position: absolute;
-    inset: calc(-1 * var(--header-h)) 0 0;
-    z-index: -1;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
-    mask-image: linear-gradient(to bottom, #000 40%, transparent);
-  }
-
-  .backdrop :global(.hero-aurora) {
-    position: absolute;
-    inset: 0;
-  }
-
-  .hero-inner {
     display: grid;
-    justify-items: start;
-  }
-
-  .status {
-    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.3125rem 0.75rem;
-    border-radius: 999px;
-    background: var(--fill);
-    color: var(--text-2);
-    font-weight: 500;
+    min-height: calc(100svh - 2 * var(--inset));
+    padding-block: 6rem 8rem;
   }
 
-  .dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--positive);
+  .inner {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    text-align: center;
   }
 
-  /* Page heading: MadsDev unfolding into what it stands for. */
   .brand {
-    margin-top: clamp(1rem, 0.6rem + 1.5vw, 1.5rem);
-    font-family: var(--font-heading);
-    font-size: clamp(0.8125rem, 0.6rem + 1vw, 1.3125rem);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: -0.005em;
-    color: var(--link);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--label);
   }
 
-  /* BlurText renders its own <p>, outside this component's style scope. */
-  .hero-inner :global(.offer) {
-    margin-top: 0.5rem;
-    max-width: 17em;
-    text-wrap: balance;
+  .t-hero {
+    max-width: 14em;
   }
 
   .subline {
-    margin-top: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
+    max-width: 36rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .facts {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
     max-width: 36rem;
   }
 
-  .ctas {
-    display: flex;
+  .fact {
+    display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .role {
-    margin-top: 1.5rem;
-    color: var(--text-3);
+  .dot {
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--tl-start);
+    box-shadow: 0 0 8px var(--tl-start);
   }
 
-  @media (max-width: 30rem) {
-    .ctas {
-      width: 100%;
+  @media (min-width: 30rem) {
+    .brand {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .inner {
+      gap: 2rem;
     }
 
-    .ctas a,
-    .ctas > :global(astro-island),
-    .ctas :global(astro-island > div),
-    .ctas :global(astro-island > div > div) {
-      flex: 1 1 100%;
-      width: 100%;
+    .brand {
+      font-size: 0.9375rem;
+    }
+
+    .subline {
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+    }
+
+    .facts {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .fact {
+      font-size: 0.9375rem;
     }
   }
 </style>

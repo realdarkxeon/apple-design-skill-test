@@ -1,9 +1,8 @@
 /*
- * Global tokens and base styles.
- * Design decisions follow the apple-design skill: system font for body text (optical sizing built in),
- * a self-hosted geometric face for headings,
- * size-specific tracking and leading, light/dark adaptive colour, translucent chrome,
- * press feedback on pointer-down, and reduced motion / transparency / contrast variants.
+ * Global tokens and base styles — "Glass Field".
+ * A cream passe-partout frames a fixed, dark nature stage (generated meadow or video + ASCII glyph field).
+ * Content scrolls over it in calm translucent black cards with warm cream text.
+ * Three type voices: pixel display (headings), mono (UI, labels, data), Inter (body).
  */
 
 /* ------------------------------------------------------------------ Tailwind + shadcn/ui
@@ -16,8 +15,7 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 @import 'tw-animate-css';
 
-/* shadcn/ui colour roles mapped onto the site's own tokens, so components follow light/dark
-   and the high-contrast overrides automatically. (`--accent` here is shadcn's hover fill, not the site blue.) */
+/* shadcn/ui colour roles mapped onto the site's own tokens. */
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
@@ -37,7 +35,7 @@
   --color-accent-foreground: var(--text);
   --color-border: var(--separator);
   --color-input: var(--separator);
-  --color-ring: var(--accent);
+  --color-ring: var(--frame);
   --color-link: var(--link);
   --color-positive: var(--positive);
   --color-material: var(--material);
@@ -45,73 +43,84 @@
 
 @layer base {
 :root {
-  color-scheme: light dark;
+  /* The stage is always dark; the cream frame is the light element. */
+  color-scheme: dark;
 
-  /* System font first (§15). Every face in this stack covers Kazakh Cyrillic
-     (Ә Ғ Қ Ң Ө Ұ Ү Һ І): SF Pro (macOS/iOS), Segoe UI (Windows), Roboto / Noto Sans (Android). */
-  --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial,
-    sans-serif;
+  /* ---- Glass Field palette */
+  --frame: #fff9d9;
+  --stage-fallback: #24332d;
+  --text: #fff9d9;
+  --text-muted: rgba(255, 249, 217, 0.7);
+  --card: rgba(0, 0, 0, 0.55);
+  --chip: rgba(0, 0, 0, 0.4);
+  --nav: rgba(0, 0, 0, 0.25);
+  --nav-hover: rgba(0, 0, 0, 0.35);
+  --divider: rgba(255, 249, 217, 0.12);
+  --accent-cyan: #22d3ee;
+  --accent-orange-glow: rgba(255, 149, 0, 0.8);
+  --label: #ffedd5;
+  --glyph-warm: #ffe58a;
+  --glyph-green: #cfefc7;
+  --tl-start: #84cc16;
+  --tl-elapsed: #fff1e0;
+  --tl-remaining: #8a8a80;
+  --tl-merge: #6d5fb8;
+  --tl-finish: #c27a1e;
+  --tl-post: #3a4250;
+  --tl-end: #b91c1c;
 
-  /* Headings: Plus Jakarta Sans (Latin only) on EN, Onest (full Russian + Kazakh) on RU/KK.
-     Base.astro loads only the face the page's locale needs. */
-  --font-heading: var(--font-jakarta, system-ui), var(--font);
+  /* ---- Legacy roles (used by the process demo, tabs and shadcn), mapped onto the palette */
+  --bg: #151a17;
+  --bg-raised: #1b211e;
+  --fill: rgba(255, 249, 217, 0.06);
+  --fill-strong: rgba(255, 249, 217, 0.12);
+  --text-2: rgba(255, 249, 217, 0.86);
+  --text-3: var(--text-muted);
+  --separator: rgba(255, 249, 217, 0.16);
+  --link: var(--text);
+  --accent: var(--frame);
+  --accent-press: #f0e8c2;
+  --on-accent: #0d0d0b;
+  --positive: var(--glyph-green);
+  --material: var(--nav);
+  --shadow-sm: none;
+  --shadow-lg: none;
 
-  --bg: #fbfbfd;
-  --bg-raised: #ffffff;
-  --fill: rgba(0, 0, 0, 0.045);
-  --fill-strong: rgba(0, 0, 0, 0.08);
-  --text: #1d1d1f;
-  --text-2: #424245;
-  --text-3: #6e6e73;
-  --separator: rgba(0, 0, 0, 0.1);
-  --link: #0066cc;
-  --accent: #0071e3;
-  --accent-press: #0062c4;
-  --on-accent: #ffffff;
-  --positive: #1a7f37;
-  --material: rgba(251, 251, 253, 0.72);
-  --material-edge: rgba(255, 255, 255, 0.6);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.05), 0 16px 48px rgba(0, 0, 0, 0.08);
+  /* ---- Type voices */
+  --font-body: var(--font-inter, system-ui), system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --font-mono: var(--font-jetbrains, ui-monospace), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-display: var(--font-pixelify, var(--font-mono)), var(--font-mono);
+  --font-logo: var(--font-instrument, Georgia), Georgia, 'Times New Roman', serif;
+  --font: var(--font-body);
+  --font-heading: var(--font-display);
 
-  --radius-sm: 0.625rem;
-  --radius: 1.125rem;
-  --radius-lg: 1.75rem;
-
+  /* ---- Geometry */
+  --inset: 8px;
+  --stage-radius: 20px;
+  --card-radius: 14px;
+  --column: 660px;
   --gutter: 1rem;
-  --max: 72rem;
-  --header-h: 3.5rem;
+  --header-h: 4.5rem;
+  --cta-h: 4.5rem;
+  --radius-sm: 0.5rem;
+  --radius: 0.75rem;
+  --radius-lg: 0.875rem;
 
-  /* Critically damped default; used where a CSS transition is enough (non-gesture state). */
   --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in: cubic-bezier(0.5, 0, 0.75, 0); /* mirror of --ease-out for the reverse path (§7) */
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000;
-    --bg-raised: #111113;
-    --fill: rgba(255, 255, 255, 0.06);
-    --fill-strong: rgba(255, 255, 255, 0.11);
-    --text: #f5f5f7;
-    --text-2: #d2d2d7;
-    --text-3: #a1a1a6;
-    --separator: rgba(255, 255, 255, 0.14);
-    --link: #2997ff;
-    --accent: #0071e3;
-    --accent-press: #0062c4;
-    --positive: #3fb950;
-    --material: rgba(22, 22, 24, 0.7);
-    --material-edge: rgba(255, 255, 255, 0.08);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.5);
-  }
+/* Pixelify Sans has no Kazakh letters; Tiny5 covers them. */
+:root:lang(kk) {
+  --font-display: var(--font-tiny5, var(--font-mono)), var(--font-mono);
 }
 
 @media (min-width: 48rem) {
   :root {
-    --gutter: 2rem;
-    --header-h: 3.75rem;
+    --inset: 12px;
+    --stage-radius: 24px;
+    --card-radius: 20px;
+    --gutter: 1.5rem;
   }
 }
 
@@ -122,16 +131,14 @@
 }
 
 html {
-  font-family: var(--font);
-  font-size: 100%; /* respect the user's text-size setting (§15) */
+  font-family: var(--font-body);
+  font-size: 100%;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 1rem);
-  background: var(--bg);
+  background: var(--frame);
   color: var(--text);
-  /* Ease light↔dark changes instead of a brightness jump (§14). */
-  transition: background-color 300ms ease, color 300ms ease;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -142,12 +149,11 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background: var(--frame);
   font-size: 1rem;
-  letter-spacing: 0;
-  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
 }
 
@@ -159,18 +165,15 @@ svg {
 }
 
 a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-a:hover {
+  color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
 :focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
-  outline-offset: 3px;
+  outline: 2px solid var(--frame);
+  outline-offset: 2px;
   border-radius: 0.375rem;
 }
 
@@ -194,92 +197,280 @@ ol[role='list'] {
   padding: 0;
 }
 
-:root:lang(ru),
-:root:lang(kk) {
-  --font-heading: var(--font-onest, system-ui), var(--font);
+em,
+i {
+  font-style: italic;
 }
 
-/* ------------------------------------------------------------------ type scale (§15)
- * Tracking tightens as size grows; leading tightens as size grows; body stays near 0. */
-
-.t-display {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  font-weight: 700;
-  hyphens: manual;
+::selection {
+  background: rgba(255, 229, 138, 0.35);
+  color: var(--text);
 }
 
-.t-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.625rem, 1.35rem + 1.2vw, 2.25rem);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  font-weight: 700;
+/* ------------------------------------------------------------------ stage + frame
+ * The stage is fixed and inset from the viewport, so the cream body shows as a frame on every edge.
+ * Content scrolls in normal document flow between the stage and the frame overlay. */
+
+.stage {
+  position: fixed;
+  inset: var(--inset);
+  z-index: 0;
+  border-radius: var(--stage-radius);
+  overflow: hidden;
+  /* Fallback before JS: moss green with a few soft highlights, close to the generated meadow. */
+  background:
+    radial-gradient(40% 30% at 72% 28%, rgba(255, 236, 170, 0.28), transparent 70%),
+    radial-gradient(30% 25% at 22% 64%, rgba(206, 236, 180, 0.18), transparent 70%),
+    radial-gradient(60% 50% at 50% 100%, rgba(20, 30, 22, 0.9), transparent 70%),
+    var(--stage-fallback);
+}
+
+/* The passe-partout: a fixed, rounded window whose huge spread shadow paints the cream border above
+   the scrolling content, so cards slide under the frame instead of over it. */
+.frame {
+  position: fixed;
+  inset: var(--inset);
+  z-index: 40;
+  border-radius: var(--stage-radius);
+  box-shadow: 0 0 0 100vmax var(--frame);
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  padding: var(--inset);
+}
+
+/* ------------------------------------------------------------------ type scale */
+
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 1;
+  letter-spacing: 0.025em;
+  text-align: center;
+  color: var(--text);
+  text-shadow:
+    0 0 12px rgba(255, 249, 217, 0.65),
+    0 0 32px rgba(255, 249, 217, 0.45);
   text-wrap: balance;
 }
 
-.t-headline {
-  font-family: var(--font-heading);
-  font-size: 1.1875rem;
-  line-height: 1.3;
-  letter-spacing: -0.012em;
-  font-weight: 600;
+@media (min-width: 30rem) {
+  .t-hero {
+    font-size: 2.25rem;
+  }
 }
 
-.t-lead {
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
-  line-height: 1.42;
-  letter-spacing: -0.008em;
-  color: var(--text-2);
-  text-wrap: pretty;
+@media (min-width: 48rem) {
+  .t-hero {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .t-hero {
+    font-size: 4.5rem;
+  }
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+@media (min-width: 48rem) {
+  .t-title {
+    font-size: 3rem;
+  }
+}
+
+/* Section label (H3 voice): mono, bold, uppercase. */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.t-small-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--label);
 }
 
 .t-body {
+  font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.6;
-  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.t-muted {
+  color: var(--text-muted);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+}
+
+/* Legacy names still used by the process demo and tabs. */
+.t-headline {
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.t-lead {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 .t-footnote {
   font-size: 0.875rem;
   line-height: 1.43;
-  letter-spacing: 0.006em;
 }
 
 .t-caption {
   font-size: 0.75rem;
   line-height: 1.34;
-  letter-spacing: 0.02em;
 }
 
-.eyebrow {
-  font-size: 0.9375rem;
-  line-height: 1.33;
-  letter-spacing: 0.004em;
-  font-weight: 600;
-  color: var(--text-3);
-}
+/* ------------------------------------------------------------------ layout + components */
 
-/* ------------------------------------------------------------------ layout */
-
-.container {
+.column {
   width: 100%;
-  max-width: var(--max);
+  max-width: calc(var(--column) + 2 * var(--gutter));
   margin-inline: auto;
-  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+  padding-inline: var(--gutter);
 }
 
-.section {
-  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+/* Main content card: translucent black, no border, no shadow — the field stays faintly visible. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  margin-bottom: 3rem;
+  border-radius: var(--card-radius);
+  background: var(--card);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  color: var(--text);
 }
 
-.section-head {
+@media (min-width: 48rem) {
+  .card {
+    gap: 2rem;
+    padding: 2rem 1.75rem;
+  }
+}
+
+.card > p,
+.prose p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.prose {
   display: grid;
-  gap: 0.625rem;
-  max-width: 40rem;
-  margin-bottom: clamp(1.75rem, 1.4rem + 1.4vw, 2.75rem);
+  gap: 1em;
+}
+
+.chip {
+  border-radius: 8px;
+  background: var(--chip);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* Data grid row (prize / stat grid). */
+.stat-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-height: 2rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  background: rgba(255, 249, 217, 0.04);
+}
+
+.stat-rank {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Inline mono pill (stack tags etc.). */
+.tag {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Plain list lines that start with an em dash. */
+.dash-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.dash-list > li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+}
+
+.dash-list > li::before {
+  content: '—';
+  color: var(--text-muted);
+}
+
+.signoff {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: end;
+  text-align: right;
+  font-style: italic;
+}
+
+.section-anchor {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 
 .visually-hidden {
@@ -294,37 +485,50 @@ ol[role='list'] {
   border: 0;
 }
 
-/* ------------------------------------------------------------------ press feedback
- * Feedback on press, instantly (§1). Buttons are shadcn/ui (src/components/ui/button.tsx). */
+/* ------------------------------------------------------------------ reveal on enter
+ * Elements with [data-reveal] fade up once; [data-reveal-delay] staggers them (0 / 150 / 300 ms).
+ * Hidden only once JS has marked the page, so nothing is lost without it. */
+
+:root[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 1000ms ease-out,
+    transform 1000ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+:root[data-js] [data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ press feedback */
 
 .pressable {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: transform 160ms var(--ease-out);
-}
-
-.pressable:active {
-  transform: scale(0.985);
-  transition-duration: 100ms;
 }
 
 .skip-link {
   position: fixed;
-  top: 0.5rem;
-  left: 0.5rem;
+  top: calc(var(--inset) + 0.5rem);
+  left: calc(var(--inset) + 0.5rem);
   z-index: 100;
   padding: 0.5rem 1rem;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--on-accent);
-  transform: translateY(-200%);
+  border-radius: 8px;
+  background: var(--frame);
+  color: #0d0d0b;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  transform: translateY(-300%);
 }
 
 .skip-link:focus {
   transform: none;
 }
 
-/* ------------------------------------------------------------------ accessibility (§14) */
+/* ------------------------------------------------------------------ accessibility */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -334,16 +538,29 @@ ol[role='list'] {
     animation-iteration-count: 1 !important;
   }
 
-  .pressable:active {
+  :root[data-js] [data-reveal] {
+    opacity: 1;
     transform: none;
+    transition: none;
   }
 }
 
 @media (prefers-contrast: more) {
   :root {
-    --text-2: var(--text);
-    --text-3: var(--text);
-    --separator: currentColor;
+    --card: rgba(0, 0, 0, 0.82);
+    --chip: rgba(0, 0, 0, 0.75);
+    --nav: rgba(0, 0, 0, 0.7);
+    --nav-hover: rgba(0, 0, 0, 0.85);
+    --text-muted: rgba(255, 249, 217, 0.9);
+    --divider: rgba(255, 249, 217, 0.4);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --card: rgba(8, 10, 9, 0.9);
+    --chip: rgba(8, 10, 9, 0.85);
+    --nav: rgba(8, 10, 9, 0.8);
   }
 }
 

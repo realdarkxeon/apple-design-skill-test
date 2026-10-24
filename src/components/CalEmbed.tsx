@@ -99,7 +99,7 @@ export default function CalEmbed({ calLink, title, loadingText, failedText }: Pr
       Cal.ns[NAMESPACE]('inline', {
         elementOrSelector: `#${el.id}`,
         calLink,
-        config: { layout: 'month_view', theme: 'auto' },
+        config: { layout: 'month_view', theme: 'dark' },
       });
     };
     const io = new IntersectionObserver(

@@ -83,6 +83,10 @@ export const settingsSchema = z.object({
   telegram: url(),
   linkedin: url(),
   github: url(),
+  backgroundVideo: z
+    .string()
+    .regex(/^(\/[A-Za-z0-9._\-/]+\.(mp4|webm))?$/, { error: 'Empty, or a path in public/ such as /video/meadow.mp4' })
+    .meta({ description: 'Background video in public/ (H.264 MP4, ~1080p, under 8 MB). Empty = generated meadow.' }),
 });
 
 /* ------------------------------------------------------------------ ui.json */
@@ -100,6 +104,9 @@ export const uiSchema = z.object({
     navLabel: i18n(),
     languageLabel: i18n(),
     bookCall: i18n(),
+    tagline: i18n(),
+    menu: i18n(),
+    closeMenu: i18n(),
   }),
   nav: z.object({
     services: i18n(),
@@ -110,8 +117,17 @@ export const uiSchema = z.object({
     contact: i18n(),
   }),
   a11y: z.object({ skipLink: i18n(), opensInNewTab: i18n() }),
-  projects: z.object({ problem: i18n(), solution: i18n(), result: i18n(), stack: i18n(), viewProject: i18n() }),
-  experience: z.object({ result: i18n(), forYou: i18n() }),
+  projects: z.object({
+    problem: i18n(),
+    solution: i18n(),
+    result: i18n(),
+    stack: i18n(),
+    viewProject: i18n(),
+    project: i18n(),
+    client: i18n(),
+    summary: i18n(),
+  }),
+  experience: z.object({ result: i18n(), forYou: i18n(), now: i18n() }),
   recommendations: z.object({ read: i18n(), watch: i18n(), use: i18n(), tabsLabel: i18n(), open: i18n() }),
   people: z.object({ visit: i18n() }),
   library: z.object({ title: i18n(), metaTitle: i18n(), intro: i18nLong(), description: i18nLong() }),

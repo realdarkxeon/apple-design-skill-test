@@ -9,7 +9,7 @@ const dirs = ['components', 'layouts', 'pages'];
 const LETTER = /\p{L}/u;
 const ATTRS = /\b(aria-label|alt|title|placeholder|aria-description|content)=["']([^"'{}]*)["']/g;
 // Attribute values that are not prose (meta names, technical tokens).
-const ALLOWED_ATTR_VALUES = new Set(['website', 'summary_large_image', 'noindex', 'width=device-width, initial-scale=1', 'width=device-width, initial-scale=1, viewport-fit=cover', 'utf-8', '1200', '630', '#fbfbfd', '#000000']);
+const ALLOWED_ATTR_VALUES = new Set(['website', 'summary_large_image', 'noindex', 'width=device-width, initial-scale=1', 'width=device-width, initial-scale=1, viewport-fit=cover', 'utf-8', '1200', '630', '#fbfbfd', '#000000', '#FFF9D9']);
 
 const walk = (dir) =>
   readdirSync(dir).flatMap((n) => {
